@@ -9,11 +9,17 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 
 ---
 
+## Preview
+
+![SealBid App Preview](./ss/preview-hero.png)
+
+---
+
 ## Links
 
 - **Live Application**: https://sealbid.netlify.app/
 - **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
-- **Screenshots**: [`ss/`](./ss/)
+- **Screenshots Gallery**: [`ss/`](./ss/)
 - **X (Twitter)**: https://x.com/ShriiAher19
 - **Verified Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
 - **Network Explorer**: https://explorer.preview.midnight.network
