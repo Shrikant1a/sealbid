@@ -1,0 +1,37 @@
+name: SealBid CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate-and-build:
+    name: Build, Typecheck & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Strict TypeScript Verification
+        run: npm run typecheck
+
+      - name: Production Vite Build
+        run: npm run build
+
+      - name: Verify Distribution Artifacts
+        run: |
+          test -d dist
+          test -f dist/index.html
+          echo "Production build verified successfully."
