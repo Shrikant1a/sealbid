@@ -1,0 +1,246 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg-primary: #060913;
+    --color-bg-secondary: #0b1020;
+    --color-bg-card: rgba(13, 19, 36, 0.7);
+    --color-border: rgba(42, 59, 104, 0.4);
+    --color-border-glow: rgba(6, 182, 212, 0.4);
+  }
+
+  body {
+    background-color: var(--color-bg-primary);
+    color: #f1f5f9;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #090d19;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e2c50;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2a3b68;
+  }
+}
+
+/* Background Grids and Ambient Lights */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, rgba(99, 102, 241, 0.05) 45%, transparent 70%);
+}
+
+.bg-ambient-glow {
+  position: absolute;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.45;
+  border-radius: 9999px;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(13, 19, 36, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(42, 59, 104, 0.45);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(17, 26, 48, 0.7) 0%, rgba(11, 16, 32, 0.8) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 82, 143, 0.25);
+  transition: all 0.25s ease-in-out;
+}
+
+.glass-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.15);
+  transform: translateY(-2px);
+}
+
+.glass-input {
+  background: rgba(8, 13, 26, 0.7);
+  border: 1px solid rgba(42, 59, 104, 0.5);
+  color: #f8fafc;
+  transition: all 0.2s ease;
+}
+
+.glass-input:focus {
+  border-color: #06b6d4;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2);
+}
+
+/* Gradient Texts */
+.gradient-text-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-shield {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-indigo {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Shimmer & Glow Animations */
+.shimmer-badge {
+  background: linear-gradient(90deg, rgba(6, 182, 212, 0.1) 0%, rgba(6, 182, 212, 0.25) 50%, rgba(6, 182, 212, 0.1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+.nav-glow-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+  box-shadow: 0 0 8px #06b6d4;
+}
+
+/* ============================================================================
+   AUTOMATED LOGO ANIMATIONS (Continuously Animated)
+   ============================================================================ */
+
+/* 1. Rotating Conic Glowing Halo behind the Shield */
+.logo-spin-halo {
+  position: absolute;
+  inset: -3px;
+  border-radius: 18px;
+  background: conic-gradient(from 0deg, #06b6d4, #6366f1, #2dd4bf, #06b6d4);
+  animation: rotateConic 4s linear infinite;
+  filter: blur(4px);
+  opacity: 0.75;
+}
+
+/* 2. Floating Breathing Shield Container */
+.logo-floating-box {
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* 3. Glowing Shield Icon Heartbeat */
+.logo-shield-pulse {
+  animation: shieldPulse 3s ease-in-out infinite;
+}
+
+/* 4. Automated Text Shimmer Beam across SealBid */
+.logo-text-shimmer {
+  background: linear-gradient(
+    110deg,
+    #ffffff 20%,
+    #38bdf8 35%,
+    #ffffff 50%,
+    #06b6d4 70%,
+    #ffffff 85%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+/* 5. Animated Dynamic Gradient on "Bid" */
+.logo-bid-gradient {
+  background: linear-gradient(135deg, #06b6d4, #38bdf8, #2dd4bf, #818cf8, #06b6d4);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* 6. Pill Pulse & Radar Beacon */
+.radar-beacon {
+  position: relative;
+}
+
+.radar-beacon::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: rgba(6, 182, 212, 0.6);
+  animation: radarWave 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes rotateConic {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-3px) scale(1.02); }
+}
+
+@keyframes shieldPulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(6, 182, 212, 0.5)); transform: scale(1); }
+  50% { filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.9)); transform: scale(1.06); }
+}
+
+@keyframes textShimmer {
+  0% { background-position: 150% 0; }
+  100% { background-position: -150% 0; }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes radarWave {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
