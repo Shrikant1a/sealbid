@@ -1,68 +1,75 @@
-# 🛡️ SealBid: Private Sealed-Bid Auction DApp on Midnight Network
+# SealBid
 
-> **"Private bids. Verifiable results."**  
-> A zero-knowledge confidential auction protocol engineered on the **Midnight Network (Preprod & Preview)** using Compact smart contracts and client-side zk-SNARK witness generation.
+A decentralized sealed-bid auction platform built on the Midnight Network (Preview / Preprod). SealBid uses Midnight's Compact smart contracts and zero-knowledge proofs to let users bid on auctions confidentially without revealing their bid amounts to sellers or competing bidders.
 
-[![Live DApp](https://img.shields.io/badge/Live%20DApp-sealbid.netlify.app-00C7B7?logo=netlify&logoColor=white)](https://sealbid.netlify.app/)
-[![SealBid CI/CD Pipeline](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions)
-[![Midnight Network](https://img.shields.io/badge/Midnight-Preprod%20%7C%20Preview-06b6d4)](https://midnight.network)
-[![Language](https://img.shields.io/badge/Language-Compact%20%2B%20TypeScript-6366f1)](https://docs.midnight.network)
-[![Official X](https://img.shields.io/badge/X%20(Twitter)-@ShriiAher19-1DA1F2?logo=x&logoColor=white)](https://x.com/ShriiAher19)
+[![Live Demo](https://img.shields.io/badge/demo-sealbid.netlify.app-00C7B7)](https://sealbid.netlify.app/)
+[![CI](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions)
+[![Network](https://img.shields.io/badge/network-Midnight%20Preview%20%2F%20Preprod-blue)](https://midnight.network)
+[![Twitter](https://img.shields.io/badge/twitter-@ShriiAher19-black)](https://x.com/ShriiAher19)
 
 ---
 
-## 🌐 Live MVP & Official Links
+## Links
 
-- **🚀 Live Application**: **[https://sealbid.netlify.app/](https://sealbid.netlify.app/)**
-- **GitHub Repository**: [https://github.com/Shrikant1a/sealbid](https://github.com/Shrikant1a/sealbid)
-- **Official Product X (Twitter) Profile**: [@ShriiAher19 (https://x.com/ShriiAher19)](https://x.com/ShriiAher19)
-- **📹 Demo Video**: Included in [`demo/demo-video.mp4`](./demo/demo-video.mp4)
-- **📸 Application Screenshots**: Available in [`ss/`](./ss/) gallery
-- **Target Network**: Midnight Network Preprod & Preview Consensus
-- **Verified Smart Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
-- **Network Explorer**: [Midnight Explorer](https://explorer.preview.midnight.network)
-- **Proof Server Endpoint**: `http://localhost:6300`
+- **Live Application**: https://sealbid.netlify.app/
+- **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
+- **Screenshots**: [`ss/`](./ss/)
+- **X (Twitter)**: https://x.com/ShriiAher19
+- **Verified Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
+- **Network Explorer**: https://explorer.preview.midnight.network
 
 ---
 
-## 🔒 The Privacy Paradigm: Why Traditional Blockchain Auctions Fail
+## Why SealBid?
 
-In standard public blockchain auctions, every submitted bid amount is permanently exposed in the mempool and on-chain:
-- **Predatory Bidding Wars & Sniping**: Competitors see your valuation and undercut or snipe you at the final block.
-- **MEV Exploitation**: Bots extract value through front-running.
-- **Leaked Financial Intelligence**: Losing bidders' private valuations and cash reserves are exposed indefinitely.
+On public blockchains like Ethereum or Cardano, traditional auctions broadcast all bid amounts directly to the mempool and public ledger. This leads to several well-known issues:
+- **Sniping and front-running**: Bidders wait until the last block to outbid by the smallest increment.
+- **Leaked valuations**: Competitors can see exactly how much you value an asset, exposing private financial strategy.
+- **Price manipulation**: Open bids allow artificial price pump-and-dump behavior.
 
-### **The SealBid Zero-Knowledge Solution**
-SealBid leverages **Midnight Compact Smart Contracts** and client-side zero-knowledge proofs to solve this:
-1. **100% Confidential Bids**: Individual bid amounts stay sealed inside the bidder's browser witness. Only a cryptographic commitment `Hash(bidAmount || salt || bidderPk)` is broadcast to the Midnight ledger.
-2. **Fair Price Discovery**: Participants submit their true valuation without psychological gaming or fear of information leakage.
-3. **Cryptographic Settlement**: When the auction concludes, the Compact circuit evaluates all commitments and proves the highest bidder mathematically.
-4. **Permanent Privacy Invariant**: Even after settlement, **losing bid amounts are never revealed or stored on-chain**.
+### How it works on Midnight
+
+SealBid uses Midnight's private witness circuits to keep bids completely confidential:
+1. **Submit Bid**: When you enter a bid, your browser generates a 32-byte secret salt and calculates `Hash(bidAmount || salt || bidderAddress)`. Only this cryptographic commitment is recorded on-chain.
+2. **Auction Active**: No one (not even the seller or other bidders) can see your bid value.
+3. **Settlement**: Once the auction ends, a zero-knowledge settlement circuit verifies the highest bidder cryptographically. The winner is declared on-chain, while all losing bid values remain secret forever.
 
 ---
 
-## 🏛️ System Architecture
+## Tech Stack
+
+- **Frontend**: React 18, TypeScript, Vite, Tailwind CSS
+- **Smart Contracts**: Midnight Compact (`contracts/sealed_bid_auction.compact`)
+- **Wallet Connector**: Midnight Lace Wallet DApp Connector
+- **ZK Circuit**: Compact Groth16 / Halo2 prover
+- **Deployment**: Netlify (Frontend) + GitHub Actions (CI/CD)
+
+---
+
+## Project Structure
 
 ```
-                                  +---------------------------------------+
-                                  |         MIDNIGHT LACE WALLET          |
-                                  |    (Shielded Keys & Signature Auth)   |
-                                  +-------------------+-------------------+
-                                                      |
-                                                      v
-+------------------------------------+    +-----------+------------+    +------------------------------------+
-|        CLIENT PRIVATE DOMAIN       |    |      PROOF SERVER      |    |        MIDNIGHT LEDGER DOMAIN      |
-|  - Plaintext Bid Amount (tDU)      |--->|   (Local Port :6300)   |--->|  - Compact Smart Contract State    |
-|  - 32-Byte Secret Witness (Salt)   |    |  - Groth16 zk-SNARK    |    |  - Commitment Merkle Tree          |
-|  - Hash(bid || salt || bidderPk)   |    |    Circuit Witness     |    |  - Verified Winner Settlement VK   |
-+------------------------------------+    +------------------------+    +------------------------------------+
+├── contracts/
+│   └── sealed_bid_auction.compact   # Midnight Compact smart contract
+├── demo/
+│   └── demo-video.mp4              # Full app demo walkthrough
+├── ss/                              # UI screenshots gallery (27 screens)
+├── src/
+│   ├── components/                 # UI, modals, bidding panel, layout
+│   ├── context/                    # WalletContext, AuctionContext, ToastContext
+│   ├── lib/midnight/               # Lace connector, network config, proof service
+│   ├── pages/                      # Marketplace, Create, Details, My Bids
+│   └── types/                      # Auction, Bid, and Proof types
+├── .github/workflows/
+│   └── ci.yml                      # GitHub Actions build & typecheck pipeline
+└── README.md
 ```
 
 ---
 
-## 📜 Compact Smart Contract (`contracts/sealed_bid_auction.compact`)
+## Smart Contract Overview
 
-The protocol is powered by Midnight's domain-specific zero-knowledge smart contract language **Compact**:
+The auction contract is written in Midnight's **Compact** language (`contracts/sealed_bid_auction.compact`):
 
 ```rust
 module SealedBidAuction {
@@ -111,24 +118,16 @@ module SealedBidAuction {
 
 ---
 
-## ⚡ Key Features
+## Getting Started
 
-- **Dynamic Network Negotiation**: Auto-detects and connects to **Midnight Preview**, **Midnight Preprod**, or **Devnet** directly via Midnight Lace.
-- **Flexible & Custom Durations**: Create auctions with quick presets (e.g. 5 Mins for fast test runs) or custom minutes, hours, and days.
-- **Persistent Ledger State**: All created auctions, user private bids, and settlement proofs are saved in client ledger storage across page reloads.
-- **In-Page ZK Settlement**: Instant zero-knowledge verification when the timer expires, identifying the real winning bidder without disclosing losing bids.
-- **Shielded Portfolio (`/my-bids`)**: View and manage all confidential bid receipts, reveal/hide local witness values, and copy commitment proofs.
+### Prerequisites
 
----
+- Node.js 18+ (Node 20 recommended)
+- [Midnight Lace Wallet Extension](https://chromewebstore.google.com/detail/midnight-lace) installed in your browser
+- A funded Midnight Preview or Preprod testnet account (tDU)
 
-## 🚀 Quickstart & Setup Guide
+### Installation
 
-### 1. Prerequisites
-- **Node.js**: `v18.0.0` or higher (Node 20+ recommended)
-- **Browser**: Google Chrome or Brave with the **Midnight Lace Extension** installed.
-- **Midnight Proof Server**: Running locally on port `6300` (for local proof generation).
-
-### 2. Installation
 ```bash
 # Clone the repository
 git clone https://github.com/Shrikant1a/sealbid.git
@@ -136,10 +135,17 @@ cd sealbid
 
 # Install dependencies
 npm install
+
+# Start development server
+npm run dev
 ```
 
-### 3. Environment Configuration
-Create a `.env` file (copied from `.env.example`):
+The app will start at `http://localhost:5173`.
+
+### Environment Variables
+
+Copy `.env.example` to `.env`:
+
 ```env
 VITE_MIDNIGHT_NETWORK_ID=Preview
 VITE_MIDNIGHT_INDEXER_URL=https://indexer.preview.midnight.network/api/v1/graphql
@@ -149,41 +155,25 @@ VITE_MIDNIGHT_EXPLORER_URL=https://explorer.preview.midnight.network
 VITE_SEALBID_CONTRACT_ADDRESS=midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5
 ```
 
-### 4. Running the Application
-```bash
-# Start local development server
-npm run dev
+### Build & Type Check
 
-# Open http://localhost:5173 in your browser
-```
-
-### 5. Production Build & Type Checking
 ```bash
-# Run strict TypeScript validation
+# Run TypeScript type check
 npm run typecheck
 
-# Build optimized production bundle
+# Build for production
 npm run build
 ```
 
 ---
 
-## 🔄 CI/CD Pipeline
+## CI/CD
 
-Our continuous integration workflow is configured in `.github/workflows/ci.yml`. On every pull request and push to `main` / `master`, GitHub Actions validates:
-1. Clean dependency installation (`npm install`)
-2. Strict TypeScript type check (`tsc --noEmit`)
-3. Production bundle compilation (`vite build`)
-4. Distribution artifact integrity verification
+All pull requests and commits to `main` are automatically built and validated via GitHub Actions in `.github/workflows/ci.yml`.
 
 ---
 
-## 🎥 Media & Demo Assets
+## Author
 
-- **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
-- **UI Screenshots Gallery**: 27 high-resolution walkthrough screenshots located in [`ss/`](./ss/)
-
----
-
-## 📄 License & Integrity
-Engineered for the **Midnight Network Level 4 Project**. All cryptographic invariants and zero-knowledge circuit guarantees comply with official Midnight Network specifications.
+- **Shrikant Aher** — [@ShriiAher19](https://x.com/ShriiAher19)
+- GitHub: [@Shrikant1a](https://github.com/Shrikant1a)
