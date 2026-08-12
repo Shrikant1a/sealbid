@@ -3,16 +3,17 @@
 > **"Private bids. Verifiable results."**  
 > A zero-knowledge confidential auction protocol engineered on the **Midnight Network (Preprod & Preview)** using Compact smart contracts and client-side zk-SNARK witness generation.
 
-[![SealBid CI/CD Pipeline](https://github.com/sealbid/sealbid-defi/actions/workflows/ci.yml/badge.svg)](https://github.com/sealbid/sealbid-defi/actions)
+[![SealBid CI/CD Pipeline](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions)
 [![Midnight Network](https://img.shields.io/badge/Midnight-Preprod%20%7C%20Preview-06b6d4)](https://midnight.network)
 [![Language](https://img.shields.io/badge/Language-Compact%20%2B%20TypeScript-6366f1)](https://docs.midnight.network)
-[![Official X](https://img.shields.io/badge/X%20(Twitter)-@SealBid__DeFi-1DA1F2?logo=x&logoColor=white)](https://x.com/SealBid_DeFi)
+[![Official X](https://img.shields.io/badge/X%20(Twitter)-@ShriiAher19-1DA1F2?logo=x&logoColor=white)](https://x.com/ShriiAher19)
 
 ---
 
 ## 🌐 Official Product & Socials
 
-- **Official Product X (Twitter) Profile**: [@SealBid_DeFi (https://x.com/SealBid_DeFi)](https://x.com/SealBid_DeFi)
+- **Official Product X (Twitter) Profile**: [@ShriiAher19 (https://x.com/ShriiAher19)](https://x.com/ShriiAher19)
+- **GitHub Repository**: [https://github.com/Shrikant1a/sealbid](https://github.com/Shrikant1a/sealbid)
 - **Target Network**: Midnight Network Preprod & Preview Consensus
 - **Verified Smart Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
 - **Network Explorer**: [Midnight Explorer](https://explorer.preview.midnight.network)
@@ -126,8 +127,8 @@ module SealedBidAuction {
 ### 2. Installation
 ```bash
 # Clone the repository
-git clone https://github.com/sealbid/sealbid-defi.git
-cd sealbid-defi
+git clone https://github.com/Shrikant1a/sealbid.git
+cd sealbid
 
 # Install dependencies
 npm install
@@ -166,7 +167,7 @@ npm run build
 ## 🔄 CI/CD Pipeline
 
 Our continuous integration workflow is configured in `.github/workflows/ci.yml`. On every pull request and push to `main` / `master`, GitHub Actions validates:
-1. Clean dependency installation (`npm ci`)
+1. Clean dependency installation (`npm install`)
 2. Strict TypeScript type check (`tsc --noEmit`)
 3. Production bundle compilation (`vite build`)
 4. Distribution artifact integrity verification
