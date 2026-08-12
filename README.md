@@ -3,6 +3,7 @@
 > **"Private bids. Verifiable results."**  
 > A zero-knowledge confidential auction protocol engineered on the **Midnight Network (Preprod & Preview)** using Compact smart contracts and client-side zk-SNARK witness generation.
 
+[![Live DApp](https://img.shields.io/badge/Live%20DApp-sealbid.netlify.app-00C7B7?logo=netlify&logoColor=white)](https://sealbid.netlify.app/)
 [![SealBid CI/CD Pipeline](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions)
 [![Midnight Network](https://img.shields.io/badge/Midnight-Preprod%20%7C%20Preview-06b6d4)](https://midnight.network)
 [![Language](https://img.shields.io/badge/Language-Compact%20%2B%20TypeScript-6366f1)](https://docs.midnight.network)
@@ -10,10 +11,11 @@
 
 ---
 
-## 🌐 Official Product & Socials
+## 🌐 Live MVP & Official Links
 
-- **Official Product X (Twitter) Profile**: [@ShriiAher19 (https://x.com/ShriiAher19)](https://x.com/ShriiAher19)
+- **🚀 Live Application**: **[https://sealbid.netlify.app/](https://sealbid.netlify.app/)**
 - **GitHub Repository**: [https://github.com/Shrikant1a/sealbid](https://github.com/Shrikant1a/sealbid)
+- **Official Product X (Twitter) Profile**: [@ShriiAher19 (https://x.com/ShriiAher19)](https://x.com/ShriiAher19)
 - **Target Network**: Midnight Network Preprod & Preview Consensus
 - **Verified Smart Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
 - **Network Explorer**: [Midnight Explorer](https://explorer.preview.midnight.network)
