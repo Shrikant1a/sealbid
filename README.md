@@ -16,6 +16,8 @@
 - **🚀 Live Application**: **[https://sealbid.netlify.app/](https://sealbid.netlify.app/)**
 - **GitHub Repository**: [https://github.com/Shrikant1a/sealbid](https://github.com/Shrikant1a/sealbid)
 - **Official Product X (Twitter) Profile**: [@ShriiAher19 (https://x.com/ShriiAher19)](https://x.com/ShriiAher19)
+- **📹 Demo Video**: Included in [`demo/demo-video.mp4`](./demo/demo-video.mp4)
+- **📸 Application Screenshots**: Available in [`ss/`](./ss/) gallery
 - **Target Network**: Midnight Network Preprod & Preview Consensus
 - **Verified Smart Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
 - **Network Explorer**: [Midnight Explorer](https://explorer.preview.midnight.network)
@@ -173,6 +175,13 @@ Our continuous integration workflow is configured in `.github/workflows/ci.yml`.
 2. Strict TypeScript type check (`tsc --noEmit`)
 3. Production bundle compilation (`vite build`)
 4. Distribution artifact integrity verification
+
+---
+
+## 🎥 Media & Demo Assets
+
+- **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
+- **UI Screenshots Gallery**: 27 high-resolution walkthrough screenshots located in [`ss/`](./ss/)
 
 ---
 
