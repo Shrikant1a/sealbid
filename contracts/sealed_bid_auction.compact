@@ -61,7 +61,7 @@ module SealedBidAuction {
         minBid: Uint<64>,
         secretReserve: Uint<64>,
         duration: Uint<64>
-    ): Void {
+    ): [] {
         seller = sellerPk;
         startingBid = minBid;
         reservePrice = secretReserve;
