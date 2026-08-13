@@ -20,7 +20,8 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 - **Live Application**: https://sealbid.netlify.app/
 - **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
 - **Screenshots Gallery**: [`ss/`](./ss/)
-- **X (Twitter)**: https://x.com/ShriiAher19
+- **X (Twitter) Profile**: https://x.com/ShriiAher19
+- **Product Announcement Post**: https://x.com/ShriiAher19/status/2087790597113593916
 - **Verified Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
 - **Network Explorer**: https://explorer.preview.midnight.network
 
@@ -56,7 +57,15 @@ SealBid uses Midnight's private witness circuits to keep bids completely confide
 
 ```
 ├── contracts/
-│   └── sealed_bid_auction.compact   # Midnight Compact smart contract
+│   └── sealed_bid_auction.compact   # Midnight Compact smart contract (Confidential Logic)
+├── managed/
+│   └── .gitkeep                     # Target folder for compiled Compact TS bindings
+├── tests/
+│   └── contract.test.ts             # Unit tests for contract interface and helpers
+├── docs/
+│   ├── architecture.md              # Zero-knowledge privacy model & state isolation
+│   ├── setup.md                     # Installation, compiler, and build instructions
+│   └── usage.md                     # Complete user walkthrough & Lace wallet setup
 ├── demo/
 │   └── demo-video.mp4              # Full app demo walkthrough
 ├── ss/                              # UI screenshots gallery (27 screens)
@@ -67,9 +76,16 @@ SealBid uses Midnight's private witness circuits to keep bids completely confide
 │   ├── pages/                      # Marketplace, Create, Details, My Bids
 │   └── types/                      # Auction, Bid, and Proof types
 ├── .github/workflows/
-│   └── ci.yml                      # GitHub Actions build & typecheck pipeline
+│   └── ci.yml                      # GitHub Actions build, compile & test pipeline
 └── README.md
 ```
+
+## Documentation
+
+Comprehensive project documentation is available in the `docs/` directory:
+* **[Privacy Architecture & ZK Model](file:///s:/Confidential%20DeFi/docs/architecture.md)**: Explains the privacy state isolation and zero-knowledge circuit assertions.
+* **[Setup & Development Guide](file:///s:/Confidential%20DeFi/docs/setup.md)**: Explains compiler installation and testing workflows.
+* **[End-to-End Usage Guide](file:///s:/Confidential%20DeFi/docs/usage.md)**: Step-by-step guide to run local auctions and interact via Lace wallet.
 
 ---
 

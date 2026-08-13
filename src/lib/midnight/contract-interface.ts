@@ -18,7 +18,7 @@ export class SealedBidContractService implements ISealedBidAuctionContract {
   private contractAddress?: string;
 
   constructor(contractAddress?: string) {
-    this.contractAddress = contractAddress || MIDNIGHT_CONFIG.contractAddress;
+    this.contractAddress = contractAddress !== undefined ? contractAddress : MIDNIGHT_CONFIG.contractAddress;
   }
 
   /**

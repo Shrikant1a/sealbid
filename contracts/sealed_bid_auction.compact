@@ -3,6 +3,40 @@
 // Language: Compact v0.17+ (Midnight Network)
 // Target: Midnight Preprod / Preview Zero-Knowledge Consensus
 // ============================================================================
+//
+// PRIVACY-CRITICAL CORE: ZERO-KNOWLEDGE PRIVACY MODEL & SECURITY INVARIANTS
+//
+// 1. STATE ISOLATION:
+//    - Public Ledger State: Declared under the `ledger` block. This contains variables
+//      whose values are publicly readable by any node on the Midnight network (e.g.
+//      sellerPk, startingBid, bidderCount, isClosed, winningBidAmount, winnerAddress).
+//    - Private State (Witnesses): Parameters marked with the `witness` modifier in 
+//      circuits (e.g., `bidAmount`, `salt`, `bidderPk`). These remain strictly inside the
+//      user's local client-side environment (the Midnight Lace Wallet or DApp runtime).
+//      They are never published on the public ledger.
+//
+// 2. CRYPTOGRAPHIC COMMITMENTS:
+//    - When a user submits a bid, they supply `witness bidAmount`, `witness salt`,
+//      and `witness bidderPk`. 
+//    - The client-side circuit computes a cryptographic commitment using a hash function:
+//      `commitment = Hash(bidAmount || salt || bidderPk)`.
+//    - Only the resulting public `commitment` (32-byte hash) is stored on-chain in the
+//      ledger (`ledger.commitmentsTreeRoot` is updated with it).
+//    - This ensures that competing bidders and the seller cannot read the bid value,
+//      reconstructing the bid amount is computationally infeasible (hiding property),
+//      and the bidder cannot change their bid later (binding property).
+//
+// 3. ZERO-KNOWLEDGE SETTLEMENT & VERIFICATION:
+//    - To claim the win or settle the auction, the winning bidder executes `settleWinningBid`.
+//    - They present their private credentials (`winningBid`, `winningSalt`, `winnerPk`)
+//      as witnesses, alongside the public `claimedCommitment`.
+//    - The zero-knowledge proof verifies:
+//      a) The witnesses hash exactly to the claimed commitment.
+//      b) The winning bid satisfies the reserve minimum requirements (`winningBid >= startingBid`).
+//    - The public ledger state is updated with the winner's public key and winning bid amount.
+//    - All other bids remain permanently hidden since their preimages (witnesses) are never
+//      revealed to the public ledger.
+// ============================================================================
 
 module SealedBidAuction {
     // ------------------------------------------------------------------------
