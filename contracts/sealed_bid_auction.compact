@@ -38,6 +38,8 @@
 //      revealed to the public ledger.
 // ============================================================================
 
+import CompactStandardLibrary;
+
 module SealedBidAuction {
     // ------------------------------------------------------------------------
     // Public Ledger State (On-Chain Consensus)
@@ -88,12 +90,12 @@ module SealedBidAuction {
         assert(bidAmount >= startingBid, "Bid below starting reserve");
 
         // Verify cryptographic commitment matches private witnesses
-        const computedCommitment = hash(bidAmount, salt, bidderPk);
+        const computedCommitment = persistentHash<Vector<3, Bytes<32>>>([bidAmount as Bytes<32>, salt, bidderPk]);
         assert(computedCommitment == commitment, "Invalid commitment preimage");
 
         // Update public on-chain counter and commitment accumulator
-        bidderCount = bidderCount + 1;
-        commitmentsTreeRoot = hash(commitmentsTreeRoot, commitment);
+        bidderCount = (bidderCount + 1) as Uint<32>;
+        commitmentsTreeRoot = persistentHash<Vector<2, Bytes<32>>>([commitmentsTreeRoot, commitment]);
 
         return true;
     }
@@ -112,7 +114,7 @@ module SealedBidAuction {
         assert(!isClosed, "Auction already settled");
 
         // Verify winning commitment integrity
-        const verifyCommitment = hash(winningBid, winningSalt, winnerPk);
+        const verifyCommitment = persistentHash<Vector<3, Bytes<32>>>([winningBid as Bytes<32>, winningSalt, winnerPk]);
         assert(verifyCommitment == claimedCommitment, "Commitment mismatch");
 
         // Verify reserve condition satisfied
