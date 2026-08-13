@@ -62,13 +62,13 @@ module SealedBidAuction {
         secretReserve: Uint<64>,
         duration: Uint<64>
     ): Void {
-        ledger.seller = sellerPk;
-        ledger.startingBid = minBid;
-        ledger.reservePrice = secretReserve;
-        ledger.endTime = duration;
-        ledger.bidderCount = 0;
-        ledger.isClosed = false;
-        ledger.winningBidAmount = 0;
+        seller = sellerPk;
+        startingBid = minBid;
+        reservePrice = secretReserve;
+        endTime = duration;
+        bidderCount = 0;
+        isClosed = false;
+        winningBidAmount = 0;
     }
 
     // ------------------------------------------------------------------------
@@ -82,18 +82,18 @@ module SealedBidAuction {
         public commitment: Bytes<32>
     ): Boolean {
         // Enforce auction is open
-        assert(!ledger.isClosed, "Auction is closed for bidding");
+        assert(!isClosed, "Auction is closed for bidding");
         
         // Enforce reserve minimum
-        assert(bidAmount >= ledger.startingBid, "Bid below starting reserve");
+        assert(bidAmount >= startingBid, "Bid below starting reserve");
 
         // Verify cryptographic commitment matches private witnesses
         const computedCommitment = hash(bidAmount, salt, bidderPk);
         assert(computedCommitment == commitment, "Invalid commitment preimage");
 
         // Update public on-chain counter and commitment accumulator
-        ledger.bidderCount = ledger.bidderCount + 1;
-        ledger.commitmentsTreeRoot = hash(ledger.commitmentsTreeRoot, commitment);
+        bidderCount = bidderCount + 1;
+        commitmentsTreeRoot = hash(commitmentsTreeRoot, commitment);
 
         return true;
     }
@@ -109,20 +109,20 @@ module SealedBidAuction {
         public claimedCommitment: Bytes<32>
     ): Boolean {
         // Enforce auction is not yet finalized
-        assert(!ledger.isClosed, "Auction already settled");
+        assert(!isClosed, "Auction already settled");
 
         // Verify winning commitment integrity
         const verifyCommitment = hash(winningBid, winningSalt, winnerPk);
         assert(verifyCommitment == claimedCommitment, "Commitment mismatch");
 
         // Verify reserve condition satisfied
-        assert(winningBid >= ledger.startingBid, "Winning bid below minimum");
+        assert(winningBid >= startingBid, "Winning bid below minimum");
 
         // Finalize settlement on public ledger
-        ledger.isClosed = true;
-        ledger.highestBidCommitment = claimedCommitment;
-        ledger.winnerAddress = winnerPk;
-        ledger.winningBidAmount = winningBid;
+        isClosed = true;
+        highestBidCommitment = claimedCommitment;
+        winnerAddress = winnerPk;
+        winningBidAmount = winningBid;
 
         return true;
     }
