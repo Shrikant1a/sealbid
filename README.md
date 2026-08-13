@@ -95,24 +95,22 @@ The auction contract is written in Midnight's **Compact** language (`contracts/s
 
 ```rust
 module SealedBidAuction {
-    export ledger {
-        seller: Bytes[32],
-        startingBid: Uint[64],
-        reservePrice: Uint[64],
-        endTime: Uint[64],
-        bidderCount: Uint[32],
-        isClosed: Boolean,
-        highestBidCommitment: Bytes[32],
-        winnerAddress: Bytes[32],
-        winningBidAmount: Uint[64],
-        commitmentsTreeRoot: Bytes[32]
-    }
+    export ledger seller: Bytes<32>;
+    export ledger startingBid: Uint<64>;
+    export ledger reservePrice: Uint<64>;
+    export ledger endTime: Uint<64>;
+    export ledger bidderCount: Uint<32>;
+    export ledger isClosed: Boolean;
+    export ledger highestBidCommitment: Bytes<32>;
+    export ledger winnerAddress: Bytes<32>;
+    export ledger winningBidAmount: Uint<64>;
+    export ledger commitmentsTreeRoot: Bytes<32>;
 
     export circuit submitSealedBid(
-        witness bidAmount: Uint[64],
-        witness salt: Bytes[32],
-        witness bidderPk: Bytes[32],
-        public commitment: Bytes[32]
+        witness bidAmount: Uint<64>,
+        witness salt: Bytes<32>,
+        witness bidderPk: Bytes<32>,
+        public commitment: Bytes<32>
     ): Boolean {
         assert(!ledger.isClosed, "Auction is closed");
         assert(bidAmount >= ledger.startingBid, "Bid below reserve");
@@ -123,10 +121,10 @@ module SealedBidAuction {
     }
 
     export circuit settleWinningBid(
-        witness winningBid: Uint[64],
-        witness winningSalt: Bytes[32],
-        witness winnerPk: Bytes[32],
-        public claimedCommitment: Bytes[32]
+        witness winningBid: Uint<64>,
+        witness winningSalt: Bytes<32>,
+        witness winnerPk: Bytes<32>,
+        public claimedCommitment: Bytes<32>
     ): Boolean {
         assert(!ledger.isClosed, "Auction already settled");
         assert(hash(winningBid, winningSalt, winnerPk) == claimedCommitment, "Commitment mismatch");

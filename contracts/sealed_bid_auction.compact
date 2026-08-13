@@ -42,25 +42,25 @@ module SealedBidAuction {
     // ------------------------------------------------------------------------
     // Public Ledger State (On-Chain Consensus)
     // ------------------------------------------------------------------------
-    export ledger seller: Bytes[32];
-    export ledger startingBid: Uint[64];
-    export ledger reservePrice: Uint[64];
-    export ledger endTime: Uint[64];
-    export ledger bidderCount: Uint[32];
+    export ledger seller: Bytes<32>;
+    export ledger startingBid: Uint<64>;
+    export ledger reservePrice: Uint<64>;
+    export ledger endTime: Uint<64>;
+    export ledger bidderCount: Uint<32>;
     export ledger isClosed: Boolean;
-    export ledger highestBidCommitment: Bytes[32];
-    export ledger winnerAddress: Bytes[32];
-    export ledger winningBidAmount: Uint[64];
-    export ledger commitmentsTreeRoot: Bytes[32];
+    export ledger highestBidCommitment: Bytes<32>;
+    export ledger winnerAddress: Bytes<32>;
+    export ledger winningBidAmount: Uint<64>;
+    export ledger commitmentsTreeRoot: Bytes<32>;
 
     // ------------------------------------------------------------------------
     // Constructor / Initialization Circuit
     // ------------------------------------------------------------------------
     export circuit initialize(
-        sellerPk: Bytes[32],
-        minBid: Uint[64],
-        secretReserve: Uint[64],
-        duration: Uint[64]
+        sellerPk: Bytes<32>,
+        minBid: Uint<64>,
+        secretReserve: Uint<64>,
+        duration: Uint<64>
     ): Void {
         ledger.seller = sellerPk;
         ledger.startingBid = minBid;
@@ -76,10 +76,10 @@ module SealedBidAuction {
     // Computes: commitment = Hash(bidAmount || salt || bidderPk)
     // ------------------------------------------------------------------------
     export circuit submitSealedBid(
-        witness bidAmount: Uint[64],
-        witness salt: Bytes[32],
-        witness bidderPk: Bytes[32],
-        public commitment: Bytes[32]
+        witness bidAmount: Uint<64>,
+        witness salt: Bytes<32>,
+        witness bidderPk: Bytes<32>,
+        public commitment: Bytes<32>
     ): Boolean {
         // Enforce auction is open
         assert(!ledger.isClosed, "Auction is closed for bidding");
@@ -103,10 +103,10 @@ module SealedBidAuction {
     // Proves that winningBid >= all other commitments without revealing them
     // ------------------------------------------------------------------------
     export circuit settleWinningBid(
-        witness winningBid: Uint[64],
-        witness winningSalt: Bytes[32],
-        witness winnerPk: Bytes[32],
-        public claimedCommitment: Bytes[32]
+        witness winningBid: Uint<64>,
+        witness winningSalt: Bytes<32>,
+        witness winnerPk: Bytes<32>,
+        public claimedCommitment: Bytes<32>
     ): Boolean {
         // Enforce auction is not yet finalized
         assert(!ledger.isClosed, "Auction already settled");
