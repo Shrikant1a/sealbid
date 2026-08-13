@@ -107,30 +107,30 @@ module SealedBidAuction {
     export ledger commitmentsTreeRoot: Bytes<32>;
 
     export circuit submitSealedBid(
-        witness bidAmount: Uint<64>,
-        witness salt: Bytes<32>,
-        witness bidderPk: Bytes<32>,
-        public commitment: Bytes<32>
+        bidAmount: Uint<64>,
+        salt: Bytes<32>,
+        bidderPk: Bytes<32>,
+        commitment: Bytes<32>
     ): Boolean {
-        assert(!ledger.isClosed, "Auction is closed");
-        assert(bidAmount >= ledger.startingBid, "Bid below reserve");
+        assert(!isClosed, "Auction is closed");
+        assert(bidAmount >= startingBid, "Bid below reserve");
         assert(hash(bidAmount, salt, bidderPk) == commitment, "Invalid commitment");
-        ledger.bidderCount = ledger.bidderCount + 1;
-        ledger.commitmentsTreeRoot = hash(ledger.commitmentsTreeRoot, commitment);
+        bidderCount = bidderCount + 1;
+        commitmentsTreeRoot = hash(commitmentsTreeRoot, commitment);
         return true;
     }
 
     export circuit settleWinningBid(
-        witness winningBid: Uint<64>,
-        witness winningSalt: Bytes<32>,
-        witness winnerPk: Bytes<32>,
-        public claimedCommitment: Bytes<32>
+        winningBid: Uint<64>,
+        winningSalt: Bytes<32>,
+        winnerPk: Bytes<32>,
+        claimedCommitment: Bytes<32>
     ): Boolean {
-        assert(!ledger.isClosed, "Auction already settled");
+        assert(!isClosed, "Auction already settled");
         assert(hash(winningBid, winningSalt, winnerPk) == claimedCommitment, "Commitment mismatch");
-        ledger.isClosed = true;
-        ledger.winnerAddress = winnerPk;
-        ledger.winningBidAmount = winningBid;
+        isClosed = true;
+        winnerAddress = winnerPk;
+        winningBidAmount = winningBid;
         return true;
     }
 }

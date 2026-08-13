@@ -76,10 +76,10 @@ module SealedBidAuction {
     // Computes: commitment = Hash(bidAmount || salt || bidderPk)
     // ------------------------------------------------------------------------
     export circuit submitSealedBid(
-        witness bidAmount: Uint<64>,
-        witness salt: Bytes<32>,
-        witness bidderPk: Bytes<32>,
-        public commitment: Bytes<32>
+        bidAmount: Uint<64>,
+        salt: Bytes<32>,
+        bidderPk: Bytes<32>,
+        commitment: Bytes<32>
     ): Boolean {
         // Enforce auction is open
         assert(!isClosed, "Auction is closed for bidding");
@@ -103,10 +103,10 @@ module SealedBidAuction {
     // Proves that winningBid >= all other commitments without revealing them
     // ------------------------------------------------------------------------
     export circuit settleWinningBid(
-        witness winningBid: Uint<64>,
-        witness winningSalt: Bytes<32>,
-        witness winnerPk: Bytes<32>,
-        public claimedCommitment: Bytes<32>
+        winningBid: Uint<64>,
+        winningSalt: Bytes<32>,
+        winnerPk: Bytes<32>,
+        claimedCommitment: Bytes<32>
     ): Boolean {
         // Enforce auction is not yet finalized
         assert(!isClosed, "Auction already settled");
