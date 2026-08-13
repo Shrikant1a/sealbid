@@ -42,18 +42,16 @@ module SealedBidAuction {
     // ------------------------------------------------------------------------
     // Public Ledger State (On-Chain Consensus)
     // ------------------------------------------------------------------------
-    export ledger {
-        seller: Bytes[32],
-        startingBid: Uint[64],
-        reservePrice: Uint[64],
-        endTime: Uint[64],
-        bidderCount: Uint[32],
-        isClosed: Boolean,
-        highestBidCommitment: Bytes[32],
-        winnerAddress: Bytes[32],
-        winningBidAmount: Uint[64],
-        commitmentsTreeRoot: Bytes[32]
-    }
+    export ledger seller: Bytes[32];
+    export ledger startingBid: Uint[64];
+    export ledger reservePrice: Uint[64];
+    export ledger endTime: Uint[64];
+    export ledger bidderCount: Uint[32];
+    export ledger isClosed: Boolean;
+    export ledger highestBidCommitment: Bytes[32];
+    export ledger winnerAddress: Bytes[32];
+    export ledger winningBidAmount: Uint[64];
+    export ledger commitmentsTreeRoot: Bytes[32];
 
     // ------------------------------------------------------------------------
     // Constructor / Initialization Circuit
