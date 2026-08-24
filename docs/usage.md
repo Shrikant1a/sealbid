@@ -21,7 +21,7 @@ This document describes how to interact with the SealBid DApp, explaining the ma
    * **Starting Price**: The minimum bidding threshold (in tDU).
    * **Duration**: Set the length of the bidding phase.
 3. Click **Deploy Auction**.
-4. Sign the transaction in the Lace wallet. The contract is deployed to the Midnight testnet, returning a contract address (e.g., `midnight1w4e8...`).
+4. Sign the transaction in the Lace wallet. The contract is deployed to the Midnight testnet, returning a contract address (e.g., `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`).
 
 ---
 

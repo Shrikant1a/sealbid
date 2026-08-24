@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "file": "index.js",
+  "sourceRoot": "../../",
+  "sources": ["contracts/sealed_bid_auction.compact"],
+  "names": [],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAwCA;;;;;;;;;;;;;GA2FC;EA3FD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2FC;;;;;;;;;;;;;;;;;;;;;;;;;"
+}

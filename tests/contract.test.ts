@@ -4,8 +4,8 @@ import { SealedBidContractService } from '../src/lib/midnight/contract-interface
 
 describe('SealBid Cryptographic and Utility Helpers', () => {
   it('should format addresses correctly', () => {
-    const address = 'midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5';
-    expect(formatAddress(address)).toBe('midnig...j3k5');
+    const address = 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827';
+    expect(formatAddress(address)).toBe('a58cea...5827');
     expect(formatAddress('', 6, 4)).toBe('');
     expect(formatAddress(undefined)).toBe('');
   });
@@ -37,7 +37,7 @@ describe('SealBid Cryptographic and Utility Helpers', () => {
   it('should compute commitment hash consistently', async () => {
     const amount = 500;
     const salt = generateRandomSalt();
-    const address = 'midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5';
+    const address = 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827';
 
     const hash = await computeCommitmentHash(amount, salt, address);
     expect(hash.startsWith('0x')).toBe(true);
@@ -71,7 +71,7 @@ describe('SealedBidContractService Integration Layer', () => {
 
   it('should successfully simulate submitting a private bid in stub mode', async () => {
     const result = await contractService.submitPrivateBid({
-      auctionContractAddress: 'midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5',
+      auctionContractAddress: 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827',
       bidAmount: BigInt(500),
       salt: '7a8f9c10d2b3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9',
     });
@@ -83,7 +83,7 @@ describe('SealedBidContractService Integration Layer', () => {
 
   it('should successfully simulate winner settlement in stub mode', async () => {
     const result = await contractService.settleAndVerifyWinner({
-      auctionContractAddress: 'midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5',
+      auctionContractAddress: 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827',
       revealedHighestBid: BigInt(1200),
       winnerSalt: '7a8f9c10d2b3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9',
       winnerPk: 'midnight1winner_pk_hash_address',

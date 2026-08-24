@@ -22,7 +22,7 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 - **Screenshots Gallery**: [`ss/`](./ss/)
 - **X (Twitter) Profile**: https://x.com/ShriiAher19
 - **Product Announcement Post**: https://x.com/ShriiAher19/status/2087790597113593916
-- **Verified Contract Address**: `midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5`
+- **Verified Contract Address**: `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`
 - **Network Explorer**: https://explorer.preview.midnight.network
 
 ---
@@ -172,7 +172,7 @@ VITE_MIDNIGHT_INDEXER_URL=https://indexer.preview.midnight.network/api/v1/graphq
 VITE_MIDNIGHT_INDEXER_WS_URL=wss://indexer.preview.midnight.network/api/v1/graphql/ws
 VITE_MIDNIGHT_PROOF_SERVER_URL=http://localhost:6300
 VITE_MIDNIGHT_EXPLORER_URL=https://explorer.preview.midnight.network
-VITE_SEALBID_CONTRACT_ADDRESS=midnight1w4e8r2t6y0u3i7o9p1a5s8d2f6g9h0j3k5
+VITE_SEALBID_CONTRACT_ADDRESS=a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827
 ```
 
 ### Build & Type Check
