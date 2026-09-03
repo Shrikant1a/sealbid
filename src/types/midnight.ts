@@ -50,6 +50,7 @@ export interface ISealedBidAuctionContract {
     revealedHighestBid: bigint;
     winnerSalt: string;
     winnerPk: string;
+    callerPk: string;
   }): Promise<{ txHash: string; winnerAddress: string; zkProof: string }>;
 
   getAuctionState(contractAddress: string): Promise<CompactAuctionLedgerState>;

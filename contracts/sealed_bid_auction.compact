@@ -108,8 +108,12 @@ module SealedBidAuction {
         winningBid: Uint<64>,
         winningSalt: Bytes<32>,
         winnerPk: Bytes<32>,
-        claimedCommitment: Bytes<32>
+        claimedCommitment: Bytes<32>,
+        callerPk: Bytes<32>
     ): Boolean {
+        // Enforce seller authorization
+        assert(callerPk == seller, "Only the seller can settle the auction");
+
         // Enforce auction is not yet finalized
         assert(!isClosed, "Auction already settled");
 

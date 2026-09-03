@@ -91,6 +91,7 @@ export class SealedBidContractService implements ISealedBidAuctionContract {
     revealedHighestBid: bigint;
     winnerSalt: string;
     winnerPk: string;
+    callerPk: string;
   }): Promise<{ txHash: string; winnerAddress: string; zkProof: string }> {
     if (!this.isContractConnected()) {
       console.info(
