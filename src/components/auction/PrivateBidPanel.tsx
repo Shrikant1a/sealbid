@@ -230,6 +230,16 @@ export const PrivateBidPanel: React.FC<PrivateBidPanelProps> = ({
         </div>
       )}
 
+      {/* Bid Submission Instructions */}
+      <div className="mb-4 p-3 rounded-xl bg-midnight-950/60 border border-midnight-800/80 space-y-2">
+        <h4 className="text-[12px] font-semibold text-slate-200">How to place a sealed bid:</h4>
+        <ol className="list-decimal pl-4 text-[11px] text-slate-400 space-y-1 marker:text-cyan-500">
+          <li>Enter a bid amount higher than the starting reserve (<strong className="text-white">{formatTDU(auction.startingBidTDU)}</strong>).</li>
+          <li>Your wallet will generate a cryptographic salt to secure your bid.</li>
+          <li>Submit the transaction. Only a <em>hash commitment</em> is recorded on the public ledger.</li>
+        </ol>
+      </div>
+
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Bid Input */}
