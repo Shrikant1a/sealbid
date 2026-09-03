@@ -133,8 +133,8 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     explorer: `https://explorer.${networkKey}.midnight.network`,
   };
 
-  const expectedNetwork = MIDNIGHT_CONFIG.networkId as MidnightNetwork;
-  const isWrongNetwork = Boolean(account && account.network?.toLowerCase() !== expectedNetwork.toLowerCase());
+  const expectedNetwork = (account?.network || MIDNIGHT_CONFIG.networkId) as MidnightNetwork;
+  const isWrongNetwork = false; // Disable strict network checking to allow seamless switching
 
   return (
     <WalletContext.Provider
