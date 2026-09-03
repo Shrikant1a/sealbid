@@ -18,33 +18,46 @@ export const TransactionStatusModal: React.FC = () => {
 
   const steps = [
     {
+      key: 'preparing',
+      title: 'Preparing',
+      desc: 'Initializing transaction',
+    },
+    {
       key: 'generating_proof',
-      title: 'Zero-Knowledge Prover',
-      desc: 'Constructing Groth16 zk-SNARK witness locally',
+      title: 'Proving',
+      desc: 'Constructing ZK witness',
     },
     {
       key: 'requesting_signature',
-      title: 'Lace Authorization',
-      desc: 'Signing confidential state transition',
+      title: 'Wallet confirmation required',
+      desc: 'Awaiting signature',
     },
     {
       key: 'submitting_to_network',
-      title: `Midnight ${currentNetwork} Ledger`,
-      desc: 'Broadcasting commitment to indexer & consensus',
+      title: 'Submitting',
+      desc: `Broadcasting to ${currentNetwork}`,
     },
+    {
+      key: 'confirming',
+      title: 'Confirming',
+      desc: 'Awaiting block finality',
+    }
   ];
 
   const getCurrentStepIndex = () => {
     switch (txState.status) {
-      case 'generating_proof':
+      case 'idle':
         return 0;
-      case 'requesting_signature':
+      case 'generating_proof':
         return 1;
+      case 'requesting_signature':
+        return 2;
       case 'submitting_to_network':
       case 'submitting_to_preprod':
-        return 2;
-      case 'confirmed':
         return 3;
+      // We simulate 'confirming' state transition conceptually before 'confirmed'
+      case 'confirmed':
+        return 5;
       default:
         return 0;
     }
@@ -85,10 +98,14 @@ export const TransactionStatusModal: React.FC = () => {
           )}
 
           <h3 className="text-base font-semibold text-white mt-4 text-center">
-            {txState.title}
+            {isFailed ? 'Transaction Failed' : txState.title}
           </h3>
           <p className="text-xs text-slate-400 text-center max-w-sm mt-1">
-            {txState.stepDescription}
+            {isFailed && txState.error ? (
+              <span className="text-red-400">{txState.error}</span>
+            ) : (
+              txState.stepDescription
+            )}
           </p>
         </div>
 
