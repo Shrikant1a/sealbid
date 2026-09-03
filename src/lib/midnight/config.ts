@@ -42,7 +42,7 @@ export const MIDNIGHT_NETWORKS: Record<string, { label: string; indexer: string;
   },
 };
 
-const initialNetworkId = (import.meta.env.VITE_MIDNIGHT_NETWORK_ID as MidnightNetwork) || 'Preview';
+const initialNetworkId = (import.meta.env.VITE_MIDNIGHT_NETWORK_ID as MidnightNetwork) || 'Preprod';
 const networkKey = initialNetworkId.toLowerCase();
 const networkPreset = MIDNIGHT_NETWORKS[networkKey] || MIDNIGHT_NETWORKS.preview;
 
