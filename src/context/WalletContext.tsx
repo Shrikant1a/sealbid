@@ -19,6 +19,8 @@ interface WalletContextType {
   connectPreview: () => void;
   disconnect: () => void;
   checkLace: () => boolean;
+  expectedNetwork: MidnightNetwork;
+  isWrongNetwork: boolean;
 }
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
@@ -131,6 +133,9 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     explorer: `https://explorer.${networkKey}.midnight.network`,
   };
 
+  const expectedNetwork = MIDNIGHT_CONFIG.networkId as MidnightNetwork;
+  const isWrongNetwork = Boolean(account && account.network?.toLowerCase() !== expectedNetwork.toLowerCase());
+
   return (
     <WalletContext.Provider
       value={{
@@ -148,6 +153,8 @@ export const WalletProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         connectPreview,
         disconnect,
         checkLace,
+        expectedNetwork,
+        isWrongNetwork,
       }}
     >
       {children}

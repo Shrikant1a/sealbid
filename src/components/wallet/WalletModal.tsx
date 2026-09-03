@@ -15,9 +15,10 @@ export const WalletModal: React.FC = () => {
     checkLace,
     status,
     account,
+    expectedNetwork,
   } = useWallet();
 
-  const [selectedNetwork, setSelectedNetwork] = useState<string>(account?.network?.toLowerCase() || 'preview');
+  const [selectedNetwork, setSelectedNetwork] = useState<string>(account?.network?.toLowerCase() || expectedNetwork.toLowerCase());
   const [isLoadingLace, setIsLoadingLace] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 

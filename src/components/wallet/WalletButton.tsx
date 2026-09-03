@@ -5,7 +5,7 @@ import { Shield, ChevronDown, Copy, LogOut, Check, ExternalLink, ShieldCheck } f
 import { useToast } from '../../context/ToastContext';
 
 export const WalletButton: React.FC<{ compact?: boolean }> = ({ compact = false }) => {
-  const { account, networkConfig, disconnect } = useWallet();
+  const { account, networkConfig, disconnect, expectedNetwork, isWrongNetwork } = useWallet();
   const { showToast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -34,24 +34,32 @@ export const WalletButton: React.FC<{ compact?: boolean }> = ({ compact = false 
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2.5 px-3.5 py-2 rounded-2xl bg-midnight-900/90 hover:bg-midnight-800 border border-midnight-700/80 hover:border-cyan-500/50 text-slate-100 transition-all duration-200 shadow-md focus:outline-none group hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]"
+        className={`flex items-center gap-2.5 px-3.5 py-2 rounded-2xl transition-all duration-200 shadow-md focus:outline-none group hover:shadow-lg ${
+          isWrongNetwork 
+            ? 'bg-red-900/40 hover:bg-red-900/60 border border-red-500/80 text-red-100 hover:border-red-400 hover:shadow-[0_0_15px_rgba(239,68,68,0.25)]' 
+            : 'bg-midnight-900/90 hover:bg-midnight-800 border border-midnight-700/80 text-slate-100 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]'
+        }`}
       >
-        <div className="w-6 h-6 rounded-lg bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform">
+        <div className={`w-6 h-6 rounded-lg border flex items-center justify-center group-hover:scale-105 transition-transform ${
+          isWrongNetwork 
+            ? 'bg-red-500/20 border-red-500/40 text-red-400' 
+            : 'bg-cyan-500/20 border-cyan-500/40 text-cyan-400'
+        }`}>
           <Shield className="w-3.5 h-3.5" />
         </div>
 
         {!compact && (
           <div className="flex flex-col text-left">
-            <span className="text-xs font-mono font-medium text-white leading-tight flex items-center gap-1">
-              {formatAddress(account.address, 6, 4)}
+            <span className="text-xs font-mono font-medium leading-tight flex items-center gap-1">
+              {isWrongNetwork ? 'Wrong Network' : formatAddress(account.address, 6, 4)}
             </span>
-            <span className="text-[10px] font-bold text-cyan-400 leading-tight">
-              {formatTDU(account.balanceTDU)}
+            <span className={`text-[10px] font-bold leading-tight ${isWrongNetwork ? 'text-red-400' : 'text-cyan-400'}`}>
+              {isWrongNetwork ? `Switch to ${expectedNetwork}` : formatTDU(account.balanceTDU)}
             </span>
           </div>
         )}
 
-        <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? 'rotate-180 text-cyan-400' : 'text-slate-400'}`} />
       </button>
 
       {/* Dropdown Menu */}
