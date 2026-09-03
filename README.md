@@ -15,6 +15,25 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 
 ---
 
+## 📢 Call for Testers (Preprod Network)
+
+I’m currently conducting user testing for SealBid, a privacy-preserving sealed-bid auction application built on the Midnight Network. Your participation and feedback will help me improve the application and provide a better experience for future users!
+
+**🔗 Application:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)  
+**📝 Feedback Form:** [https://forms.gle/ypK1Z94XzaXZs8Yb9](https://forms.gle/ypK1Z94XzaXZs8Yb9)  
+
+**Testing Steps:**
+1. Connect your [Midnight Lace Wallet](https://www.lace.io/).
+2. Switch your wallet to the **Midnight Preprod** network.
+3. Obtain the required test tokens (tDU) from the [Preprod Faucet](https://faucet.preprod.midnight.network/).
+4. Connect your wallet to the SealBid application.
+5. Place a test bid on an available auction.
+6. Complete the feedback form above. Please provide your Midnight Preprod wallet address in the form.
+
+Please share any issues, usability concerns, or suggestions you encounter during testing. Thank you for your time and support—I really appreciate it!
+
+---
+
 ## Links
 
 - **Live Application**: https://sealbid.netlify.app/
