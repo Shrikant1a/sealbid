@@ -332,7 +332,7 @@ export const PrivateBidPanel: React.FC<PrivateBidPanelProps> = ({
 
         {/* Validation / Error Message */}
         {errorMsg && (
-          <div className="p-3 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center gap-2 text-xs text-red-300 animate-fadeIn">
+          <div aria-live="assertive" className="p-3 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center gap-2 text-xs text-red-300 animate-fadeIn">
             <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
             <span>{errorMsg}</span>
           </div>
