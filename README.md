@@ -83,9 +83,23 @@ SealBid uses Midnight's private witness circuits to keep bids completely confide
 ## Documentation
 
 Comprehensive project documentation is available in the `docs/` directory:
-* **[Privacy Architecture & ZK Model](file:///s:/Confidential%20DeFi/docs/architecture.md)**: Explains the privacy state isolation and zero-knowledge circuit assertions.
-* **[Setup & Development Guide](file:///s:/Confidential%20DeFi/docs/setup.md)**: Explains compiler installation and testing workflows.
-* **[End-to-End Usage Guide](file:///s:/Confidential%20DeFi/docs/usage.md)**: Step-by-step guide to run local auctions and interact via Lace wallet.
+
+### Architecture & Technical
+* **[Privacy Architecture & ZK Model](file:///s:/Confidential%20DeFi/docs/PRIVACY_MODEL.md)**: Explains the privacy state isolation and zero-knowledge circuit assertions.
+* **[Smart Contract Audit](file:///s:/Confidential%20DeFi/docs/CONTRACT_AUDIT.md)**: Security and logic overview for the Compact smart contracts.
+* **[Settlement Design](file:///s:/Confidential%20DeFi/docs/SETTLEMENT_DESIGN.md)**: Details the seller-authorized zero-knowledge reveal phase.
+
+### Usage & QA
+* **[End-to-End User Guide](file:///s:/Confidential%20DeFi/docs/USER_GUIDE.md)**: Step-by-step guide to run local auctions and interact via Lace wallet.
+* **[Demo Script](file:///s:/Confidential%20DeFi/docs/DEMO_SCRIPT.md)**: Script for presenting the dApp's ZK capabilities.
+* **[Testing Matrix](file:///s:/Confidential%20DeFi/docs/TESTING.md)**: Comprehensive breakdown of unit, integration, and UI tests.
+* **[Final QA Checklist](file:///s:/Confidential%20DeFi/docs/LEVEL5_FINAL_QA.md)**: Security and structural sign-off.
+
+### Level 5 Full Moon Deliverables
+* **[Preprod User Tracking](file:///s:/Confidential%20DeFi/docs/PREPROD_USERS.md)**: On-chain address tracking for 50+ users.
+* **[Structured Feedback](file:///s:/Confidential%20DeFi/docs/FEEDBACK.md)**: Qualitative user feedback logs.
+* **[Feedback Analysis](file:///s:/Confidential%20DeFi/docs/FEEDBACK_ANALYSIS.md)**: Synthesized UX trends and action items.
+* **[Feedback Loop](file:///s:/Confidential%20DeFi/docs/FEEDBACK_LOOP.md)**: Log of implemented application improvements based on user feedback.
 
 ---
 
