@@ -93,4 +93,23 @@ describe('SealedBidContractService Integration Layer', () => {
     expect(result.winnerAddress).toBe('midnight1winner_pk_hash_address');
     expect(result.zkProof).toContain('zk_proof_verified_midnight_preprod_');
   });
+
+  it('should reject invalid commitments or negative bid amounts', async () => {
+    await expect(contractService.submitPrivateBid({
+      auctionContractAddress: 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827',
+      bidAmount: BigInt(-100), // invalid
+      salt: 'invalid_salt',
+    })).rejects.toThrow();
+  });
+
+  it('should reject settlement if called by unauthorized caller', async () => {
+    // In our mock, if callerPk is not the seller's Pk, it should throw
+    await expect(contractService.settleAndVerifyWinner({
+      auctionContractAddress: 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827',
+      revealedHighestBid: BigInt(1200),
+      winnerSalt: '7a8f9c10d2b3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9',
+      winnerPk: 'midnight1winner_pk_hash_address',
+      callerPk: 'unauthorized_hacker_pk', 
+    })).rejects.toThrow();
+  });
 });

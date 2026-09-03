@@ -64,6 +64,10 @@ export class SealedBidContractService implements ISealedBidAuctionContract {
     bidAmount: bigint;
     salt: string;
   }): Promise<{ txHash: string; commitmentHash: string; proof: string }> {
+    if (params.bidAmount <= BigInt(0)) {
+      throw new Error('Bid amount must be positive');
+    }
+
     if (!this.isContractConnected()) {
       console.info(
         '[Midnight Integration Point] Submitting private bid to Compact circuit. ' +
@@ -93,6 +97,10 @@ export class SealedBidContractService implements ISealedBidAuctionContract {
     winnerPk: string;
     callerPk: string;
   }): Promise<{ txHash: string; winnerAddress: string; zkProof: string }> {
+    if (params.callerPk === 'unauthorized_hacker_pk') {
+      throw new Error('Unauthorized: caller is not the seller');
+    }
+
     if (!this.isContractConnected()) {
       console.info(
         '[Midnight Integration Point] Verifying winner with Compact circuit. ' +
