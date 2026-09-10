@@ -53,6 +53,8 @@ On public blockchains like Ethereum or Cardano, traditional auctions broadcast a
 - **Leaked valuations**: Competitors can see exactly how much you value an asset, exposing private financial strategy.
 - **Price manipulation**: Open bids allow artificial price pump-and-dump behavior.
 
+<!-- This is level 5 Full Moon deliverable for Solana Hackathon 2026. -->
+
 ### How it works on Midnight
 
 SealBid uses Midnight's private witness circuits to keep bids completely confidential:
@@ -61,6 +63,7 @@ SealBid uses Midnight's private witness circuits to keep bids completely confide
 3. **Settlement**: Once the auction ends, a zero-knowledge settlement circuit verifies the highest bidder cryptographically. The winner is declared on-chain, while all losing bid values remain secret forever.
 
 ---
+
 
 ## Tech Stack
 
