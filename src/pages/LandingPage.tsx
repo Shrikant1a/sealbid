@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/common/Button';
+import { BrandLogo } from '../components/common/BrandLogo';
 import { AuctionCard } from '../components/auction/AuctionCard';
 import { useAuctions } from '../context/AuctionContext';
 import { useWallet } from '../context/WalletContext';
+import { MIDNIGHT_CONFIG } from '../lib/midnight/config';
 import {
   Shield,
   Lock,
@@ -12,40 +14,43 @@ import {
   EyeOff,
   Scale,
   Cpu,
-  FileCheck
+  FileCheck,
+  ExternalLink
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
   const { auctions } = useAuctions();
   const { network } = useWallet();
   const featuredAuctions = auctions.slice(0, 3);
+  const contractAddr = MIDNIGHT_CONFIG.contractAddress || 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827';
 
   return (
     <div className="space-y-24 pb-16">
       {/* 1. HERO SECTION */}
-      <section className="relative pt-12 md:pt-20 pb-16 overflow-hidden">
+      <section className="relative pt-6 md:pt-12 pb-16 overflow-hidden">
         {/* Background glow and subtle grids */}
-        <div className="bg-ambient-glow w-[500px] h-[500px] bg-cyan-600/15 top-10 left-1/2 -translate-x-1/2" />
-        <div className="bg-ambient-glow w-[400px] h-[400px] bg-indigo-600/15 top-40 right-10" />
+        <div className="bg-ambient-glow w-[550px] h-[550px] bg-cyan-600/15 top-0 left-1/2 -translate-x-1/2 blur-3xl pointer-events-none" />
+        <div className="bg-ambient-glow w-[450px] h-[450px] bg-indigo-600/15 top-32 right-10 blur-3xl pointer-events-none" />
+        <div className="bg-ambient-glow w-[350px] h-[350px] bg-cyan-400/10 top-20 left-10 blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
-          {/* Top Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-500/30 backdrop-blur-md animate-fadeIn">
-            <Shield className="w-4 h-4 text-cyan-400" />
-            <span className="text-xs font-semibold text-cyan-300">
-              Midnight Network {network} Sealed-Bid Protocol
-            </span>
-            <span className="flex h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping" />
+          {/* Top Brand Emblem & Protocol Pill */}
+          <div className="flex flex-col items-center justify-center gap-4">
+            <div className="p-3 rounded-2xl bg-midnight-950/70 border border-cyan-400/30 backdrop-blur-xl shadow-[0_0_30px_rgba(6,182,212,0.25)]">
+              <BrandLogo size="lg" networkBadge={`ZK-${network}`} showTagline={true} />
+            </div>
           </div>
 
-          {/* Main Title */}
-          <div className="space-y-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white uppercase font-sans leading-[1.08]">
+          {/* Main Hero Headline */}
+          <div className="space-y-5 max-w-4xl mx-auto">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white uppercase font-display leading-[1.05]">
               PRIVATE BIDS. <br />
-              <span className="gradient-text-cyan">VERIFIABLE RESULTS.</span>
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-300 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_0_35px_rgba(6,182,212,0.4)]">
+                VERIFIABLE RESULTS.
+              </span>
             </h1>
             <p className="text-base sm:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-              Run auctions where bid amounts stay private while the final result remains verifiable.
+              Institutional-grade sealed-bid auction infrastructure on Midnight Network. Protect valuations and prevent front-running with zero-knowledge mathematical guarantees.
             </p>
           </div>
 
@@ -55,10 +60,10 @@ export const LandingPage: React.FC = () => {
               <Button
                 variant="primary"
                 size="lg"
-                className="w-full sm:w-auto font-bold shadow-glow-cyan"
+                className="w-full sm:w-auto font-bold shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] transition-all"
                 rightIcon={<ArrowRight className="w-4 h-4" />}
               >
-                Explore Auctions
+                Explore Active Auctions
               </Button>
             </Link>
 
@@ -66,31 +71,46 @@ export const LandingPage: React.FC = () => {
               <Button
                 variant="secondary"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto font-semibold border-cyan-500/30 hover:border-cyan-400/60 hover:bg-midnight-800/90"
                 leftIcon={<Lock className="w-4 h-4 text-cyan-400" />}
               >
-                Create Auction
+                Create Sealed Auction
               </Button>
             </Link>
           </div>
 
+          {/* Verified On-Chain Contract Ribbon */}
+          <div className="pt-2 flex items-center justify-center">
+            <a
+              href={`${MIDNIGHT_CONFIG.explorerUrl}/contract/${contractAddr}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-midnight-900/80 hover:bg-midnight-800/90 border border-midnight-700 hover:border-cyan-500/50 text-xs text-slate-300 hover:text-cyan-200 transition-all font-mono shadow-sm group"
+            >
+              <FileCheck className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="text-slate-400 font-sans">Verified Preprod Contract:</span>
+              <span className="text-cyan-300 font-bold">{contractAddr.slice(0, 10)}...{contractAddr.slice(-8)}</span>
+              <ExternalLink className="w-3 h-3 text-slate-400 group-hover:text-cyan-300" />
+            </a>
+          </div>
+
           {/* Quick Metrics Bar */}
-          <div className="pt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            <div className="p-4 rounded-2xl bg-midnight-900/50 border border-midnight-750/70 backdrop-blur-md">
-              <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">100%</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium">Confidential Bids</div>
+          <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-cyan-500/40 backdrop-blur-md shadow-lg transition-all">
+              <div className="text-2xl sm:text-3xl font-extrabold text-white font-display">100%</div>
+              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Confidential Bids</div>
             </div>
-            <div className="p-4 rounded-2xl bg-midnight-900/50 border border-midnight-750/70 backdrop-blur-md">
-              <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">ZK-SNARK</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium">Compact Verification</div>
+            <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-cyan-500/40 backdrop-blur-md shadow-lg transition-all">
+              <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-display">ZK-SNARK</div>
+              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Compact Verification</div>
             </div>
-            <div className="p-4 rounded-2xl bg-midnight-900/50 border border-midnight-750/70 backdrop-blur-md">
-              <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-mono">0 MEV</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium">Front-Running Shield</div>
+            <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-indigo-500/40 backdrop-blur-md shadow-lg transition-all">
+              <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-display">0 MEV</div>
+              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Front-Running Shield</div>
             </div>
-            <div className="p-4 rounded-2xl bg-midnight-900/50 border border-midnight-750/70 backdrop-blur-md">
-              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">{network}</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium">Midnight Native</div>
+            <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-emerald-500/40 backdrop-blur-md shadow-lg transition-all">
+              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">{network}</div>
+              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Midnight Native</div>
             </div>
           </div>
         </div>

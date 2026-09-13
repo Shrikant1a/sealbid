@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Lock, ExternalLink, ShieldCheck, Terminal, Twitter } from 'lucide-react';
+import { Lock, ExternalLink, ShieldCheck, Terminal, Twitter } from 'lucide-react';
+import { BrandLogo } from '../common/BrandLogo';
 import { useWallet } from '../../context/WalletContext';
 
 export const Footer: React.FC = () => {
@@ -15,13 +16,8 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Col 1: Brand & Socials */}
           <div className="space-y-4 md:col-span-1">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-midnight-800 border border-cyan-500/30">
-                <Shield className="w-5 h-5 text-cyan-400" />
-              </div>
-              <span className="text-lg font-bold text-white tracking-tight">
-                Seal<span className="text-cyan-400">Bid</span>
-              </span>
+            <Link to="/" className="inline-block focus:outline-none">
+              <BrandLogo size="sm" showTagline={true} />
             </Link>
             <p className="text-xs text-slate-400 leading-relaxed">
               Confidential, zero-knowledge sealed-bid auction infrastructure engineered for the Midnight Network {network}.

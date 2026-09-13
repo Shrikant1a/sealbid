@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Shield, Lock, Menu, X, PlusCircle, Gavel, Layers, HelpCircle, Sparkles } from 'lucide-react';
+import { Lock, Menu, X, PlusCircle, Gavel, Layers, HelpCircle, Sparkles } from 'lucide-react';
 import { Button } from '../common/Button';
+import { BrandLogo } from '../common/BrandLogo';
 import { NetworkStatusBadge } from '../common/LoadingSpinner';
 import { WalletButton } from '../wallet/WalletButton';
 import { useWallet } from '../../context/WalletContext';
@@ -38,46 +39,13 @@ export const Navbar: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Automatically Animated Brand Logo */}
+          {/* Bespoke Vector Protocol Brand Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3.5 group focus:outline-none"
+            className="flex items-center group focus:outline-none"
             onClick={() => setMobileMenuOpen(false)}
           >
-            {/* Animated Shield Box with Continuous Rotating Conic Halo & Floating Levitation */}
-            <div className="relative logo-floating-box flex items-center justify-center">
-              {/* Rotating Conic Light Halo */}
-              <div className="logo-spin-halo" />
-
-              {/* Shield Tile Container */}
-              <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0c1429] via-[#080d1e] to-[#0a1226] border border-cyan-400/50 shadow-[0_0_15px_rgba(6,182,212,0.35)] transition-all duration-300 group-hover:scale-105">
-                <Shield className="w-6 h-6 text-cyan-400 logo-shield-pulse" />
-                <Lock className="w-3.5 h-3.5 text-white absolute top-3.5 logo-shield-pulse drop-shadow-[0_0_6px_#06b6d4]" />
-              </div>
-            </div>
-
-            {/* Brand Title with Continuous Holographic Shimmer & Radar Network Pill */}
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
-                <span className="text-xl sm:text-2xl font-black tracking-tight font-sans select-none flex items-center">
-                  <span className="logo-text-shimmer font-black">Seal</span>
-                  <span className="logo-bid-gradient font-black">Bid</span>
-                </span>
-
-                {/* Animated ZK Network Pill with Radar Wave Beacon */}
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-cyan-950/80 text-cyan-300 border border-cyan-400/40 uppercase tracking-wider shadow-[0_0_10px_rgba(6,182,212,0.2)] transition-all group-hover:border-cyan-300">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-80"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400 shadow-[0_0_6px_#22d3ee]"></span>
-                  </span>
-                  <span>ZK-{currentNetwork}</span>
-                </span>
-              </div>
-
-              <span className="text-[11px] text-slate-400 font-medium tracking-wide hidden sm:inline group-hover:text-cyan-200/90 transition-colors">
-                Private bids. Verifiable results.
-              </span>
-            </div>
+            <BrandLogo size="md" networkBadge={`ZK-${currentNetwork}`} showTagline={false} />
           </Link>
 
           {/* Desktop Navigation Links with Glowing Pill Transitions */}

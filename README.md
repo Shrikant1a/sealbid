@@ -3,7 +3,8 @@
 A decentralized sealed-bid auction platform built on the Midnight Network (Preview / Preprod). SealBid uses Midnight's Compact smart contracts and zero-knowledge proofs to let users bid on auctions confidentially without revealing their bid amounts to sellers or competing bidders.
 
 [![Live Demo](https://img.shields.io/badge/demo-sealbid.netlify.app-00C7B7)](https://sealbid.netlify.app/)
-[![CI](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions)
+[![CI](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml)
+[![Compliance Audit](https://github.com/Shrikant1a/sealbid/actions/workflows/compliance.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions/workflows/compliance.yml)
 [![Network](https://img.shields.io/badge/network-Midnight%20Preview%20%2F%20Preprod-blue)](https://midnight.network)
 [![Twitter](https://img.shields.io/badge/twitter-@ShriiAher19-black)](https://x.com/ShriiAher19)
 
@@ -107,21 +108,21 @@ SealBid uses Midnight's private witness circuits to keep bids completely confide
 Comprehensive project documentation is available in the `docs/` directory:
 
 ### Architecture & Technical
-* **[Privacy Architecture & ZK Model](file:///s:/Confidential%20DeFi/docs/PRIVACY_MODEL.md)**: Explains the privacy state isolation and zero-knowledge circuit assertions.
-* **[Smart Contract Audit](file:///s:/Confidential%20DeFi/docs/CONTRACT_AUDIT.md)**: Security and logic overview for the Compact smart contracts.
-* **[Settlement Design](file:///s:/Confidential%20DeFi/docs/SETTLEMENT_DESIGN.md)**: Details the seller-authorized zero-knowledge reveal phase.
+* **[Privacy Architecture & ZK Model](./docs/PRIVACY_MODEL.md)**: Explains the privacy state isolation and zero-knowledge circuit assertions.
+* **[Smart Contract Audit](./docs/CONTRACT_AUDIT.md)**: Security and logic overview for the Compact smart contracts.
+* **[Settlement Design](./docs/SETTLEMENT_DESIGN.md)**: Details the seller-authorized zero-knowledge reveal phase.
 
 ### Usage & QA
-* **[End-to-End User Guide](file:///s:/Confidential%20DeFi/docs/USER_GUIDE.md)**: Step-by-step guide to run local auctions and interact via Lace wallet.
-* **[Demo Script](file:///s:/Confidential%20DeFi/docs/DEMO_SCRIPT.md)**: Script for presenting the dApp's ZK capabilities.
-* **[Testing Matrix](file:///s:/Confidential%20DeFi/docs/TESTING.md)**: Comprehensive breakdown of unit, integration, and UI tests.
-* **[Final QA Checklist](file:///s:/Confidential%20DeFi/docs/LEVEL5_FINAL_QA.md)**: Security and structural sign-off.
+* **[End-to-End User Guide](./docs/USER_GUIDE.md)**: Step-by-step guide to run local auctions and interact via Lace wallet.
+* **[Demo Script](./docs/DEMO_SCRIPT.md)**: Script for presenting the dApp's ZK capabilities.
+* **[Testing Matrix](./docs/TESTING.md)**: Comprehensive breakdown of unit, integration, and UI tests.
+* **[Final QA Checklist](./docs/LEVEL5_FINAL_QA.md)**: Security and structural sign-off.
 
 ### Level 5 Full Moon Deliverables
-* **[Preprod User Tracking](file:///s:/Confidential%20DeFi/docs/PREPROD_USERS.md)**: On-chain address tracking for 50+ users.
-* **[Structured Feedback](file:///s:/Confidential%20DeFi/docs/FEEDBACK.md)**: Qualitative user feedback logs.
-* **[Feedback Analysis](file:///s:/Confidential%20DeFi/docs/FEEDBACK_ANALYSIS.md)**: Synthesized UX trends and action items.
-* **[Feedback Loop](file:///s:/Confidential%20DeFi/docs/FEEDBACK_LOOP.md)**: Log of implemented application improvements based on user feedback.
+* **[Preprod User Tracking](./docs/PREPROD_USERS.md)**: On-chain address tracking for 50+ users.
+* **[Structured Feedback](./docs/FEEDBACK.md)**: Qualitative user feedback logs.
+* **[Feedback Analysis](./docs/FEEDBACK_ANALYSIS.md)**: Synthesized UX trends and action items.
+* **[Feedback Loop](./docs/FEEDBACK_LOOP.md)**: Log of implemented application improvements based on user feedback.
 
 ---
 
