@@ -96,8 +96,9 @@ This document tracks how SealBid concretely implemented changes based on user fe
 ---
 
 ### 5. Review Revision: Modernized GitHub Actions CI/CD Pipeline
-- **Source Feedback:** Level 5 Full Moon team review: *"githubworkflows isnt updated"*.
+- **Source Feedback:** Reviewer feedback: *"githubworkflows isnt updated"*.
 - **Action Taken:** Completely modernized `.github/workflows/ci.yml` and created `.github/workflows/compliance.yml`. Added Node 20 & 22 matrix execution, npm caching, `workflow_dispatch` manual triggers, brand asset checks, contract verification, and automated link audit preventing broken/local paths.
+- **Commit SHA:** [`0af2e59`](https://github.com/Shrikant1a/sealbid/commit/0af2e59)
 - **Files Modified:**
   - `.github/workflows/ci.yml`
   - `.github/workflows/compliance.yml`
@@ -105,11 +106,12 @@ This document tracks how SealBid concretely implemented changes based on user fe
 ---
 
 ### 6. Review Revision: Bespoke Vector Brand Identity & Logo Redesign
-- **Source Feedback:** Level 5 Full Moon team review: *"the ui needs to be proper with logo , with ui like this its tough to pass to next level"*.
+- **Source Feedback:** Reviewer feedback: *"the ui needs to be proper with logo , with ui like this its tough to pass to next level"*.
 - **Action Taken:** Replaced temporary layered icons (`Shield` + `Lock`) with a bespoke cryptographic seal emblem:
   - Created standalone vector assets: `public/logo.svg`, `public/logo-icon.svg`, and `public/favicon.svg`.
   - Built a reusable `BrandLogo.tsx` React component with animated conic laser halo, scalable sizing variants, and inline network indicator.
   - Deployed the logo across `Navbar`, `Footer`, `LandingPage`, and browser tab metadata.
+- **Commit SHA:** [`0af2e59`](https://github.com/Shrikant1a/sealbid/commit/0af2e59)
 - **Files Modified:**
   - `public/logo-icon.svg` [NEW]
   - `public/logo.svg` [NEW]
@@ -122,12 +124,13 @@ This document tracks how SealBid concretely implemented changes based on user fe
 ---
 
 ### 7. Review Revision: Institutional-Grade UI Overhaul & Typography Polish
-- **Source Feedback:** Level 5 Full Moon review: *"with ui like this its tough to pass to next level"*.
+- **Source Feedback:** Reviewer feedback: *"with ui like this its tough to pass to next level"*.
 - **Action Taken:** 
   - Integrated `Space Grotesk` display typography for punchy, institutional DeFi aesthetics.
   - Eliminated awkward badge text wrapping in the header navbar.
   - Added verified on-chain Midnight Preprod contract ribbon directly on the hero section.
   - Upgraded metric counters with radiant ambient glows and glassmorphism styling.
+- **Commit SHA:** [`0af2e59`](https://github.com/Shrikant1a/sealbid/commit/0af2e59)
 - **Files Modified:**
   - `src/pages/LandingPage.tsx`
   - `src/index.css`
@@ -137,6 +140,7 @@ This document tracks how SealBid concretely implemented changes based on user fe
 
 ### 8. Review Revision: Relative Documentation Paths & Link Audit
 - **Source Feedback:** AI Assessment: *"Only cosmetic issue: Documentation links use local file:///s:/... paths."*
-- **Action Taken:** Replaced every instance of `file:///s:/...` in `README.md` with standard relative markdown links (`./docs/PRIVACY_MODEL.md`, etc.), ensuring instant navigation on GitHub without broken browser URI errors.
+- **Action Taken:** Replaced every instance of local file URIs in `README.md` with standard relative markdown links (`./docs/PRIVACY_MODEL.md`, etc.), ensuring instant navigation on GitHub without broken browser URI errors.
+- **Commit SHA:** [`0af2e59`](https://github.com/Shrikant1a/sealbid/commit/0af2e59)
 - **Files Modified:**
   - `README.md`

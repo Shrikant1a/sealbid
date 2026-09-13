@@ -1,4 +1,4 @@
-name: Level 5 Compliance & Documentation Audit
+name: Level 6 Supermoon Compliance & Documentation Audit
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   audit-compliance:
-    name: Verify Level 5 Deliverables & Documentation
+    name: Verify Level 6 Deliverables & Documentation
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
             echo "SUCCESS: Zero local file URI links found. All documentation links are clean and relative."
           fi
 
-      - name: Verify Mandatory Level 5 Documentation Files Exist
+      - name: Verify Mandatory Level 6 Documentation Files Exist
         run: |
           FILES=(
             "README.md"
@@ -44,6 +44,7 @@ jobs:
             "docs/USER_GUIDE.md"
             "docs/TESTING.md"
             "docs/LEVEL5_FINAL_QA.md"
+            "docs/LEVEL6_FINAL_QA.md"
           )
           for file in "${FILES[@]}"; do
             if [ ! -f "$file" ]; then
@@ -53,15 +54,15 @@ jobs:
             echo "Verified: $file exists."
           done
 
-      - name: Verify 50+ Preprod Users Tracked
+      - name: Verify 70+ Preprod Users Tracked
         run: |
           COUNT=$(grep -E '^\|[ ]*[0-9]+[ ]*\|[ ]*mn_shield-addr_preprod' docs/PREPROD_USERS.md | wc -l)
           echo "Total verified Preprod addresses found: $COUNT"
-          if [ "$COUNT" -lt 50 ]; then
-            echo "ERROR: Expected at least 50 preprod user addresses, but found $COUNT."
+          if [ "$COUNT" -lt 70 ]; then
+            echo "ERROR: Expected at least 70 preprod user addresses, but found $COUNT."
             exit 1
           else
-            echo "SUCCESS: 50+ Preprod user address requirement fulfilled ($COUNT addresses)."
+            echo "SUCCESS: 70+ Preprod user address requirement fulfilled ($COUNT addresses)."
           fi
 
       - name: Verify Feedback Loop Commits Exist in Git History

@@ -16,20 +16,20 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 
 ---
 
-## 📢 Call for Testers (Preprod Network)
-
-I’m currently conducting user testing for SealBid, a privacy-preserving sealed-bid auction application built on the Midnight Network. Your participation and feedback will help me improve the application and provide a better experience for future users!
-
+## 📢 Call for Testers (Midnight Preprod Network)
+ 
+We have successfully onboarded **75 active testers** on the Midnight Preprod network! Testing remains active to continually refine protocol usability and zero-knowledge prover performance.
+ 
 **🔗 Application:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)  
 **📝 Feedback Form:** [https://forms.gle/ypK1Z94XzaXZs8Yb9](https://forms.gle/ypK1Z94XzaXZs8Yb9)  
-
+ 
 **Testing Steps:**
 1. Connect your [Midnight Lace Wallet](https://www.lace.io/).
 2. Switch your wallet to the **Midnight Preprod** network.
-3. Obtain the required test tokens (tDU) from the [Preprod Faucet](https://faucet.preprod.midnight.network/).
+3. Obtain test tokens (tDU) from the [Preprod Faucet](https://faucet.preprod.midnight.network/).
 4. Connect your wallet to the SealBid application.
-5. Place a test bid on an available auction.
-6. Complete the feedback form above. Please provide your Midnight Preprod wallet address in the form.
+5. Place a confidential test bid on an active auction.
+6. Submit feedback via the form above with your Midnight Preprod address.
 
 Please share any issues, usability concerns, or suggestions you encounter during testing. Thank you for your time and support—I really appreciate it!
 
@@ -116,13 +116,14 @@ Comprehensive project documentation is available in the `docs/` directory:
 * **[End-to-End User Guide](./docs/USER_GUIDE.md)**: Step-by-step guide to run local auctions and interact via Lace wallet.
 * **[Demo Script](./docs/DEMO_SCRIPT.md)**: Script for presenting the dApp's ZK capabilities.
 * **[Testing Matrix](./docs/TESTING.md)**: Comprehensive breakdown of unit, integration, and UI tests.
-* **[Final QA Checklist](./docs/LEVEL5_FINAL_QA.md)**: Security and structural sign-off.
+* **[Level 5 QA Sign-off](./docs/LEVEL5_FINAL_QA.md)**: Structural and security sign-off for Level 5.
+* **[Level 6 Supermoon QA & Audit](./docs/LEVEL6_FINAL_QA.md)**: Comprehensive QA checklist & compliance sign-off for Level 6.
 
-### Level 5 Full Moon Deliverables
-* **[Preprod User Tracking](./docs/PREPROD_USERS.md)**: On-chain address tracking for 50+ users.
-* **[Structured Feedback](./docs/FEEDBACK.md)**: Qualitative user feedback logs.
-* **[Feedback Analysis](./docs/FEEDBACK_ANALYSIS.md)**: Synthesized UX trends and action items.
-* **[Feedback Loop](./docs/FEEDBACK_LOOP.md)**: Log of implemented application improvements based on user feedback.
+### Level 6 Supermoon Deliverables
+* **[Preprod User Tracking (75 Users)](./docs/PREPROD_USERS.md)**: On-chain address tracking for 70+ verified Preprod testers.
+* **[Structured Feedback Log](./docs/FEEDBACK.md)**: Qualitative user feedback logs across 75 testers.
+* **[Synthesized Feedback Analysis](./docs/FEEDBACK_ANALYSIS.md)**: Usability trends, quantitative ratings, and prioritization matrix.
+* **[Closed Feedback Loop](./docs/FEEDBACK_LOOP.md)**: Corroborated git commits and code diffs for all user-driven improvements.
 
 ---
 
