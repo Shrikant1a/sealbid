@@ -197,172 +197,294 @@ export const PrivateBidPanel: React.FC<PrivateBidPanelProps> = ({
     );
   }
 
-  return (
-    <Card variant="glass" className="p-6 border-cyan-500/30 relative overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="bg-ambient-glow w-48 h-48 bg-cyan-500/10 top-0 right-0" />
+  const [currentStep, setCurrentStep] = useState<1 | 2 | 3>(1);
+  const [copiedSalt, setCopiedSalt] = useState<boolean>(false);
 
-      {/* Header */}
-      <div className="flex items-center justify-between pb-4 mb-5 border-b border-midnight-700/60">
+  const handleCopySalt = () => {
+    if (salt) {
+      navigator.clipboard.writeText(salt);
+      setCopiedSalt(true);
+      setTimeout(() => setCopiedSalt(false), 2000);
+    }
+  };
+
+  return (
+    <Card variant="glass" className="p-6 border-cyan-500/40 relative overflow-hidden glass-card-elevated">
+      {/* Ambient background glow */}
+      <div className="bg-ambient-glow w-48 h-48 bg-cyan-500/15 top-0 right-0 pointer-events-none" />
+      <div className="bg-ambient-glow w-32 h-32 bg-indigo-500/10 bottom-0 left-0 pointer-events-none" />
+
+      {/* Header with ZK Shield Indicator */}
+      <div className="flex items-center justify-between pb-4 mb-4 border-b border-midnight-700/60">
         <div className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
-            <Lock className="w-4 h-4" />
+          <div className="w-10 h-10 rounded-2xl bg-cyan-500/15 border border-cyan-400/40 flex items-center justify-center text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.3)]">
+            <Lock className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-white">Your bid is private</h3>
-            <span className="text-[11px] text-slate-400">Midnight Zero-Knowledge Sealed Bid</span>
+            <h3 className="text-base font-bold text-white tracking-tight">Zero-Knowledge Sealed Bid</h3>
+            <span className="text-[11px] text-cyan-400 font-mono flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              Midnight {network} Consensus
+            </span>
           </div>
         </div>
         <PrivacyBadge type="private-bid" size="sm" />
       </div>
 
+      {/* 3-Step Guided Stepper Progress Bar */}
+      <div className="grid grid-cols-3 gap-2 mb-5">
+        {[
+          { step: 1, label: '1. Amount' },
+          { step: 2, label: '2. Witness Salt' },
+          { step: 3, label: '3. ZK Seal' },
+        ].map((s) => {
+          const isActive = currentStep === s.step;
+          const isDone = currentStep > s.step;
+          return (
+            <button
+              key={s.step}
+              type="button"
+              onClick={() => setCurrentStep(s.step as any)}
+              className={`py-2 px-1 text-center rounded-xl text-[11px] font-bold tracking-wider transition-all border ${
+                isActive
+                  ? 'bg-cyan-500/20 text-cyan-200 border-cyan-400/50 shadow-[0_0_12px_rgba(6,182,212,0.25)]'
+                  : isDone
+                  ? 'bg-midnight-900/90 text-emerald-300 border-emerald-500/30'
+                  : 'bg-midnight-950/60 text-slate-500 border-midnight-800'
+              }`}
+            >
+              {isDone ? `✓ ${s.label.split('. ')[1]}` : s.label}
+            </button>
+          );
+        })}
+      </div>
+
       {/* Existing Bid Reminder if user already bid */}
       {existingUserBid && (
-        <div className="mb-4 p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 flex items-start gap-2.5 text-xs text-cyan-200">
+        <div className="mb-4 p-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 flex items-start gap-2.5 text-xs text-cyan-200 animate-fadeIn">
           <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
           <div>
-            <span>You currently have an active sealed bid of </span>
+            <span>You currently hold an active sealed bid of </span>
             <strong className="font-mono text-white">{formatTDU(existingUserBid.bidAmountTDU)}</strong>.
             <span className="text-[11px] text-cyan-300/80 block mt-0.5">
-              Submitting a new bid will replace your previous confidential commitment.
+              Submitting a new bid updates your cryptographic commitment on-chain.
             </span>
           </div>
         </div>
       )}
 
-      {/* Bid Submission Instructions */}
-      <div className="mb-4 p-3 rounded-xl bg-midnight-950/60 border border-midnight-800/80 space-y-2">
-        <h4 className="text-[12px] font-semibold text-slate-200">How to place a sealed bid:</h4>
-        <ol className="list-decimal pl-4 text-[11px] text-slate-400 space-y-1 marker:text-cyan-500">
-          <li>Enter a bid amount higher than the starting reserve (<strong className="text-white">{formatTDU(auction.startingBidTDU)}</strong>).</li>
-          <li>Your wallet will generate a cryptographic salt to secure your bid.</li>
-          <li>Submit the transaction. Only a <em>hash commitment</em> is recorded on the public ledger.</li>
-        </ol>
-      </div>
-
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Bid Input */}
-        <div>
-          <div className="flex items-center justify-between text-xs mb-1.5">
-            <label htmlFor="bid-amount" className="font-semibold text-slate-200">
-              Enter your bid
-            </label>
-            <span className="text-slate-400">
-              Min: <strong className="text-white font-mono">{formatTDU(auction.startingBidTDU)}</strong>
-            </span>
-          </div>
-
-          <div className="relative">
-            <input
-              id="bid-amount"
-              type="number"
-              step="any"
-              min={auction.startingBidTDU}
-              value={bidAmount}
-              onChange={(e) => {
-                setBidAmount(e.target.value);
-                setErrorMsg(null);
-              }}
-              placeholder={`e.g. ${(auction.startingBidTDU * 1.25).toFixed(0)}`}
-              className="w-full pl-4 pr-16 py-3 rounded-xl glass-input text-base font-mono font-semibold text-white placeholder-slate-500 focus:border-cyan-400"
-              disabled={isSubmitting}
-            />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-cyan-400 font-mono">
-              tDU
-            </span>
-          </div>
-
-          {/* Quick Increment Buttons */}
-          <div className="flex items-center gap-1.5 mt-2">
-            {[100, 500, 1000, 2500].map((inc) => (
-              <button
-                key={inc}
-                type="button"
-                onClick={() => handleQuickAdd(inc)}
-                className="px-2.5 py-1 rounded-lg text-[11px] font-mono bg-midnight-900/80 hover:bg-midnight-800 text-slate-300 hover:text-white border border-midnight-750 transition-colors"
-              >
-                +{inc} tDU
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Cryptographic Witness & Salt Accordion */}
-        <div className="p-3.5 rounded-xl bg-midnight-950/80 border border-midnight-750 space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="font-semibold text-slate-300 flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-cyan-400" />
-              Witness Randomness (Salt)
-            </span>
-            <button
-              type="button"
-              onClick={handleRefreshSalt}
-              className="text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1"
-              title="Generate new randomness"
-            >
-              <RefreshCw className="w-3 h-3" />
-              Regenerate
-            </button>
-          </div>
-          <div className="text-[11px] font-mono text-slate-400 truncate bg-midnight-900/90 p-2 rounded-lg border border-midnight-800">
-            {salt}
-          </div>
-
-          {commitmentPreview && (
-            <div className="pt-1.5 border-t border-midnight-800">
-              <div className="text-[11px] text-slate-400 mb-1">
-                On-Chain Commitment (ZK Public Output):
+        {/* Step 1: Set Bid Amount */}
+        {currentStep === 1 && (
+          <div className="space-y-4 animate-fadeIn">
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1.5">
+                <label htmlFor="bid-amount" className="font-semibold text-slate-200 flex items-center gap-1.5">
+                  <span>Enter Secret Bid Amount</span>
+                </label>
+                <span className="text-slate-400">
+                  Min Reserve: <strong className="text-cyan-300 font-mono">{formatTDU(auction.startingBidTDU)}</strong>
+                </span>
               </div>
-              <div className="text-[11px] font-mono text-cyan-300 truncate bg-cyan-950/30 p-2 rounded-lg border border-cyan-500/20">
-                {commitmentPreview}
+
+              <div className="relative">
+                <input
+                  id="bid-amount"
+                  type="number"
+                  step="any"
+                  min={auction.startingBidTDU}
+                  value={bidAmount}
+                  onChange={(e) => {
+                    setBidAmount(e.target.value);
+                    setErrorMsg(null);
+                  }}
+                  placeholder={`e.g. ${(auction.startingBidTDU * 1.2).toFixed(0)}`}
+                  className="w-full pl-4 pr-16 py-3.5 rounded-xl glass-input text-base font-mono font-bold text-white placeholder-slate-500 focus:border-cyan-400"
+                  disabled={isSubmitting}
+                  autoFocus
+                />
+                <span className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold text-cyan-400 font-mono bg-midnight-950 px-2 py-0.5 rounded border border-midnight-750">
+                  tDU
+                </span>
+              </div>
+
+              {/* Quick Increment Buttons */}
+              <div className="flex items-center gap-1.5 mt-2.5">
+                {[100, 500, 1000, 2500].map((inc) => (
+                  <button
+                    key={inc}
+                    type="button"
+                    onClick={() => handleQuickAdd(inc)}
+                    className="flex-1 py-1.5 rounded-lg text-[11px] font-mono font-semibold bg-midnight-900/90 hover:bg-midnight-800 text-slate-300 hover:text-cyan-300 border border-midnight-750 hover:border-cyan-500/40 transition-all"
+                  >
+                    +{inc}
+                  </button>
+                ))}
               </div>
             </div>
-          )}
-        </div>
 
-        {/* Privacy Explanation Banner */}
-        <div className="p-3 rounded-xl bg-[#06101f] border border-midnight-700/80 flex items-start gap-2.5 text-xs text-slate-300">
-          <Lock className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-          <p className="leading-relaxed text-[11px]">
-            <strong className="text-white">Your bid amount will not be visible to other participants.</strong>{' '}
-            Only the cryptographic commitment hash is broadcast to Midnight {network}.
-          </p>
-        </div>
+            <div className="p-3 rounded-xl bg-midnight-950/70 border border-midnight-800 text-xs text-slate-400 flex items-start gap-2">
+              <Shield className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <span>
+                Valuation Shield: Neither the seller nor competitors can inspect this amount. It stays in your browser until circuit settlement.
+              </span>
+            </div>
 
-        {/* Validation / Error Message */}
+            <Button
+              type="button"
+              variant="primary"
+              size="md"
+              className="w-full font-bold shadow-glow-cyan"
+              onClick={() => {
+                if (validateBid()) setCurrentStep(2);
+              }}
+            >
+              Continue to Witness Salt →
+            </Button>
+          </div>
+        )}
+
+        {/* Step 2: Cryptographic Witness Salt */}
+        {currentStep === 2 && (
+          <div className="space-y-4 animate-fadeIn">
+            <div className="p-4 rounded-2xl bg-midnight-950/90 border border-midnight-750/90 space-y-3">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-bold text-slate-200 flex items-center gap-1.5">
+                  <Shield className="w-4 h-4 text-cyan-400" />
+                  Client Witness Entropy (Salt)
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleRefreshSalt}
+                    className="text-[11px] text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-medium transition-colors"
+                    title="Generate new randomness"
+                  >
+                    <RefreshCw className="w-3 h-3" />
+                    <span>Re-roll</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleCopySalt}
+                    className="text-[11px] text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
+                  >
+                    {copiedSalt ? '✓ Copied' : 'Copy'}
+                  </button>
+                </div>
+              </div>
+
+              <div className="text-[11px] font-mono text-slate-300 break-all bg-midnight-900 p-2.5 rounded-xl border border-midnight-800 select-all">
+                {salt}
+              </div>
+
+              <p className="text-[11px] text-slate-400 leading-normal">
+                This 256-bit entropy blinds your bid commitment. Keep it safe—it is saved automatically in your encrypted local session.
+              </p>
+            </div>
+
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="secondary"
+                size="md"
+                className="w-1/3"
+                onClick={() => setCurrentStep(1)}
+              >
+                ← Back
+              </Button>
+              <Button
+                type="button"
+                variant="primary"
+                size="md"
+                className="w-2/3 font-bold shadow-glow-cyan"
+                onClick={() => setCurrentStep(3)}
+              >
+                Review & Seal Bid →
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 3: ZK Proof Preview & Final Submission */}
+        {currentStep === 3 && (
+          <div className="space-y-4 animate-fadeIn">
+            <div className="p-4 rounded-2xl bg-gradient-to-b from-[#0c162b] to-[#070c18] border border-cyan-500/40 space-y-3">
+              <div className="flex items-center justify-between text-xs pb-2 border-b border-midnight-750">
+                <span className="text-slate-400">Target Auction:</span>
+                <span className="font-bold text-white truncate max-w-[180px]">{auction.title}</span>
+              </div>
+
+              <div className="flex items-center justify-between text-xs pb-2 border-b border-midnight-750">
+                <span className="text-slate-400">Secret Bid Amount:</span>
+                <span className="font-mono font-bold text-emerald-400 text-sm">
+                  {bidAmount ? formatTDU(parseFloat(bidAmount)) : '0 tDU'}
+                </span>
+              </div>
+
+              <div>
+                <span className="text-[10px] text-slate-400 uppercase font-semibold tracking-wider block mb-1">
+                  On-Chain Commitment Hash:
+                </span>
+                <div className="font-mono text-[11px] text-cyan-300 break-all bg-midnight-950 p-2.5 rounded-xl border border-cyan-500/30 select-all">
+                  {commitmentPreview || 'Computing cryptographic commitment...'}
+                </div>
+              </div>
+
+              <div className="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-[11px] text-cyan-200 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
+                <span>Midnight Compact circuit will prove validity with 0 private data leakage.</span>
+              </div>
+            </div>
+
+            <div className="flex gap-2">
+              <Button
+                type="button"
+                variant="secondary"
+                size="md"
+                className="w-1/3"
+                onClick={() => setCurrentStep(2)}
+                disabled={isSubmitting}
+              >
+                ← Edit
+              </Button>
+
+              {account ? (
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="md"
+                  className="w-2/3 font-bold shadow-glow-cyan"
+                  isLoading={isSubmitting}
+                  leftIcon={<Lock className="w-4 h-4" />}
+                >
+                  {isSubmitting ? 'Generating Proof...' : 'Broadcast Shielded Bid'}
+                </Button>
+              ) : (
+                <Button
+                  type="button"
+                  variant="primary"
+                  size="md"
+                  className="w-2/3"
+                  onClick={() => setIsWalletModalOpen(true)}
+                  leftIcon={<Shield className="w-4 h-4" />}
+                >
+                  Connect Wallet
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Error Message */}
         {errorMsg && (
           <div aria-live="assertive" className="p-3 rounded-xl bg-red-950/40 border border-red-500/30 flex items-center gap-2 text-xs text-red-300 animate-fadeIn">
             <AlertCircle className="w-4 h-4 text-red-400 shrink-0" />
             <span>{errorMsg}</span>
           </div>
         )}
-
-        {/* Submit Button */}
-        {account ? (
-          <Button
-            type="submit"
-            variant="primary"
-            size="lg"
-            className="w-full font-bold shadow-glow-cyan"
-            isLoading={isSubmitting}
-            leftIcon={<Lock className="w-4 h-4" />}
-          >
-            Submit Private Bid
-          </Button>
-        ) : (
-          <Button
-            type="button"
-            variant="primary"
-            size="lg"
-            className="w-full"
-            onClick={() => setIsWalletModalOpen(true)}
-            leftIcon={<Shield className="w-4 h-4" />}
-          >
-            Connect Wallet to Bid
-          </Button>
-        )}
       </form>
     </Card>
   );
 };
+

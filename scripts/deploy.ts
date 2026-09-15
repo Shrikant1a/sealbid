@@ -15,8 +15,11 @@ async function main() {
   logger.info('Starting Sealed Bid Auction Deployment on Midnight Preview Testnet...');
 
   const walletSeed = process.env.WALLET_SEED;
-  if (!walletSeed) {
-    throw new Error('WALLET_SEED is required in .env.deploy');
+  if (!walletSeed || walletSeed.includes('paste_your')) {
+    logger.error('❌ Missing valid WALLET_SEED in .env.deploy!');
+    logger.info('Please open .env.deploy and replace the placeholder with your 12 or 24-word Midnight Lace testnet seed phrase.');
+    logger.info('Example: WALLET_SEED="apple banana cherry dog elephant ... "');
+    process.exit(1);
   }
 
   // 1. Initialize Midnight Provider (Indexer + Proof Server + Wallet)

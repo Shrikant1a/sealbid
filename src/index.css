@@ -244,3 +244,63 @@
 .animate-pulse-glow {
   animation: pulseGlow 2.5s ease-in-out infinite;
 }
+
+/* Elevated Glass & Holographic Card Utilities */
+.glass-panel-heavy {
+  background: rgba(8, 13, 26, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(42, 59, 104, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-card-elevated {
+  background: linear-gradient(135deg, rgba(14, 23, 44, 0.8) 0%, rgba(9, 14, 28, 0.9) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow: 0 12px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-elevated:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 0 20px 45px -10px rgba(6, 182, 212, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+.glow-border-cyan {
+  position: relative;
+}
+.glow-border-cyan::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.8), rgba(99, 102, 241, 0.4), transparent 70%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ZK Prover Scan Animation */
+@keyframes zkScanner {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(1000%); opacity: 0; }
+}
+
+.zk-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #06b6d4, #38bdf8, transparent);
+  box-shadow: 0 0 15px #06b6d4;
+  animation: zkScanner 3s ease-in-out infinite;
+  pointer-events: none;
+}
+

@@ -56,3 +56,21 @@ export const MIDNIGHT_CONFIG: MidnightNetworkConfig = {
 };
 
 export const IS_DEMO_MODE = import.meta.env.VITE_DEMO_DATA_ENABLED !== 'false';
+
+/**
+ * Returns the exact Midnight Night Scan explorer URL for a given contract address.
+ * Midnight explorer routes contracts under '/contracts/<address>' (plural).
+ */
+export function getContractExplorerUrl(contractAddress?: string, explorerUrl?: string): string {
+  const base = explorerUrl || MIDNIGHT_CONFIG.explorerUrl;
+  const address = contractAddress || MIDNIGHT_CONFIG.contractAddress || 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827';
+  return `${base}/contracts/${address}`;
+}
+
+/**
+ * Returns the Midnight Night Scan explorer URL for a given transaction hash.
+ */
+export function getTxExplorerUrl(txHash: string, explorerUrl?: string): string {
+  const base = explorerUrl || MIDNIGHT_CONFIG.explorerUrl;
+  return `${base}/tx/${txHash}`;
+}

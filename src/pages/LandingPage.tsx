@@ -5,7 +5,8 @@ import { BrandLogo } from '../components/common/BrandLogo';
 import { AuctionCard } from '../components/auction/AuctionCard';
 import { useAuctions } from '../context/AuctionContext';
 import { useWallet } from '../context/WalletContext';
-import { MIDNIGHT_CONFIG } from '../lib/midnight/config';
+import { MIDNIGHT_CONFIG, getContractExplorerUrl } from '../lib/midnight/config';
+import { ZKSimulator } from '../components/common/ZKSimulator';
 import {
   Shield,
   Lock,
@@ -15,7 +16,9 @@ import {
   Scale,
   Cpu,
   FileCheck,
-  ExternalLink
+  ExternalLink,
+  HelpCircle,
+  ChevronDown
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -23,6 +26,7 @@ export const LandingPage: React.FC = () => {
   const { network } = useWallet();
   const featuredAuctions = auctions.slice(0, 3);
   const contractAddr = MIDNIGHT_CONFIG.contractAddress || 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827';
+  const [openFaq, setOpenFaq] = React.useState<number | null>(0);
 
   return (
     <div className="space-y-24 pb-16">
@@ -82,7 +86,7 @@ export const LandingPage: React.FC = () => {
           {/* Verified On-Chain Contract Ribbon */}
           <div className="pt-2 flex items-center justify-center">
             <a
-              href={`${MIDNIGHT_CONFIG.explorerUrl}/contract/${contractAddr}`}
+              href={getContractExplorerUrl(contractAddr)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-midnight-900/80 hover:bg-midnight-800/90 border border-midnight-700 hover:border-cyan-500/50 text-xs text-slate-300 hover:text-cyan-200 transition-all font-mono shadow-sm group"
@@ -116,7 +120,12 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. THE PRIVACY PARADIGM: PUBLIC VS PRIVATE BIDDING */}
+      {/* 2. INTERACTIVE CRYPTOGRAPHIC SIMULATOR SANDBOX */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ZKSimulator />
+      </section>
+
+      {/* 3. THE PRIVACY PARADIGM: PUBLIC VS PRIVATE BIDDING */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-b from-[#0b1226] to-[#070b18] border border-midnight-700/60 shadow-2xl relative overflow-hidden">
           <div className="max-w-3xl mb-10">
@@ -313,7 +322,68 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. FINAL CALL TO ACTION */}
+      {/* 6. PROTOCOL FAQ (CONFIDENTIAL ARCHITECTURE DEEP-DIVE) */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
+          <span className="text-xs font-bold text-cyan-400 uppercase tracking-widest block mb-2">
+            Evaluator & Tester FAQ
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+            Confidential Architecture & ZK Model
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400 mt-2">
+            Answers to key technical questions regarding Midnight state isolation and cryptographic commitments.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {[
+            {
+              q: 'How does SealBid keep bid amounts 100% private from sellers and competitors?',
+              a: 'When you submit a bid, your browser executes a client-side witness generator. Your bid amount and random 32-byte salt remain strictly in local browser memory. Only the cryptographic commitment `Hash(bidAmount || salt || bidderPk)` is written to the Midnight public ledger. Computational hiding guarantees that reconstructing the bid amount from this hash is mathematically infeasible.'
+            },
+            {
+              q: 'How does settlement declare a winner without exposing losing valuations?',
+              a: 'Upon auction closing, the winning bidder provides their private witnesses to the Midnight Compact circuit (`settleWinningBid`). The zero-knowledge verifier confirms that the bid satisfies the reserve price and matches the recorded commitment tree root. The winner is proclaimed on-chain, while all losing bid amounts remain permanently sealed.'
+            },
+            {
+              q: 'What prevents front-running and MEV bid sniping?',
+              a: 'In traditional blockchains (Ethereum, Solana), bids sit in the public mempool before block inclusion, allowing MEV bots to outbid by 1 wei. On Midnight, all bids are opaque cryptographic commitments. An adversary cannot determine how much you bid, eliminating front-running entirely.'
+            },
+            {
+              q: 'How can evaluators verify the Midnight Preprod smart contract?',
+              a: 'The contract is verified on Midnight Night Scan. Click the "Verified Preprod Contract" badge in the hero banner or visit the Explorer link in the documentation to inspect the ledger state and circuit transitions.'
+            }
+          ].map((item, idx) => {
+            const isOpen = openFaq === idx;
+            return (
+              <div
+                key={idx}
+                className="rounded-2xl glass-card border-midnight-700/70 overflow-hidden transition-all"
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenFaq(isOpen ? null : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 hover:text-cyan-300 transition-colors"
+                >
+                  <span className="text-sm sm:text-base font-bold text-white flex items-center gap-3">
+                    <HelpCircle className="w-4 h-4 text-cyan-400 shrink-0" />
+                    <span>{item.q}</span>
+                  </span>
+                  <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-cyan-400' : ''}`} />
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-1 text-xs text-slate-300 leading-relaxed border-t border-midnight-800/80">
+                    <p>{item.a}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 7. FINAL CALL TO ACTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl p-8 md:p-14 bg-gradient-to-r from-cyan-950/50 via-[#0b1020] to-indigo-950/50 border border-cyan-500/40 shadow-2xl text-center space-y-6 relative overflow-hidden">
           <div className="bg-ambient-glow w-80 h-80 bg-cyan-500/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />

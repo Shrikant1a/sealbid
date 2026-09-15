@@ -24,28 +24,36 @@ export default {
         },
         shield: {
           cyan: '#06b6d4',
+          neon: '#00f2fe',
           teal: '#14b8a6',
           indigo: '#6366f1',
           violet: '#8b5cf6',
           emerald: '#10b981',
           amber: '#f59e0b',
+          rose: '#f43f5e',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         display: ['"Space Grotesk"', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
+        mono: ['"JetBrains Mono"', 'Fira Code', 'Courier New', 'monospace'],
       },
       boxShadow: {
-        'glow-cyan': '0 0 25px -5px rgba(6, 182, 212, 0.3)',
-        'glow-indigo': '0 0 25px -5px rgba(99, 102, 241, 0.3)',
-        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.3)',
-        'glass-card': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        'glow-cyan': '0 0 25px -5px rgba(6, 182, 212, 0.4)',
+        'glow-cyan-lg': '0 0 45px -5px rgba(6, 182, 212, 0.55)',
+        'glow-indigo': '0 0 25px -5px rgba(99, 102, 241, 0.4)',
+        'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
+        'glow-violet': '0 0 30px -5px rgba(139, 92, 246, 0.45)',
+        'glass-card': '0 8px 32px 0 rgba(0, 0, 0, 0.45)',
+        'glass-elevated': '0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 20px rgba(6, 182, 212, 0.15)',
+        'inner-glow': 'inset 0 1px 1px 0 rgba(255, 255, 255, 0.15)',
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',
         'shimmer': 'shimmer 2.5s infinite linear',
+        'spin-slow': 'spin 8s linear infinite',
       },
       keyframes: {
         float: {

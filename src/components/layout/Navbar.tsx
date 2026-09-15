@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Lock, Menu, X, PlusCircle, Gavel, Layers, HelpCircle, Sparkles } from 'lucide-react';
+import { Lock, Menu, X, PlusCircle, Gavel, Layers, HelpCircle, Sparkles, Coins, ExternalLink } from 'lucide-react';
 import { Button } from '../common/Button';
 import { BrandLogo } from '../common/BrandLogo';
 import { NetworkStatusBadge } from '../common/LoadingSpinner';
@@ -84,8 +84,20 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Header Actions: Network Pill & Wallet */}
+          {/* Right Header Actions: Network Pill, Faucet & Wallet */}
           <div className="hidden sm:flex items-center gap-3">
+            <a
+              href="https://faucet.preprod.midnight.network/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-midnight-900/80 hover:bg-midnight-800 text-xs font-semibold text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 shadow-sm transition-all group"
+              title="Request test tokens (tDU) from Midnight Faucet"
+            >
+              <Coins className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+              <span>Faucet</span>
+              <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-cyan-300" />
+            </a>
+
             <NetworkStatusBadge className="hidden lg:inline-flex shadow-sm hover:border-cyan-500/50 transition-colors" />
 
             {account ? (

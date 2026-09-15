@@ -43,7 +43,7 @@ Please share any issues, usability concerns, or suggestions you encounter during
 - **X (Twitter) Profile**: https://x.com/ShriiAher19
 - **Product Announcement Post**: https://x.com/ShriiAher19/status/2087790597113593916
 - **Verified Contract Address**: `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`
-- **Network Explorer**: https://explorer.preview.midnight.network
+- **Contract Explorer**: [Night Scan (Preview Explorer)](https://explorer.preview.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827)
 
 ---
 
@@ -54,7 +54,7 @@ On public blockchains like Ethereum or Cardano, traditional auctions broadcast a
 - **Leaked valuations**: Competitors can see exactly how much you value an asset, exposing private financial strategy.
 - **Price manipulation**: Open bids allow artificial price pump-and-dump behavior.
 
-<!-- This is level 5 Full Moon deliverable for Solana Hackathon 2026. -->
+<!-- Level 5 Full Moon deliverable for Midnight Network Hackathon 2026. -->
 
 ### How it works on Midnight
 
