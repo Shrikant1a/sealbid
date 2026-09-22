@@ -1,92 +1,98 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
   <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="10" y1="10" x2="110" y2="110" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0e1726" />
-      <stop offset="50%" stop-color="#060913" />
+    <!-- Background Ambient Gradient -->
+    <radialGradient id="sbIconGlow" cx="60" cy="60" r="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#060913" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Outer Facet Gradient -->
+    <linearGradient id="sbHexGrad" x1="20" y1="14" x2="100" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="35%" stop-color="#06b6d4" />
+      <stop offset="70%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+
+    <!-- Inner Dark Core Gradient -->
+    <linearGradient id="sbCoreDark" x1="30" y1="20" x2="90" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#090d16" />
       <stop offset="100%" stop-color="#030712" />
     </linearGradient>
 
-    <!-- Outer Neon Cyber Rim -->
-    <linearGradient id="rimGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#22d3ee" />
-      <stop offset="40%" stop-color="#06b6d4" />
-      <stop offset="70%" stop-color="#6366f1" />
-      <stop offset="100%" stop-color="#a855f7" />
+    <!-- Prism Highlight -->
+    <linearGradient id="sbPrismHighlight" x1="35" y1="25" x2="85" y2="75" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
     </linearGradient>
 
-    <!-- Shield Glow Filter -->
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
-      <feGaussianBlur stdDeviation="4" result="blur" />
+    <!-- Neon Glow Filter -->
+    <filter id="sbNeonGlow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="3" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
 
-    <!-- Accent Core Gradient -->
-    <linearGradient id="coreGrad" x1="35" y1="35" x2="85" y2="85" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8" />
-      <stop offset="50%" stop-color="#06b6d4" />
-      <stop offset="100%" stop-color="#4f46e5" />
-    </linearGradient>
-
-    <!-- Subtle circuit glow -->
-    <filter id="coreGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="2.5" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
+    <!-- Subtle Drop Shadow -->
+    <filter id="sbDropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#06b6d4" flood-opacity="0.4" />
     </filter>
   </defs>
 
-  <!-- Ambient Glow Behind Shield -->
-  <circle cx="60" cy="60" r="46" fill="#06b6d4" opacity="0.18" filter="url(#glow)" />
+  <!-- Ambient Glow Ring -->
+  <circle cx="60" cy="60" r="54" fill="url(#sbIconGlow)" />
 
-  <!-- Outer Cyber Hex Shield -->
-  <path d="M60 12 L98 28 C98 64 82 92 60 106 C38 92 22 64 22 28 Z"
-        fill="url(#bgGrad)"
-        stroke="url(#rimGrad)"
-        stroke-width="3"
-        stroke-linejoin="round" />
+  <!-- Outer Isometric Shield / Vault Hexagon -->
+  <path d="M60 8 L104 28 V76 L60 112 L16 76 V28 Z" 
+        fill="url(#sbCoreDark)" 
+        stroke="url(#sbHexGrad)" 
+        stroke-width="3" 
+        stroke-linejoin="round"
+        filter="url(#sbDropShadow)" />
 
-  <!-- Inner Cryptographic Vault Facet -->
-  <path d="M60 22 L88 34 C88 62 76 83 60 95 C44 83 32 62 32 34 Z"
-        fill="#080e1e"
-        stroke="#06b6d4"
-        stroke-opacity="0.3"
-        stroke-width="1.5"
-        stroke-dasharray="3 3" />
+  <!-- Secondary Inner Precision Facet -->
+  <path d="M60 18 L94 34 V70 L60 98 L26 70 V34 Z" 
+        fill="#070c18" 
+        stroke="url(#sbPrismHighlight)" 
+        stroke-width="1.5" 
+        stroke-linejoin="round" 
+        stroke-dasharray="80 3" />
 
-  <!-- Zero-Knowledge Circuit Traces -->
-  <path d="M38 48 L46 48 L52 54" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
-  <circle cx="38" cy="48" r="2" fill="#22d3ee" />
-  
-  <path d="M82 48 L74 48 L68 54" stroke="#a855f7" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
-  <circle cx="82" cy="48" r="2" fill="#c084fc" />
-
-  <!-- Center Vault Lock / ZK Seal Core -->
-  <g filter="url(#coreGlow)">
-    <!-- Lock Shackle Arch -->
-    <path d="M50 54 V46 C50 40.5 54.5 36 60 36 C65.5 36 70 40.5 70 46 V54"
-          fill="none"
-          stroke="url(#rimGrad)"
-          stroke-width="3.5"
-          stroke-linecap="round" />
+  <!-- Zero-Knowledge Cryptographic Vault / Sealed Bid Gavel Nexus -->
+  <g filter="url(#sbNeonGlow)">
+    <!-- Top Gavel Head / Vault Shackle Prism (Dynamic Angle) -->
+    <path d="M42 36 L78 36 L84 46 L36 46 Z" 
+          fill="url(#sbHexGrad)" 
+          stroke="#e0f2fe" 
+          stroke-width="1" />
     
-    <!-- Lock Body (Modern Beveled Octagon) -->
-    <rect x="46" y="52" width="28" height="24" rx="6"
-          fill="url(#coreGrad)"
-          stroke="#e0f2fe"
-          stroke-width="1.2" />
+    <!-- Gavel / Key Shaft -->
+    <path d="M57 46 V62 H63 V46 Z" 
+          fill="url(#sbHexGrad)" />
 
-    <!-- Center Keyhole / ZK Eye Aperture -->
-    <circle cx="60" cy="62" r="3.2" fill="#030712" />
-    <path d="M58.5 63.5 L57.5 70 H62.5 L61.5 63.5 Z" fill="#030712" />
+    <!-- Cryptographic Shield Seal Core (Octagonal Vault Center) -->
+    <polygon points="60,54 75,62 75,78 60,86 45,78 45,62" 
+             fill="#0c1527" 
+             stroke="url(#sbHexGrad)" 
+             stroke-width="2" 
+             stroke-linejoin="round" />
 
-    <!-- ZK Verifier Ray Pulse -->
-    <circle cx="60" cy="62" r="1.2" fill="#38bdf8" />
+    <!-- Central Glowing ZK Commitment Eye / Keyhole Aperture -->
+    <circle cx="60" cy="69" r="5" fill="none" stroke="#22d3ee" stroke-width="1.8" />
+    <circle cx="60" cy="69" r="2.2" fill="#38bdf8" />
+    <path d="M60 74 V80" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Left & Right Cryptographic Lattice Nodes -->
+    <line x1="30" y1="52" x2="45" y2="62" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="2 2" />
+    <circle cx="30" cy="52" r="2.5" fill="#22d3ee" />
+
+    <line x1="90" y1="52" x2="75" y2="62" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="2 2" />
+    <circle cx="90" cy="52" r="2.5" fill="#c084fc" />
+
+    <!-- Ascending Value Bid Nodes (Bottom) -->
+    <line x1="60" y1="86" x2="60" y2="96" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" />
+    <circle cx="60" cy="98" r="3" fill="#22d3ee" />
   </g>
-
-  <!-- Lower Circuit Nodes -->
-  <path d="M60 78 V86" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" opacity="0.8" />
-  <circle cx="60" cy="88" r="2.5" fill="#22d3ee" filter="url(#coreGlow)" />
 </svg>

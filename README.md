@@ -43,7 +43,7 @@ Please share any issues, usability concerns, or suggestions you encounter during
 - **X (Twitter) Profile**: https://x.com/ShriiAher19
 - **Product Announcement Post**: https://x.com/ShriiAher19/status/2087790597113593916
 - **Verified Contract Address**: `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`
-- **Contract Explorer**: [Night Scan (Preview Explorer)](https://explorer.preview.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827)
+- **Contract Explorer**: [Night Scan (Preprod Explorer)](https://explorer.preprod.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827) · [Preview Explorer](https://explorer.preview.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827)
 
 ---
 

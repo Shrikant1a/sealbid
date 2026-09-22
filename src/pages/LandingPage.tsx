@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/common/Button';
-import { BrandLogo } from '../components/common/BrandLogo';
 import { AuctionCard } from '../components/auction/AuctionCard';
 import { useAuctions } from '../context/AuctionContext';
 import { useWallet } from '../context/WalletContext';
@@ -18,7 +17,8 @@ import {
   FileCheck,
   ExternalLink,
   HelpCircle,
-  ChevronDown
+  ChevronDown,
+  Sparkles
 } from 'lucide-react';
 
 export const LandingPage: React.FC = () => {
@@ -38,10 +38,19 @@ export const LandingPage: React.FC = () => {
         <div className="bg-ambient-glow w-[350px] h-[350px] bg-cyan-400/10 top-20 left-10 blur-3xl pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
-          {/* Top Brand Emblem & Protocol Pill */}
-          <div className="flex flex-col items-center justify-center gap-4">
-            <div className="p-3 rounded-2xl bg-midnight-950/70 border border-cyan-400/30 backdrop-blur-xl shadow-[0_0_30px_rgba(6,182,212,0.25)]">
-              <BrandLogo size="lg" networkBadge={`ZK-${network}`} showTagline={true} />
+          {/* Top Protocol Status Pill */}
+          <div className="flex items-center justify-center">
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-midnight-950/80 border border-cyan-500/30 backdrop-blur-xl shadow-[0_0_25px_rgba(6,182,212,0.25)] text-xs font-semibold text-cyan-300 transition-all hover:border-cyan-400/60">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+              </span>
+              <span className="text-slate-300">Midnight {network} Protocol</span>
+              <span className="w-1 h-1 rounded-full bg-slate-600"></span>
+              <span className="bg-gradient-to-r from-cyan-300 to-indigo-300 bg-clip-text text-transparent font-bold">
+                Zero-Knowledge Sealed Bids Active
+              </span>
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
             </div>
           </div>
 

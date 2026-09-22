@@ -18,104 +18,121 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   className = '',
 }) => {
   const sizeMap = {
-    sm: { icon: 'w-8 h-8', text: 'text-lg', badge: 'text-[9px] px-1.5 py-0.5', tagline: 'text-[9px]' },
-    md: { icon: 'w-10 h-10', text: 'text-xl sm:text-2xl', badge: 'text-[10px] px-2 py-0.5', tagline: 'text-[10px]' },
-    lg: { icon: 'w-12 h-12', text: 'text-2xl sm:text-3xl', badge: 'text-xs px-2.5 py-1', tagline: 'text-xs' },
-    xl: { icon: 'w-16 h-16', text: 'text-3xl sm:text-4xl', badge: 'text-xs px-3 py-1', tagline: 'text-sm' },
+    sm: {
+      icon: 'w-7 h-7',
+      text: 'text-lg',
+      badge: 'text-[9px] px-1.5 py-0.5',
+      tagline: 'text-[9px]',
+    },
+    md: {
+      icon: 'w-9 h-9',
+      text: 'text-xl sm:text-2xl',
+      badge: 'text-[10px] px-2 py-0.5',
+      tagline: 'text-[10px]',
+    },
+    lg: {
+      icon: 'w-11 h-11',
+      text: 'text-2xl sm:text-3xl',
+      badge: 'text-xs px-2.5 py-1',
+      tagline: 'text-xs',
+    },
+    xl: {
+      icon: 'w-14 h-14',
+      text: 'text-3xl sm:text-4xl',
+      badge: 'text-xs px-3 py-1',
+      tagline: 'text-sm',
+    },
   };
 
   const currentSize = sizeMap[size];
 
   return (
-    <div className={`inline-flex items-center gap-3 select-none group ${className}`}>
-      {/* Bespoke Vector Cryptographic Emblem */}
+    <div className={`inline-flex items-center gap-2.5 select-none group ${className}`}>
+      {/* High-Precision Isometric Cryptographic Emblem */}
       <div className={`relative flex items-center justify-center flex-shrink-0 ${currentSize.icon}`}>
-        {/* Ambient Rotating Conic Halo */}
+        {/* Subtle Ambient Radial Glow */}
         {animate && (
           <div
-            className="absolute -inset-1 rounded-2xl opacity-75 blur-sm transition-opacity duration-300 group-hover:opacity-100"
+            className="absolute -inset-1 rounded-full opacity-60 blur-md transition-all duration-500 group-hover:opacity-100 group-hover:scale-110"
             style={{
-              background: 'conic-gradient(from 0deg, #22d3ee, #6366f1, #a855f7, #22d3ee)',
-              animation: 'spin 8s linear infinite',
+              background: 'radial-gradient(circle, rgba(6,182,212,0.4) 0%, rgba(99,102,241,0.2) 60%, transparent 80%)',
             }}
           />
         )}
 
-        {/* Outer Shield Container */}
-        <div className="relative w-full h-full rounded-xl bg-[#060913] border border-cyan-400/50 p-1 flex items-center justify-center shadow-[0_0_20px_rgba(6,182,212,0.35)] transition-transform duration-300 group-hover:scale-105">
-          <svg
-            viewBox="0 0 120 120"
-            className="w-full h-full"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <linearGradient id={`blRim-${size}`} x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#22d3ee" />
-                <stop offset="50%" stopColor="#06b6d4" />
-                <stop offset="100%" stopColor="#818cf8" />
-              </linearGradient>
-              <linearGradient id={`blCore-${size}`} x1="30" y1="30" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stopColor="#38bdf8" />
-                <stop offset="100%" stopColor="#4f46e5" />
-              </linearGradient>
-            </defs>
+        {/* Vector SVG Emblem */}
+        <svg
+          viewBox="0 0 120 120"
+          className="relative w-full h-full filter drop-shadow-[0_2px_10px_rgba(6,182,212,0.35)] transition-transform duration-300 group-hover:scale-105"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id={`blRim-${size}`} x1="16" y1="10" x2="104" y2="110" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="35%" stopColor="#06b6d4" />
+              <stop offset="70%" stopColor="#4f46e5" />
+              <stop offset="100%" stopColor="#9333ea" />
+            </linearGradient>
 
-            {/* Shield Body */}
-            <path
-              d="M60 12 L98 28 C98 64 82 92 60 106 C38 92 22 64 22 28 Z"
-              fill="#0a1226"
-              stroke={`url(#blRim-${size})`}
-              strokeWidth="5"
-              strokeLinejoin="round"
-            />
+            <linearGradient id={`blCore-${size}`} x1="20" y1="15" x2="80" y2="95" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#0f172a" />
+              <stop offset="50%" stopColor="#080e1a" />
+              <stop offset="100%" stopColor="#030712" />
+            </linearGradient>
+          </defs>
 
-            {/* Inner dashed circuit line */}
-            <path
-              d="M60 22 L88 34 C88 62 76 83 60 95 C44 83 32 62 32 34 Z"
-              fill="#060913"
-              stroke="#06b6d4"
-              strokeOpacity="0.4"
-              strokeWidth="2.5"
-              strokeDasharray="4 4"
-            />
+          {/* Outer Isometric Shield / Vault */}
+          <path
+            d="M60 8 L104 28 V76 L60 112 L16 76 V28 Z"
+            fill={`url(#blCore-${size})`}
+            stroke={`url(#blRim-${size})`}
+            strokeWidth="3.5"
+            strokeLinejoin="round"
+          />
 
-            {/* Circuit traces */}
-            <path d="M38 48 H50" stroke="#22d3ee" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
-            <circle cx="38" cy="48" r="3" fill="#22d3ee" />
-            <path d="M82 48 H70" stroke="#a855f7" strokeWidth="3" strokeLinecap="round" opacity="0.8" />
-            <circle cx="82" cy="48" r="3" fill="#c084fc" />
+          {/* Inner Facet */}
+          <path
+            d="M60 18 L94 34 V70 L60 98 L26 70 V34 Z"
+            fill="#060b16"
+            stroke="#38bdf8"
+            strokeOpacity="0.4"
+            strokeWidth="1.5"
+            strokeLinejoin="round"
+            strokeDasharray="80 3"
+          />
 
-            {/* Lock Arch */}
-            <path
-              d="M50 54 V44 C50 38.5 54.5 34 60 34 C65.5 34 70 38.5 70 44 V54"
-              fill="none"
-              stroke={`url(#blRim-${size})`}
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
+          {/* Gavel Head & Key Shackle */}
+          <path
+            d="M42 36 L78 36 L84 46 L36 46 Z"
+            fill={`url(#blRim-${size})`}
+            stroke="#e0f2fe"
+            strokeWidth="1"
+          />
+          <path d="M57 46 V62 H63 V46 Z" fill={`url(#blRim-${size})`} />
 
-            {/* Lock Body */}
-            <rect
-              x="45"
-              y="52"
-              width="30"
-              height="26"
-              rx="6"
-              fill={`url(#blCore-${size})`}
-              stroke="#e0f2fe"
-              strokeWidth="2"
-            />
+          {/* Central Vault Octagon Core */}
+          <polygon
+            points="60,54 75,62 75,78 60,86 45,78 45,62"
+            fill="#0c1527"
+            stroke={`url(#blRim-${size})`}
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
 
-            {/* Center ZK Aperture */}
-            <circle cx="60" cy="63" r="3.5" fill="#030712" />
-            <path d="M58.5 64.5 L57 71 H63 L61.5 64.5 Z" fill="#030712" />
-            <circle cx="60" cy="63" r="1.5" fill="#38bdf8" />
+          {/* Glowing ZK Commitment Eye / Keyhole */}
+          <circle cx="60" cy="69" r="4.8" fill="none" stroke="#22d3ee" strokeWidth="1.8" />
+          <circle cx="60" cy="69" r="2.2" fill="#38bdf8" />
+          <path d="M60 74 V80" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round" />
 
-            {/* Bottom Node */}
-            <circle cx="60" cy="87" r="3.5" fill="#22d3ee" />
-          </svg>
-        </div>
+          {/* Left & Right Cryptographic Nodes */}
+          <circle cx="30" cy="52" r="2.5" fill="#22d3ee" />
+          <circle cx="90" cy="52" r="2.5" fill="#c084fc" />
+
+          {/* Ascending Value Trace */}
+          <line x1="60" y1="86" x2="60" y2="96" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="60" cy="98" r="3" fill="#22d3ee" />
+        </svg>
       </div>
 
       {/* Brand Typography & Badges */}
@@ -123,8 +140,8 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
         <div className="flex flex-col">
           <div className="flex items-center gap-2">
             <span className={`font-black tracking-tight font-display ${currentSize.text} leading-none`}>
-              <span className="text-white drop-shadow-[0_2px_8px_rgba(255,255,255,0.2)]">Seal</span>
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
+              <span className="text-white drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)]">Seal</span>
+              <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_2px_12px_rgba(6,182,212,0.4)]">
                 Bid
               </span>
             </span>
@@ -132,11 +149,11 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
             {/* Optional ZK Network Badge */}
             {networkBadge && (
               <span
-                className={`inline-flex items-center gap-1.5 rounded-full font-bold bg-cyan-950/80 text-cyan-300 border border-cyan-400/40 uppercase tracking-wider whitespace-nowrap shadow-[0_0_10px_rgba(6,182,212,0.2)] transition-all group-hover:border-cyan-300/80 ${currentSize.badge}`}
+                className={`inline-flex items-center gap-1.5 rounded-full font-bold bg-cyan-950/70 text-cyan-300 border border-cyan-400/40 uppercase tracking-wider whitespace-nowrap shadow-[0_0_12px_rgba(6,182,212,0.2)] transition-all group-hover:border-cyan-300/80 ${currentSize.badge}`}
               >
-                <span className="relative flex h-2 w-2">
+                <span className="relative flex h-1.5 w-1.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-400"></span>
                 </span>
                 <span>{networkBadge}</span>
               </span>

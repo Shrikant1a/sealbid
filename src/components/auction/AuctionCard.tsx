@@ -11,19 +11,21 @@ import { Users, Lock, ArrowRight, Sparkles } from 'lucide-react';
 
 export const AuctionCard: React.FC<{
   auction: AuctionItem;
+  variant?: 'grid' | 'list';
   onQuickBid?: (auction: AuctionItem) => void;
-}> = ({ auction }) => {
+}> = ({ auction, variant = 'grid' }) => {
   const isCompleted = auction.status === 'completed';
   const isEnded = isCompleted || auction.status === 'ended' || Date.now() >= auction.endTime;
+  const isList = variant === 'list';
 
   return (
     <Card
       variant="glass"
       hoverEffect
-      className="flex flex-col h-full p-0 overflow-hidden group border-midnight-700/60 hover:border-cyan-500/50"
+      className={`flex ${isList ? 'flex-col sm:flex-row' : 'flex-col'} h-full p-0 overflow-hidden group border-midnight-700/60 hover:border-cyan-500/50 transition-all`}
     >
       {/* Image & Badges */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-midnight-950">
+      <div className={`relative ${isList ? 'sm:w-72 aspect-[16/10] sm:aspect-auto' : 'aspect-[16/10] w-full'} overflow-hidden bg-midnight-950 flex-shrink-0`}>
         <img
           src={auction.imageUrl}
           alt={auction.title}
@@ -68,7 +70,7 @@ export const AuctionCard: React.FC<{
             to={`/auction/${auction.id}`}
             className="block group-hover:text-cyan-300 transition-colors"
           >
-            <h3 className="text-base font-bold text-white line-clamp-1 group-hover:underline decoration-cyan-400/50 underline-offset-4">
+            <h3 className="text-base sm:text-lg font-bold text-white line-clamp-1 group-hover:underline decoration-cyan-400/50 underline-offset-4">
               {auction.title}
             </h3>
           </Link>
@@ -85,7 +87,7 @@ export const AuctionCard: React.FC<{
               <span className="text-[11px] text-slate-400 block font-medium">
                 {isCompleted ? 'Winning Final Bid' : 'Starting Reserve'}
               </span>
-              <span className="text-sm font-bold text-white font-mono">
+              <span className="text-sm sm:text-base font-bold text-white font-mono">
                 {formatTDU(isCompleted ? auction.winningBidTDU : auction.startingBidTDU)}
               </span>
             </div>
@@ -107,7 +109,7 @@ export const AuctionCard: React.FC<{
               <Button
                 variant={isCompleted ? 'secondary' : isEnded ? 'primary' : 'primary'}
                 size="sm"
-                className="w-full"
+                className="w-full font-semibold"
                 rightIcon={isEnded && !isCompleted ? <Sparkles className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
               >
                 {isCompleted ? 'View Results & Proof' : isEnded ? 'Settle & Reveal Winner' : 'Place Private Bid'}
