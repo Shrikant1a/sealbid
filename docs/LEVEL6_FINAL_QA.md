@@ -49,6 +49,7 @@ This document certifies that SealBid has met and exceeded all official requireme
 - **Preprod Users Tracking:** [`docs/PREPROD_USERS.md`](./PREPROD_USERS.md)
 - **Feedback Analysis:** [`docs/FEEDBACK_ANALYSIS.md`](./FEEDBACK_ANALYSIS.md)
 - **Feedback Loop:** [`docs/FEEDBACK_LOOP.md`](./FEEDBACK_LOOP.md)
+- **Authorship & Provenance Verification:** [`docs/PROVENANCE.md`](./PROVENANCE.md)
 
 ---
 

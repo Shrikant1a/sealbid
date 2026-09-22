@@ -7,6 +7,14 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 [![Compliance Audit](https://github.com/Shrikant1a/sealbid/actions/workflows/compliance.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions/workflows/compliance.yml)
 [![Network](https://img.shields.io/badge/network-Midnight%20Preview%20%2F%20Preprod-blue)](https://midnight.network)
 [![Twitter](https://img.shields.io/badge/twitter-@ShriiAher19-black)](https://x.com/ShriiAher19)
+[![Author](https://img.shields.io/badge/author-Shrikant%20Aher%20(@Shrikant1a)-blue)](https://github.com/Shrikant1a)
+[![Provenance](https://img.shields.io/badge/provenance-verified-success)](./docs/PROVENANCE.md)
+
+---
+
+> [!NOTE]
+> **Author & Repository Provenance Notice:**  
+> This repository is exclusively developed and owned by **Shrikant Aher** ([@Shrikant1a](https://github.com/Shrikant1a)). Any duplicate submissions of this repository by third parties (specifically `forestzonej2@gmail.com`) are unauthorized copies. Please refer to [`docs/PROVENANCE.md`](./docs/PROVENANCE.md) for official verification.
 
 ---
 
