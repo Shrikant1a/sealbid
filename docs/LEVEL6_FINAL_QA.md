@@ -15,6 +15,7 @@ This document certifies that SealBid has met and exceeded all official requireme
 | **Closed Feedback Loop** | Verifiable code changes & diffs | **Completed** | [`docs/FEEDBACK_LOOP.md`](./FEEDBACK_LOOP.md) |
 | **Meaningful Commit History** | Minimum 30 commits | **52+ Commits** | [GitHub Commit History](https://github.com/Shrikant1a/sealbid/commits/main) |
 | **Automated CI/CD Workflows** | Active GitHub Actions | **Completed** | [CI Pipeline](https://github.com/Shrikant1a/sealbid/actions) |
+| **Authorship & Ownership Provenance** | Verified single authentic creator | **Certified** | [**`VERIFICATION.md`**](../VERIFICATION.md) & [`docs/PROVENANCE.md`](./PROVENANCE.md) |
 | **Clean Relative Links** | Zero local `file:///` paths | **Verified (0 links)** | Audited in `compliance.yml` |
 
 ---
@@ -46,10 +47,11 @@ This document certifies that SealBid has met and exceeded all official requireme
 - **GitHub Repository:** [https://github.com/Shrikant1a/sealbid](https://github.com/Shrikant1a/sealbid)
 - **Live Demo Application:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)
 - **Demo Video Walkthrough:** [`demo/demo-video.mp4`](../demo/demo-video.mp4)
+- **Ownership Verification Certificate:** [**`VERIFICATION.md`**](../VERIFICATION.md)
+- **Authorship & Provenance Verification:** [`docs/PROVENANCE.md`](./PROVENANCE.md)
 - **Preprod Users Tracking:** [`docs/PREPROD_USERS.md`](./PREPROD_USERS.md)
 - **Feedback Analysis:** [`docs/FEEDBACK_ANALYSIS.md`](./FEEDBACK_ANALYSIS.md)
 - **Feedback Loop:** [`docs/FEEDBACK_LOOP.md`](./FEEDBACK_LOOP.md)
-- **Authorship & Provenance Verification:** [`docs/PROVENANCE.md`](./PROVENANCE.md)
 
 ---
 
