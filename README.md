@@ -9,12 +9,13 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 [![Twitter](https://img.shields.io/badge/twitter-@ShriiAher19-black)](https://x.com/ShriiAher19)
 [![Author](https://img.shields.io/badge/author-Shrikant%20Aher%20(@Shrikant1a)-blue)](https://github.com/Shrikant1a)
 [![Provenance](https://img.shields.io/badge/provenance-verified-success)](./docs/PROVENANCE.md)
+[![Ownership Certificate](https://img.shields.io/badge/ownership-certified-success)](./VERIFICATION.md)
 
 ---
 
-> [!NOTE]
-> **Author & Repository Provenance Notice:**  
-> This repository is exclusively developed and owned by **Shrikant Aher** ([@Shrikant1a](https://github.com/Shrikant1a)). Any duplicate submissions of this repository by third parties (specifically `forestzonej2@gmail.com`) are unauthorized copies. Please refer to [`docs/PROVENANCE.md`](./docs/PROVENANCE.md) for official verification.
+> [!IMPORTANT]
+> **Official Authorship & Verification Notice (Midnight Evaluation Team):**  
+> This repository is exclusively created and owned by **Shrikant Aher** ([@Shrikant1a](https://github.com/Shrikant1a)). Any duplicate submissions of this repository by third parties are unauthorized plagiarism attempts. For complete cryptographic, administrative, and git provenance proofs, see [**`VERIFICATION.md`**](./VERIFICATION.md) and [`docs/PROVENANCE.md`](./docs/PROVENANCE.md).
 
 ---
 

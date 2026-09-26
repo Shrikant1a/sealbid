@@ -17,12 +17,13 @@ This document certifies the authentic ownership, creation provenance, and sole a
 ## Notice Regarding Unauthorized Duplicate Submissions
 
 > [!CAUTION]
-> It has come to our attention that an unauthorized third-party entity using the email `forestzonej2@gmail.com` submitted this repository (`https://github.com/Shrikant1a/sealbid`) to the Midnight Hackathon evaluation system without permission.
+> It has come to our attention that two unauthorized third-party entities (including `forestzonej2@gmail.com`) submitted this repository (`https://github.com/Shrikant1a/sealbid`) to the Midnight Hackathon evaluation system without permission, leading to a *"Revisions Needed - Also submitted by 2 other accounts"* flag on September 24, 2026.
 >
-> **Official Disclaimer:**
-> 1. `forestzonej2@gmail.com` is **NOT** associated with Shrikant Aher, the SealBid project, or any team member.
-> 2. The submission from `forestzonej2@gmail.com` is an **unauthorized duplicate / plagiarism attempt** of my work.
-> 3. Any submission of `https://github.com/Shrikant1a/sealbid` NOT associated with the primary submitter `Shrikant Aher` (`shrikantaher2004@gmail.com` / GitHub `@Shrikant1a`) is fraudulent and should be disqualified.
+> **Official Disclaimer & Mandate:**
+> 1. Neither of those accounts is associated with Shrikant Aher, the SealBid project, or any legitimate contributor.
+> 2. Both submissions are **unauthorized duplicates / sybil plagiarism attempts** of my original work.
+> 3. Any submission of `https://github.com/Shrikant1a/sealbid` NOT submitted by the primary creator **Shrikant Aher** (`shrikantaher2004@gmail.com` / GitHub `@Shrikant1a`) is fraudulent and must be disqualified.
+> 4. For the full ownership certificate, see [**`VERIFICATION.md`**](../VERIFICATION.md).
 
 ---
 
