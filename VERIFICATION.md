@@ -19,7 +19,7 @@ This document formally certifies that **Shrikant Aher** is the sole creator, ori
 | **Founder Personal X Profile** | [@ShriiAher19](https://x.com/ShriiAher19) | Sole author personal account |
 | **Live Netlify DApp** | [`https://sealbid.netlify.app/`](https://sealbid.netlify.app/) | Directly linked to `@Shrikant1a/sealbid` main branch |
 | **Preprod / Preview Contract** | `0xa58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827` | Deployed July 30, 2026 at 7:47 AM UTC & synced with Sep 2026 updates |
-| **User Onboarding Google Sheet** | [Google Sheets Dataset (75+ Testers)](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing) | Public verifiable onboarding data |
+| **User Onboarding Dataset (75+ Testers)** | [Interactive dApp Explorer (`/testers`)](https://sealbid.netlify.app/testers) & [Direct CSV/Excel](https://sealbid.netlify.app/sealbid_user_onboarding_dataset.csv) | Public verifiable onboarding data |
 | **Feedback Management Form** | [`https://forms.gle/ypK1Z94XzaXZs8Yb9`](https://forms.gle/ypK1Z94XzaXZs8Yb9) | Owned and administered by `shrikantaher2004@gmail.com` |
 
 ---
@@ -40,9 +40,9 @@ This document formally certifies that **Shrikant Aher** is the sole creator, ori
    - Codebase bindings in `src/lib/midnight/contract-interface.ts` and automated tests in `tests/contract.test.ts` are 100% synchronized and passing (14/14 tests pass).
    - Deployment automation is maintained in `scripts/deploy.ts` targeting Midnight Preprod / Preview with complete step-by-step instructions.
 
-2. **Verifiable User Onboarding Google Sheet:**
-   - Created the official public Google Sheet: **[SealBid Verified Preprod Onboarding Dataset](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)**.
-   - Also available as a direct CSV download from the dApp at [`https://sealbid.netlify.app/sealbid_user_onboarding_dataset.csv`](https://sealbid.netlify.app/sealbid_user_onboarding_dataset.csv) and in [`docs/USER_ONBOARDING_SHEET.csv`](./docs/USER_ONBOARDING_SHEET.csv).
+2. **Verifiable User Onboarding Dataset & Interactive Explorer:**
+   - Deployed the interactive **[SealBid 75+ Testers Explorer (`/testers`)](https://sealbid.netlify.app/testers)** directly within the dApp with real-time search, category filters, and address copy verification.
+   - Provided direct CSV & Excel download at [`https://sealbid.netlify.app/sealbid_user_onboarding_dataset.csv`](https://sealbid.netlify.app/sealbid_user_onboarding_dataset.csv) and in [`docs/USER_ONBOARDING_SHEET.csv`](./docs/USER_ONBOARDING_SHEET.csv).
    - Fully tracks **75 unique, verifiable Midnight Preprod testers** with shielded addresses, timestamps, commitment transaction hashes, proving latencies (1,805ms avg), and qualitative reviews.
 
 3. **Official Product X Profile & Brand Presence:**

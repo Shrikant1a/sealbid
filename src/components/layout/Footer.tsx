@@ -83,15 +83,12 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <a
-                  href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/testers"
                   className="flex items-center gap-1.5 text-cyan-300 hover:text-cyan-200 font-medium transition-colors"
                 >
                   <span>📊 User Onboarding Sheet (75+)</span>
-                  <ExternalLink className="w-3 h-3 text-cyan-400" />
-                </a>
+                </Link>
               </li>
               <li>
                 <a

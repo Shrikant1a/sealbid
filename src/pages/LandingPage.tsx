@@ -117,22 +117,20 @@ export const LandingPage: React.FC = () => {
               <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-display">ZK-SNARK</div>
               <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Compact Verification</div>
             </div>
-            <a
-              href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/testers"
               className="p-5 rounded-2xl bg-cyan-950/20 border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-900/30 backdrop-blur-md shadow-lg transition-all group text-left cursor-pointer"
-              title="Open Google Sheet with 75+ Verified Preprod Users"
+              title="Open Interactive Sheet with 75+ Verified Preprod Users"
             >
               <div className="flex items-center justify-between">
                 <span className="text-2xl sm:text-3xl font-extrabold text-cyan-300 font-display">75 Users</span>
-                <ExternalLink className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+                <Sparkles className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
               </div>
               <div className="text-xs text-cyan-400 mt-1 font-medium tracking-wide flex items-center gap-1">
                 <span>Preprod Verified Sheet</span>
-                <span className="text-[10px] text-emerald-400 font-bold">↗</span>
+                <span className="text-[10px] text-emerald-400 font-bold">→</span>
               </div>
-            </a>
+            </Link>
             <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-emerald-500/40 backdrop-blur-md shadow-lg transition-all">
               <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">{network}</div>
               <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Midnight Synced</div>
@@ -158,15 +156,13 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
-            <a
-              href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/testers"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-midnight-950 font-bold text-xs hover:brightness-110 shadow-[0_0_20px_rgba(0,229,255,0.35)] transition-all"
             >
-              <span>📊 Open Google Sheet</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+              <span>📊 Open 75+ Testers Sheet</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
 
             <a
               href="/sealbid_user_onboarding_dataset.csv"

@@ -30,8 +30,8 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 We have onboarded **75 verified testers** on the Midnight Preprod network! Testing remains active to continually refine protocol usability and zero-knowledge prover performance.
  
 - **🔗 Live DApp:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)  
-- **📊 Public Google Sheet (75+ Testers):** [SealBid Verified Preprod Onboarding Dataset](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)  
-- **💾 Raw Dataset (CSV):** [`public/sealbid_user_onboarding_dataset.csv`](./public/sealbid_user_onboarding_dataset.csv)  
+- **📊 75+ Testers In-App Sheet:** [Interactive Testers Explorer (`/testers`)](https://sealbid.netlify.app/testers)  
+- **💾 Raw Dataset (CSV / Excel):** [`public/sealbid_user_onboarding_dataset.csv`](./public/sealbid_user_onboarding_dataset.csv)  
 - **📝 Qualitative Feedback Form:** [https://forms.gle/ypK1Z94XzaXZs8Yb9](https://forms.gle/ypK1Z94XzaXZs8Yb9)  
  
 **Testing Steps:**
@@ -48,8 +48,7 @@ We have onboarded **75 verified testers** on the Midnight Preprod network! Testi
 
 - **Live Application**: https://sealbid.netlify.app/
 - **Official Product X Profile**: https://x.com/SealBids
-- **Founder / Developer Profile**: https://x.com/ShriiAher19
-- **Official Google Sheet (User Onboarding)**: [Open Google Sheet](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
+- **75+ Testers Explorer**: [SealBid Testers Explorer (`/testers`)](https://sealbid.netlify.app/testers) · [Download CSV](https://sealbid.netlify.app/sealbid_user_onboarding_dataset.csv)
 - **Contract Synchronization Report**: [`docs/CONTRACT_SYNC.md`](./docs/CONTRACT_SYNC.md)
 - **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
 - **Screenshots Gallery**: [`ss/`](./ss/)

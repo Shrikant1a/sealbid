@@ -18,6 +18,7 @@ import { MyAuctionsPage } from './pages/MyAuctionsPage';
 import { MyBidsPage } from './pages/MyBidsPage';
 import { AuctionResultPage } from './pages/AuctionResultPage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
+import { TestersPage } from './pages/TestersPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App: React.FC = () => {
@@ -42,6 +43,7 @@ export const App: React.FC = () => {
                   <Route path="/results/:id" element={<AuctionResultPage />} />
                   <Route path="/results" element={<AuctionResultPage />} />
                   <Route path="/how-it-works" element={<HowItWorksPage />} />
+                  <Route path="/testers" element={<TestersPage />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
