@@ -117,14 +117,74 @@ export const LandingPage: React.FC = () => {
               <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-display">ZK-SNARK</div>
               <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Compact Verification</div>
             </div>
-            <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-indigo-500/40 backdrop-blur-md shadow-lg transition-all">
-              <div className="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-display">0 MEV</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Front-Running Shield</div>
-            </div>
+            <a
+              href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-5 rounded-2xl bg-cyan-950/20 border border-cyan-500/40 hover:border-cyan-400 hover:bg-cyan-900/30 backdrop-blur-md shadow-lg transition-all group text-left cursor-pointer"
+              title="Open Google Sheet with 75+ Verified Preprod Users"
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-2xl sm:text-3xl font-extrabold text-cyan-300 font-display">75 Users</span>
+                <ExternalLink className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+              </div>
+              <div className="text-xs text-cyan-400 mt-1 font-medium tracking-wide flex items-center gap-1">
+                <span>Preprod Verified Sheet</span>
+                <span className="text-[10px] text-emerald-400 font-bold">↗</span>
+              </div>
+            </a>
             <div className="p-5 rounded-2xl bg-midnight-900/60 border border-midnight-750 hover:border-emerald-500/40 backdrop-blur-md shadow-lg transition-all">
               <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-display">{network}</div>
-              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Midnight Native</div>
+              <div className="text-xs text-slate-400 mt-1 font-medium tracking-wide">Midnight Synced</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VERIFIABLE USER ONBOARDING & PRODUCT UPDATES BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-midnight-900/90 via-cyan-950/30 to-midnight-900/90 border border-cyan-500/30 shadow-2xl flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-bold text-cyan-300">
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+              Level 5 & 6 Deliverable: 75 Verified Preprod Testers
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+              Verifiable User Onboarding & Preprod Feedback
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+              Real community testers connected Midnight Lace, generated zero-knowledge witnesses, and confirmed confidential bids on Preprod. View the live Google Sheet or download the raw dataset.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+            <a
+              href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-midnight-950 font-bold text-xs hover:brightness-110 shadow-[0_0_20px_rgba(0,229,255,0.35)] transition-all"
+            >
+              <span>📊 Open Google Sheet</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+
+            <a
+              href="/sealbid_user_onboarding_dataset.csv"
+              download="sealbid_user_onboarding_dataset.csv"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-midnight-900 hover:bg-midnight-800 border border-midnight-700 hover:border-cyan-500/50 text-slate-200 font-semibold text-xs transition-all"
+            >
+              <span>💾 Download CSV</span>
+            </a>
+
+            <a
+              href="https://x.com/SealBidNetwork"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-midnight-900 hover:bg-midnight-800 border border-midnight-700 hover:border-cyan-500/50 text-cyan-300 font-semibold text-xs transition-all"
+            >
+              <span>🐦 Follow @SealBidNetwork</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </section>

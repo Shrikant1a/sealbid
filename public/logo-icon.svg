@@ -1,98 +1,80 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
   <defs>
-    <!-- Background Ambient Gradient -->
-    <radialGradient id="sbIconGlow" cx="60" cy="60" r="55" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.35" />
-      <stop offset="50%" stop-color="#3b82f6" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#060913" stop-opacity="0" />
+    <!-- Background Ambient Glow -->
+    <radialGradient id="sbAmbientGlow" cx="60" cy="60" r="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#4F46E5" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#050814" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Outer Facet Gradient -->
-    <linearGradient id="sbHexGrad" x1="20" y1="14" x2="100" y2="106" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#22d3ee" />
-      <stop offset="35%" stop-color="#06b6d4" />
-      <stop offset="70%" stop-color="#4f46e5" />
-      <stop offset="100%" stop-color="#9333ea" />
+    <!-- Outer Seal Ring Gradient -->
+    <linearGradient id="sbRingGrad" x1="16" y1="16" x2="104" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#6366F1" />
     </linearGradient>
 
-    <!-- Inner Dark Core Gradient -->
-    <linearGradient id="sbCoreDark" x1="30" y1="20" x2="90" y2="100" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="50%" stop-color="#090d16" />
-      <stop offset="100%" stop-color="#030712" />
+    <!-- Ribbon S Gradient (Cyan to Sky) -->
+    <linearGradient id="sbRibbonS" x1="30" y1="28" x2="75" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="50%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#38BDF8" />
     </linearGradient>
 
-    <!-- Prism Highlight -->
-    <linearGradient id="sbPrismHighlight" x1="35" y1="25" x2="85" y2="75" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8" />
-      <stop offset="50%" stop-color="#818cf8" stop-opacity="0.4" />
-      <stop offset="100%" stop-color="#c084fc" stop-opacity="0" />
+    <!-- Ribbon B Gradient (Indigo to Violet) -->
+    <linearGradient id="sbRibbonB" x1="50" y1="50" x2="90" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818CF8" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4F46E5" />
     </linearGradient>
 
-    <!-- Neon Glow Filter -->
-    <filter id="sbNeonGlow" x="-20%" y="-20%" width="140%" height="140%" filterUnits="userSpaceOnUse">
-      <feGaussianBlur stdDeviation="3" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
+    <!-- Core Vault Dark Fill -->
+    <radialGradient id="sbCoreFill" cx="60" cy="60" r="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="100%" stop-color="#050814" />
+    </radialGradient>
 
-    <!-- Subtle Drop Shadow -->
-    <filter id="sbDropShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#06b6d4" flood-opacity="0.4" />
+    <!-- Subtle Soft Drop Filter -->
+    <filter id="sbDropShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#00E5FF" flood-opacity="0.3" />
     </filter>
   </defs>
 
-  <!-- Ambient Glow Ring -->
-  <circle cx="60" cy="60" r="54" fill="url(#sbIconGlow)" />
+  <!-- Ambient Glow -->
+  <circle cx="60" cy="60" r="54" fill="url(#sbAmbientGlow)" />
 
-  <!-- Outer Isometric Shield / Vault Hexagon -->
-  <path d="M60 8 L104 28 V76 L60 112 L16 76 V28 Z" 
-        fill="url(#sbCoreDark)" 
-        stroke="url(#sbHexGrad)" 
+  <!-- Outer Cryptographic Vault Disk -->
+  <circle cx="60" cy="60" r="48" fill="url(#sbCoreFill)" stroke="url(#sbRingGrad)" stroke-width="2.5" filter="url(#sbDropShadow)" />
+
+  <!-- Four Security Registration Ticks (0, 90, 180, 270 deg) -->
+  <line x1="60" y1="8" x2="60" y2="15" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" />
+  <line x1="60" y1="105" x2="60" y2="112" stroke="#6366F1" stroke-width="2" stroke-linecap="round" />
+  <line x1="8" y1="60" x2="15" y2="60" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" />
+  <line x1="105" y1="60" x2="112" y2="60" stroke="#6366F1" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Inner Concentric Precision Dashed Track -->
+  <circle cx="60" cy="60" r="41" fill="none" stroke="#38BDF8" stroke-width="1" stroke-dasharray="4 4" stroke-opacity="0.4" />
+
+  <!-- Interlocking Cryptographic Monogram ("S" & "B" Vault Nexus) -->
+  <!-- Top Arc: Upper Loop of 'S' flowing into Seal Shackle -->
+  <path d="M42 46 C42 36 50 28 60 28 C70 28 78 36 78 46 C78 52 74 56 68 58 L52 62 C46 64 42 68 42 74 C42 84 50 92 60 92 C70 92 78 84 78 74" 
+        fill="none" 
+        stroke="url(#sbRibbonS)" 
+        stroke-width="5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+
+  <!-- Lower Counter-Arc: Completing 'B' (Bid) & Vault Lock Body -->
+  <path d="M52 38 V82 C52 82 76 84 76 70 C76 60 66 58 60 58 C68 58 74 54 74 44 C74 34 52 36 52 38 Z" 
+        fill="none" 
+        stroke="url(#sbRibbonB)" 
         stroke-width="3" 
-        stroke-linejoin="round"
-        filter="url(#sbDropShadow)" />
-
-  <!-- Secondary Inner Precision Facet -->
-  <path d="M60 18 L94 34 V70 L60 98 L26 70 V34 Z" 
-        fill="#070c18" 
-        stroke="url(#sbPrismHighlight)" 
-        stroke-width="1.5" 
+        stroke-linecap="round" 
         stroke-linejoin="round" 
-        stroke-dasharray="80 3" />
+        stroke-opacity="0.85" />
 
-  <!-- Zero-Knowledge Cryptographic Vault / Sealed Bid Gavel Nexus -->
-  <g filter="url(#sbNeonGlow)">
-    <!-- Top Gavel Head / Vault Shackle Prism (Dynamic Angle) -->
-    <path d="M42 36 L78 36 L84 46 L36 46 Z" 
-          fill="url(#sbHexGrad)" 
-          stroke="#e0f2fe" 
-          stroke-width="1" />
-    
-    <!-- Gavel / Key Shaft -->
-    <path d="M57 46 V62 H63 V46 Z" 
-          fill="url(#sbHexGrad)" />
-
-    <!-- Cryptographic Shield Seal Core (Octagonal Vault Center) -->
-    <polygon points="60,54 75,62 75,78 60,86 45,78 45,62" 
-             fill="#0c1527" 
-             stroke="url(#sbHexGrad)" 
-             stroke-width="2" 
-             stroke-linejoin="round" />
-
-    <!-- Central Glowing ZK Commitment Eye / Keyhole Aperture -->
-    <circle cx="60" cy="69" r="5" fill="none" stroke="#22d3ee" stroke-width="1.8" />
-    <circle cx="60" cy="69" r="2.2" fill="#38bdf8" />
-    <path d="M60 74 V80" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" />
-
-    <!-- Left & Right Cryptographic Lattice Nodes -->
-    <line x1="30" y1="52" x2="45" y2="62" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="2 2" />
-    <circle cx="30" cy="52" r="2.5" fill="#22d3ee" />
-
-    <line x1="90" y1="52" x2="75" y2="62" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="2 2" />
-    <circle cx="90" cy="52" r="2.5" fill="#c084fc" />
-
-    <!-- Ascending Value Bid Nodes (Bottom) -->
-    <line x1="60" y1="86" x2="60" y2="96" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" />
-    <circle cx="60" cy="98" r="3" fill="#22d3ee" />
-  </g>
+  <!-- Center ZK Privacy Vault Aperture / Keyhole -->
+  <circle cx="60" cy="60" r="6" fill="#050814" stroke="#00E5FF" stroke-width="2" />
+  <circle cx="60" cy="60" r="2.5" fill="#00E5FF" />
+  <path d="M60 65 V70" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" />
 </svg>

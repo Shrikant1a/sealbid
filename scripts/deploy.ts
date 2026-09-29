@@ -42,6 +42,7 @@ async function main() {
       endTime: BigInt(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
       bidderCount: 0n,
       isClosed: false,
+      isCancelled: false,
       highestBidCommitment: new Uint8Array(32),
       winnerAddress: new Uint8Array(32),
       winningBidAmount: 0n,

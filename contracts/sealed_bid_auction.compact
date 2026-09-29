@@ -2,6 +2,7 @@
 // MIDNIGHT COMPACT SMART CONTRACT: Sealed-Bid Confidential Auction
 // Language: Compact v0.17+ (Midnight Network)
 // Target: Midnight Preprod / Preview Zero-Knowledge Consensus
+// Milestone: Level 5 - Full Moon Submission (September 2026 Revision)
 // ============================================================================
 //
 // PRIVACY-CRITICAL CORE: ZERO-KNOWLEDGE PRIVACY MODEL & SECURITY INVARIANTS
@@ -9,7 +10,7 @@
 // 1. STATE ISOLATION:
 //    - Public Ledger State: Declared under the `ledger` block. This contains variables
 //      whose values are publicly readable by any node on the Midnight network (e.g.
-//      sellerPk, startingBid, bidderCount, isClosed, winningBidAmount, winnerAddress).
+//      sellerPk, startingBid, bidderCount, isClosed, isCancelled, winningBidAmount, winnerAddress).
 //    - Private State (Witnesses): Parameters marked with the `witness` modifier in 
 //      circuits (e.g., `bidAmount`, `salt`, `bidderPk`). These remain strictly inside the
 //      user's local client-side environment (the Midnight Lace Wallet or DApp runtime).
@@ -18,8 +19,8 @@
 // 2. CRYPTOGRAPHIC COMMITMENTS:
 //    - When a user submits a bid, they supply `witness bidAmount`, `witness salt`,
 //      and `witness bidderPk`. 
-//    - The client-side circuit computes a cryptographic commitment using a hash function:
-//      `commitment = Hash(bidAmount || salt || bidderPk)`.
+//    - The client-side circuit computes a cryptographic commitment using persistent hashing:
+//      `commitment = persistentHash([bidAmount, salt, bidderPk])`.
 //    - Only the resulting public `commitment` (32-byte hash) is stored on-chain in the
 //      ledger (`ledger.commitmentsTreeRoot` is updated with it).
 //    - This ensures that competing bidders and the seller cannot read the bid value,
@@ -33,9 +34,17 @@
 //    - The zero-knowledge proof verifies:
 //      a) The witnesses hash exactly to the claimed commitment.
 //      b) The winning bid satisfies the reserve minimum requirements (`winningBid >= startingBid`).
+//      c) The auction has active participants (`bidderCount > 0`).
+//      d) Caller authorization matches the designated seller.
 //    - The public ledger state is updated with the winner's public key and winning bid amount.
 //    - All other bids remain permanently hidden since their preimages (witnesses) are never
 //      revealed to the public ledger.
+//
+// 4. SEPTEMBER 2026 CONTRACT SYNCHRONIZATION REVISION:
+//    - Synced with Midnight Preview / Preprod zero-knowledge runtime.
+//    - Added `cancelAuction` circuit for authorized emergency seller cancellation.
+//    - Added `isCancelled` ledger state invariant.
+//    - Added non-zero bidder guard on settlement to prevent settling empty auctions.
 // ============================================================================
 
 import CompactStandardLibrary;
@@ -50,6 +59,7 @@ module SealedBidAuction {
     export ledger endTime: Uint<64>;
     export ledger bidderCount: Uint<32>;
     export ledger isClosed: Boolean;
+    export ledger isCancelled: Boolean;
     export ledger highestBidCommitment: Bytes<32>;
     export ledger winnerAddress: Bytes<32>;
     export ledger winningBidAmount: Uint<64>;
@@ -70,12 +80,13 @@ module SealedBidAuction {
         endTime = duration;
         bidderCount = 0;
         isClosed = false;
+        isCancelled = false;
         winningBidAmount = 0;
     }
 
     // ------------------------------------------------------------------------
     // Private Witness Transition: Submit Sealed Bid Commitment
-    // Computes: commitment = Hash(bidAmount || salt || bidderPk)
+    // Computes: commitment = persistentHash([bidAmount, salt, bidderPk])
     // ------------------------------------------------------------------------
     export circuit submitSealedBid(
         bidAmount: Uint<64>,
@@ -83,8 +94,9 @@ module SealedBidAuction {
         bidderPk: Bytes<32>,
         commitment: Bytes<32>
     ): Boolean {
-        // Enforce auction is open
+        // Enforce auction is open and not cancelled
         assert(!isClosed, "Auction is closed for bidding");
+        assert(!isCancelled, "Auction was cancelled");
         
         // Enforce reserve minimum
         assert(bidAmount >= startingBid, "Bid below starting reserve");
@@ -102,7 +114,7 @@ module SealedBidAuction {
 
     // ------------------------------------------------------------------------
     // Zero-Knowledge Settlement Circuit: Verify Winning Bid
-    // Proves that winningBid >= all other commitments without revealing them
+    // Proves that winningBid satisfies minimum reserve and caller is seller
     // ------------------------------------------------------------------------
     export circuit settleWinningBid(
         winningBid: Uint<64>,
@@ -114,8 +126,12 @@ module SealedBidAuction {
         // Enforce seller authorization
         assert(callerPk == seller, "Only the seller can settle the auction");
 
-        // Enforce auction is not yet finalized
+        // Enforce auction is not yet finalized or cancelled
         assert(!isClosed, "Auction already settled");
+        assert(!isCancelled, "Cannot settle a cancelled auction");
+
+        // Enforce that auction received at least one bid
+        assert(bidderCount > 0, "No bids to settle");
 
         // Verify winning commitment integrity
         const verifyCommitment = persistentHash<Vector<3, Bytes<32>>>([winningBid as Bytes<32>, winningSalt, winnerPk]);
@@ -129,6 +145,26 @@ module SealedBidAuction {
         highestBidCommitment = claimedCommitment;
         winnerAddress = winnerPk;
         winningBidAmount = winningBid;
+
+        return true;
+    }
+
+    // ------------------------------------------------------------------------
+    // Emergency / Lifecycle Cancellation Circuit
+    // Enables the seller to safely cancel an auction if no valid bids were received
+    // or under emergency conditions prior to settlement.
+    // ------------------------------------------------------------------------
+    export circuit cancelAuction(callerPk: Bytes<32>): Boolean {
+        // Enforce seller authorization
+        assert(callerPk == seller, "Only the seller can cancel the auction");
+
+        // Enforce auction is active and not already finalized or cancelled
+        assert(!isClosed, "Auction already settled");
+        assert(!isCancelled, "Auction already cancelled");
+
+        // Transition auction to closed and cancelled state
+        isClosed = true;
+        isCancelled = true;
 
         return true;
     }

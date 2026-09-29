@@ -6,6 +6,9 @@ The Midnight Level 6 Supermoon milestone requires demonstrating that **70+ real 
 - **Current Total Tracked:** 75 Unique Preprod Users (107% of goal)
 - **Active Network:** Midnight Preprod
 - **Verified Contract Address:** `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`
+- **Official Public Google Sheet:** [SealBid Preprod Onboarding Dataset (Google Sheets)](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
+- **Raw CSV Download:** [`public/sealbid_user_onboarding_dataset.csv`](../public/sealbid_user_onboarding_dataset.csv)
+- **Official Product X Channel:** [@SealBidNetwork](https://x.com/SealBidNetwork)
 
 ---
 

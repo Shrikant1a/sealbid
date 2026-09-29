@@ -1,43 +1,51 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90" fill="none">
   <defs>
-    <!-- Background Ambient Gradient -->
+    <!-- Background Ambient Glow -->
     <radialGradient id="hLogoGlow" cx="45" cy="45" r="40" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3" />
-      <stop offset="60%" stop-color="#4f46e5" stop-opacity="0.1" />
-      <stop offset="100%" stop-color="#060913" stop-opacity="0" />
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#4F46E5" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#050814" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Outer Facet Gradient -->
-    <linearGradient id="hHexGrad" x1="15" y1="10" x2="75" y2="80" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#22d3ee" />
-      <stop offset="35%" stop-color="#06b6d4" />
-      <stop offset="70%" stop-color="#4f46e5" />
-      <stop offset="100%" stop-color="#9333ea" />
+    <!-- Ring Gradient -->
+    <linearGradient id="hRingGrad" x1="16" y1="16" x2="104" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#6366F1" />
     </linearGradient>
 
-    <!-- Core Dark -->
-    <linearGradient id="hCoreDark" x1="20" y1="15" x2="70" y2="75" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#030712" />
+    <!-- Ribbon S Gradient -->
+    <linearGradient id="hRibbonS" x1="30" y1="28" x2="75" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="50%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#38BDF8" />
     </linearGradient>
+
+    <!-- Ribbon B Gradient -->
+    <linearGradient id="hRibbonB" x1="50" y1="50" x2="90" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818CF8" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+
+    <!-- Core Dark Fill -->
+    <radialGradient id="hCoreDark" cx="60" cy="60" r="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B132B" />
+      <stop offset="100%" stop-color="#050814" />
+    </radialGradient>
 
     <!-- Text Seal Gradient -->
     <linearGradient id="textSeal" x1="100" y1="30" x2="180" y2="60" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#ffffff" />
-      <stop offset="100%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#f8fafc" />
     </linearGradient>
 
     <!-- Text Bid Gradient -->
     <linearGradient id="textBid" x1="180" y1="30" x2="270" y2="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#22d3ee" />
-      <stop offset="50%" stop-color="#06b6d4" />
-      <stop offset="100%" stop-color="#818cf8" />
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="50%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#818CF8" />
     </linearGradient>
-
-    <filter id="hGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
   </defs>
 
   <!-- Left Emblem Group (scaled & centered) -->
@@ -45,54 +53,47 @@
     <!-- Ambient Glow -->
     <circle cx="60" cy="60" r="54" fill="url(#hLogoGlow)" />
 
-    <!-- Outer Isometric Shield -->
-    <path d="M60 8 L104 28 V76 L60 112 L16 76 V28 Z" 
-          fill="url(#hCoreDark)" 
-          stroke="url(#hHexGrad)" 
-          stroke-width="3" 
+    <!-- Outer Cryptographic Vault Disk -->
+    <circle cx="60" cy="60" r="48" fill="url(#hCoreDark)" stroke="url(#hRingGrad)" stroke-width="3" />
+
+    <!-- Security Registration Ticks -->
+    <line x1="60" y1="8" x2="60" y2="15" stroke="#00E5FF" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="60" y1="105" x2="60" y2="112" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="8" y1="60" x2="15" y2="60" stroke="#00E5FF" stroke-width="2.5" stroke-linecap="round" />
+    <line x1="105" y1="60" x2="112" y2="60" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Concentric Track -->
+    <circle cx="60" cy="60" r="41" fill="none" stroke="#38BDF8" stroke-width="1.2" stroke-dasharray="4 4" stroke-opacity="0.4" />
+
+    <!-- Interlocking Monogram ('S' & 'B') -->
+    <path d="M42 46 C42 36 50 28 60 28 C70 28 78 36 78 46 C78 52 74 56 68 58 L52 62 C46 64 42 68 42 74 C42 84 50 92 60 92 C70 92 78 84 78 74" 
+          fill="none" 
+          stroke="url(#hRibbonS)" 
+          stroke-width="5" 
+          stroke-linecap="round" 
           stroke-linejoin="round" />
 
-    <!-- Inner Precision Facet -->
-    <path d="M60 18 L94 34 V70 L60 98 L26 70 V34 Z" 
-          fill="#070c18" 
-          stroke="#38bdf8" 
-          stroke-width="1.5" 
-          stroke-opacity="0.6" 
+    <path d="M52 38 V82 C52 82 76 84 76 70 C76 60 66 58 60 58 C68 58 74 54 74 44 C74 34 52 36 52 38 Z" 
+          fill="none" 
+          stroke="url(#hRibbonB)" 
+          stroke-width="3.2" 
+          stroke-linecap="round" 
           stroke-linejoin="round" 
-          stroke-dasharray="80 3" />
+          stroke-opacity="0.9" />
 
-    <!-- Gavel / Key Nexus -->
-    <g filter="url(#hGlow)">
-      <path d="M42 36 L78 36 L84 46 L36 46 Z" fill="url(#hHexGrad)" stroke="#e0f2fe" stroke-width="1" />
-      <path d="M57 46 V62 H63 V46 Z" fill="url(#hHexGrad)" />
-      
-      <!-- Vault Octagon Core -->
-      <polygon points="60,54 75,62 75,78 60,86 45,78 45,62" 
-               fill="#0c1527" 
-               stroke="url(#hHexGrad)" 
-               stroke-width="2" 
-               stroke-linejoin="round" />
-
-      <!-- Center Aperture -->
-      <circle cx="60" cy="69" r="5" fill="none" stroke="#22d3ee" stroke-width="1.8" />
-      <circle cx="60" cy="69" r="2.2" fill="#38bdf8" />
-      <path d="M60 74 V80" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" />
-
-      <!-- Nodes -->
-      <circle cx="30" cy="52" r="2.5" fill="#22d3ee" />
-      <circle cx="90" cy="52" r="2.5" fill="#c084fc" />
-      <line x1="60" y1="86" x2="60" y2="96" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" />
-      <circle cx="60" cy="98" r="3" fill="#22d3ee" />
-    </g>
+    <!-- Center ZK Privacy Vault Aperture -->
+    <circle cx="60" cy="60" r="6" fill="#050814" stroke="#00E5FF" stroke-width="2" />
+    <circle cx="60" cy="60" r="2.5" fill="#00E5FF" />
+    <path d="M60 65 V70" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" />
   </g>
 
   <!-- Typography: SealBid -->
-  <text x="102" y="52" font-family="'Space Grotesk', system-ui, sans-serif" font-size="40" font-weight="800" letter-spacing="-1">
+  <text x="100" y="52" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="40" font-weight="800" letter-spacing="-1">
     <tspan fill="url(#textSeal)">Seal</tspan><tspan fill="url(#textBid)">Bid</tspan>
   </text>
 
-  <!-- Subtitle: Confidential Auction Protocol -->
-  <text x="104" y="70" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#94a3b8" letter-spacing="1.8">
+  <!-- Subtitle: CONFIDENTIAL AUCTION PROTOCOL -->
+  <text x="102" y="70" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#94a3b8" letter-spacing="2">
     CONFIDENTIAL AUCTION PROTOCOL
   </text>
 </svg>

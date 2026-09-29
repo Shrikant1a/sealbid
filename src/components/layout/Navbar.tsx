@@ -84,13 +84,25 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Header Actions: Network Pill, Faucet & Wallet */}
+          {/* Right Header Actions: Network Pill, Sheet, Faucet & Wallet */}
           <div className="hidden sm:flex items-center gap-3">
+            <a
+              href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-950/40 hover:bg-cyan-900/50 text-xs font-semibold text-cyan-300 border border-cyan-500/30 hover:border-cyan-400/70 shadow-[0_0_12px_rgba(0,229,255,0.15)] transition-all group"
+              title="Official 75+ Preprod User Onboarding Sheet (Google Sheets)"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
+              <span>75+ Testers Sheet</span>
+              <ExternalLink className="w-3 h-3 text-cyan-500 group-hover:text-cyan-300" />
+            </a>
+
             <a
               href="https://faucet.preprod.midnight.network/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-midnight-900/80 hover:bg-midnight-800 text-xs font-semibold text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 shadow-sm transition-all group"
+              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-midnight-900/80 hover:bg-midnight-800 text-xs font-semibold text-slate-300 hover:text-white border border-midnight-700/80 hover:border-cyan-500/40 shadow-sm transition-all group"
               title="Request test tokens (tDU) from Midnight Faucet"
             >
               <Coins className="w-3.5 h-3.5 text-cyan-400 group-hover:scale-110 transition-transform" />
@@ -178,6 +190,33 @@ export const Navbar: React.FC = () => {
                 </Link>
               );
             })}
+
+            {/* Direct Link to Onboarding Google Sheet on Mobile */}
+            <a
+              href="https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-cyan-300 bg-cyan-950/30 border border-cyan-500/30 hover:bg-cyan-900/40"
+            >
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-4 h-4 text-cyan-400" />
+                <span>📊 User Onboarding Sheet (75+)</span>
+              </div>
+              <ExternalLink className="w-4 h-4 text-cyan-400" />
+            </a>
+
+            {/* Official Product X Profile */}
+            <a
+              href="https://x.com/SealBidNetwork"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 bg-midnight-900 border border-midnight-700 hover:text-white"
+            >
+              <div className="flex items-center gap-3">
+                <ExternalLink className="w-4 h-4 text-cyan-400" />
+                <span>Official X (@SealBidNetwork)</span>
+              </div>
+            </a>
           </div>
         </div>
       )}

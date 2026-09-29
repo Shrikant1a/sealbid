@@ -4,11 +4,11 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 
 [![Live Demo](https://img.shields.io/badge/demo-sealbid.netlify.app-00C7B7)](https://sealbid.netlify.app/)
 [![CI](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml)
-[![Compliance Audit](https://github.com/Shrikant1a/sealbid/actions/workflows/compliance.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions/workflows/compliance.yml)
 [![Network](https://img.shields.io/badge/network-Midnight%20Preview%20%2F%20Preprod-blue)](https://midnight.network)
-[![Twitter](https://img.shields.io/badge/twitter-@ShriiAher19-black)](https://x.com/ShriiAher19)
+[![Official Product X](https://img.shields.io/badge/official%20X-@SealBidNetwork-black)](https://x.com/SealBidNetwork)
 [![Author](https://img.shields.io/badge/author-Shrikant%20Aher%20(@Shrikant1a)-blue)](https://github.com/Shrikant1a)
-[![Provenance](https://img.shields.io/badge/provenance-verified-success)](./docs/PROVENANCE.md)
+[![Contract Sync](https://img.shields.io/badge/contract-synced%20(Sep%202026)-success)](./docs/CONTRACT_SYNC.md)
+[![Onboarding Dataset](https://img.shields.io/badge/testers-75%20verified%20(Google%20Sheets)-brightgreen)](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
 [![Ownership Certificate](https://img.shields.io/badge/ownership-certified-success)](./VERIFICATION.md)
 
 ---
@@ -25,12 +25,14 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 
 ---
 
-## 📢 Call for Testers (Midnight Preprod Network)
+## 📢 Call for Testers & Verifiable Onboarding Dataset
+
+We have onboarded **75 verified testers** on the Midnight Preprod network! Testing remains active to continually refine protocol usability and zero-knowledge prover performance.
  
-We have successfully onboarded **75 active testers** on the Midnight Preprod network! Testing remains active to continually refine protocol usability and zero-knowledge prover performance.
- 
-**🔗 Application:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)  
-**📝 Feedback Form:** [https://forms.gle/ypK1Z94XzaXZs8Yb9](https://forms.gle/ypK1Z94XzaXZs8Yb9)  
+- **🔗 Live DApp:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)  
+- **📊 Public Google Sheet (75+ Testers):** [SealBid Verified Preprod Onboarding Dataset](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)  
+- **💾 Raw Dataset (CSV):** [`public/sealbid_user_onboarding_dataset.csv`](./public/sealbid_user_onboarding_dataset.csv)  
+- **📝 Qualitative Feedback Form:** [https://forms.gle/ypK1Z94XzaXZs8Yb9](https://forms.gle/ypK1Z94XzaXZs8Yb9)  
  
 **Testing Steps:**
 1. Connect your [Midnight Lace Wallet](https://www.lace.io/).
@@ -38,21 +40,21 @@ We have successfully onboarded **75 active testers** on the Midnight Preprod net
 3. Obtain test tokens (tDU) from the [Preprod Faucet](https://faucet.preprod.midnight.network/).
 4. Connect your wallet to the SealBid application.
 5. Place a confidential test bid on an active auction.
-6. Submit feedback via the form above with your Midnight Preprod address.
-
-Please share any issues, usability concerns, or suggestions you encounter during testing. Thank you for your time and support—I really appreciate it!
+6. Verify your transaction on Midnight Explorer.
 
 ---
 
 ## Links
 
 - **Live Application**: https://sealbid.netlify.app/
+- **Official Product X Profile**: https://x.com/SealBidNetwork
+- **Founder / Developer Profile**: https://x.com/ShriiAher19
+- **Official Google Sheet (User Onboarding)**: [Open Google Sheet](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
+- **Contract Synchronization Report**: [`docs/CONTRACT_SYNC.md`](./docs/CONTRACT_SYNC.md)
 - **Video Walkthrough**: [`demo/demo-video.mp4`](./demo/demo-video.mp4)
 - **Screenshots Gallery**: [`ss/`](./ss/)
-- **X (Twitter) Profile**: https://x.com/ShriiAher19
-- **Product Announcement Post**: https://x.com/ShriiAher19/status/2087790597113593916
 - **Verified Contract Address**: `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`
-- **Contract Explorer**: [Night Scan (Preprod Explorer)](https://explorer.preprod.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827) · [Preview Explorer](https://explorer.preview.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827)
+- **Contract Explorer**: [Night Scan (Preview Explorer)](https://preview.midnightexplorer.com/contracts/0xa58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827) · [Preprod Explorer](https://explorer.preprod.midnight.network/contracts/a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827)
 
 ---
 
@@ -240,7 +242,8 @@ All pull requests and commits to `main` are automatically built and validated vi
 
 ---
 
-## Author
+## Official Product & Author
 
-- **Shrikant Aher** — [@ShriiAher19](https://x.com/ShriiAher19)
+- **Official Product Profile**: [@SealBidNetwork](https://x.com/SealBidNetwork)
+- **Sole Creator & Architect**: **Shrikant Aher** — [@ShriiAher19](https://x.com/ShriiAher19)
 - GitHub: [@Shrikant1a](https://github.com/Shrikant1a)

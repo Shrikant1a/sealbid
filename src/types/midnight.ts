@@ -24,6 +24,7 @@ export interface CompactAuctionLedgerState {
   commitmentsCount: number;
   commitmentsRoot: string;
   isClosed: boolean;
+  isCancelled?: boolean;
   winnerPk?: string;
   winnerCommitment?: string;
 }
@@ -52,6 +53,11 @@ export interface ISealedBidAuctionContract {
     winnerPk: string;
     callerPk: string;
   }): Promise<{ txHash: string; winnerAddress: string; zkProof: string }>;
+
+  cancelAuction(params: {
+    auctionContractAddress: string;
+    callerPk: string;
+  }): Promise<{ txHash: string; isCancelled: boolean }>;
 
   getAuctionState(contractAddress: string): Promise<CompactAuctionLedgerState>;
 }

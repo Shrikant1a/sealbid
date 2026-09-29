@@ -60,78 +60,99 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
           />
         )}
 
-        {/* Vector SVG Emblem */}
+        {/* Bespoke Geometric Vector Emblem */}
         <svg
           viewBox="0 0 120 120"
-          className="relative w-full h-full filter drop-shadow-[0_2px_10px_rgba(6,182,212,0.35)] transition-transform duration-300 group-hover:scale-105"
+          className="relative w-full h-full filter drop-shadow-[0_2px_10px_rgba(0,229,255,0.35)] transition-transform duration-300 group-hover:scale-105"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id={`blRim-${size}`} x1="16" y1="10" x2="104" y2="110" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#22d3ee" />
-              <stop offset="35%" stopColor="#06b6d4" />
-              <stop offset="70%" stopColor="#4f46e5" />
-              <stop offset="100%" stopColor="#9333ea" />
+            <radialGradient id={`sbAmb-${size}`} cx="60" cy="60" r="56" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.25" />
+              <stop offset="60%" stopColor="#4F46E5" stopOpacity="0.08" />
+              <stop offset="100%" stopColor="#050814" stopOpacity="0" />
+            </radialGradient>
+
+            <linearGradient id={`sbRim-${size}`} x1="16" y1="16" x2="104" y2="104" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#00E5FF" />
+              <stop offset="50%" stopColor="#3B82F6" />
+              <stop offset="100%" stopColor="#6366F1" />
             </linearGradient>
 
-            <linearGradient id={`blCore-${size}`} x1="20" y1="15" x2="80" y2="95" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#0f172a" />
-              <stop offset="50%" stopColor="#080e1a" />
-              <stop offset="100%" stopColor="#030712" />
+            <linearGradient id={`sbRibbonS-${size}`} x1="30" y1="28" x2="75" y2="70" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#22D3EE" />
+              <stop offset="50%" stopColor="#00E5FF" />
+              <stop offset="100%" stopColor="#38BDF8" />
             </linearGradient>
+
+            <linearGradient id={`sbRibbonB-${size}`} x1="50" y1="50" x2="90" y2="92" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#818CF8" />
+              <stop offset="50%" stopColor="#6366F1" />
+              <stop offset="100%" stopColor="#4F46E5" />
+            </linearGradient>
+
+            <radialGradient id={`sbCore-${size}`} cx="60" cy="60" r="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#0B132B" />
+              <stop offset="100%" stopColor="#050814" />
+            </radialGradient>
           </defs>
 
-          {/* Outer Isometric Shield / Vault */}
-          <path
-            d="M60 8 L104 28 V76 L60 112 L16 76 V28 Z"
-            fill={`url(#blCore-${size})`}
-            stroke={`url(#blRim-${size})`}
-            strokeWidth="3.5"
-            strokeLinejoin="round"
+          {/* Ambient Glow */}
+          <circle cx="60" cy="60" r="54" fill={`url(#sbAmb-${size})`} />
+
+          {/* Outer Cryptographic Vault Disk */}
+          <circle
+            cx="60"
+            cy="60"
+            r="48"
+            fill={`url(#sbCore-${size})`}
+            stroke={`url(#sbRim-${size})`}
+            strokeWidth="3"
           />
 
-          {/* Inner Facet */}
-          <path
-            d="M60 18 L94 34 V70 L60 98 L26 70 V34 Z"
-            fill="#060b16"
-            stroke="#38bdf8"
+          {/* Precision Security Registration Ticks */}
+          <line x1="60" y1="8" x2="60" y2="15" stroke="#00E5FF" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="60" y1="105" x2="60" y2="112" stroke="#6366F1" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="8" y1="60" x2="15" y2="60" stroke="#00E5FF" strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="105" y1="60" x2="112" y2="60" stroke="#6366F1" strokeWidth="2.5" strokeLinecap="round" />
+
+          {/* Inner Concentric Track */}
+          <circle
+            cx="60"
+            cy="60"
+            r="41"
+            fill="none"
+            stroke="#38BDF8"
+            strokeWidth="1.2"
+            strokeDasharray="4 4"
             strokeOpacity="0.4"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-            strokeDasharray="80 3"
           />
 
-          {/* Gavel Head & Key Shackle */}
+          {/* Interlocking Monogram ('S' & 'B') */}
           <path
-            d="M42 36 L78 36 L84 46 L36 46 Z"
-            fill={`url(#blRim-${size})`}
-            stroke="#e0f2fe"
-            strokeWidth="1"
-          />
-          <path d="M57 46 V62 H63 V46 Z" fill={`url(#blRim-${size})`} />
-
-          {/* Central Vault Octagon Core */}
-          <polygon
-            points="60,54 75,62 75,78 60,86 45,78 45,62"
-            fill="#0c1527"
-            stroke={`url(#blRim-${size})`}
-            strokeWidth="2"
+            d="M42 46 C42 36 50 28 60 28 C70 28 78 36 78 46 C78 52 74 56 68 58 L52 62 C46 64 42 68 42 74 C42 84 50 92 60 92 C70 92 78 84 78 74"
+            fill="none"
+            stroke={`url(#sbRibbonS-${size})`}
+            strokeWidth="5"
+            strokeLinecap="round"
             strokeLinejoin="round"
           />
 
-          {/* Glowing ZK Commitment Eye / Keyhole */}
-          <circle cx="60" cy="69" r="4.8" fill="none" stroke="#22d3ee" strokeWidth="1.8" />
-          <circle cx="60" cy="69" r="2.2" fill="#38bdf8" />
-          <path d="M60 74 V80" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round" />
+          <path
+            d="M52 38 V82 C52 82 76 84 76 70 C76 60 66 58 60 58 C68 58 74 54 74 44 C74 34 52 36 52 38 Z"
+            fill="none"
+            stroke={`url(#sbRibbonB-${size})`}
+            strokeWidth="3.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeOpacity="0.9"
+          />
 
-          {/* Left & Right Cryptographic Nodes */}
-          <circle cx="30" cy="52" r="2.5" fill="#22d3ee" />
-          <circle cx="90" cy="52" r="2.5" fill="#c084fc" />
-
-          {/* Ascending Value Trace */}
-          <line x1="60" y1="86" x2="60" y2="96" stroke="#22d3ee" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="60" cy="98" r="3" fill="#22d3ee" />
+          {/* Center ZK Privacy Vault Aperture */}
+          <circle cx="60" cy="60" r="6" fill="#050814" stroke="#00E5FF" strokeWidth="2" />
+          <circle cx="60" cy="60" r="2.5" fill="#00E5FF" />
+          <path d="M60 65 V70" stroke="#00E5FF" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
 

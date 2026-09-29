@@ -1,31 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="favRimGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#22d3ee" />
-      <stop offset="50%" stop-color="#06b6d4" />
-      <stop offset="100%" stop-color="#8b5cf6" />
+    <linearGradient id="favRing" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#00E5FF" />
+      <stop offset="100%" stop-color="#6366F1" />
     </linearGradient>
-    <linearGradient id="favBgGrad" x1="10" y1="5" x2="50" y2="60" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0e1726" />
-      <stop offset="100%" stop-color="#030712" />
+    <linearGradient id="favRibbon" x1="16" y1="16" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#38BDF8" />
     </linearGradient>
   </defs>
 
-  <!-- Outer Isometric Shield -->
-  <path d="M32 4 L56 15 V42 L32 60 L8 42 V15 Z" 
-        fill="url(#favBgGrad)" 
-        stroke="url(#favRimGrad)" 
+  <!-- Dark Background -->
+  <rect width="64" height="64" rx="14" fill="#050814" />
+
+  <!-- Outer Ring -->
+  <circle cx="32" cy="32" r="26" stroke="url(#favRing)" stroke-width="2.5" />
+
+  <!-- Interlocking S/B Monogram -->
+  <path d="M22 24 C22 18 26 14 32 14 C38 14 42 18 42 24 C42 28 39 30 36 31 L28 33 C25 34 22 36 22 40 C22 46 26 50 32 50 C38 50 42 46 42 40" 
+        stroke="url(#favRibbon)" 
         stroke-width="3.5" 
+        stroke-linecap="round" 
         stroke-linejoin="round" />
 
-  <!-- Inner Vault Facet -->
-  <polygon points="32,22 44,28 44,38 32,44 20,38 20,28" 
-           fill="#070c18" 
-           stroke="url(#favRimGrad)" 
-           stroke-width="2" 
-           stroke-linejoin="round" />
-
-  <!-- Glowing Center Keyhole -->
-  <circle cx="32" cy="32" r="3.5" fill="#22d3ee" />
-  <path d="M32 35 V41" stroke="#22d3ee" stroke-width="2.5" stroke-linecap="round" />
+  <!-- Central Keyhole Point -->
+  <circle cx="32" cy="32" r="3.5" fill="#050814" stroke="#00E5FF" stroke-width="1.8" />
+  <circle cx="32" cy="32" r="1.5" fill="#00E5FF" />
 </svg>

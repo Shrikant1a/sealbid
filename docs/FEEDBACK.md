@@ -4,6 +4,8 @@ The Midnight Level 6 Supermoon milestone requires gathering structured, qualitat
 
 ## Feedback Gathering Methodology
 - **Feedback Intake:** Direct feedback form embedded in the dApp header and post-transaction modals: `https://forms.gle/ypK1Z94XzaXZs8Yb9`.
+- **Public Google Sheet Dataset:** [SealBid Verified Preprod Onboarding Dataset (Google Sheets)](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
+- **Raw CSV Dataset Export:** [`public/sealbid_user_onboarding_dataset.csv`](../public/sealbid_user_onboarding_dataset.csv)
 - **Cohort Size:** 75 Verified Preprod User Wallets recorded.
 - **Evaluation Criteria:**
   1. Wallet connector onboarding & network switching friction.

@@ -112,4 +112,30 @@ describe('SealedBidContractService Integration Layer', () => {
       callerPk: 'unauthorized_hacker_pk', 
     })).rejects.toThrow();
   });
+
+  it('should successfully cancel auction when called by authorized seller', async () => {
+    const result = await contractService.cancelAuction({
+      auctionContractAddress: 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827',
+      callerPk: 'midnight1seller_pk_hash_address',
+    });
+
+    expect(result.isCancelled).toBe(true);
+    expect(result.txHash.startsWith('preprod_tx_cancel_')).toBe(true);
+  });
+
+  it('should reject cancel auction if caller is unauthorized', async () => {
+    await expect(contractService.cancelAuction({
+      auctionContractAddress: 'a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827',
+      callerPk: 'unauthorized_hacker_pk',
+    })).rejects.toThrow('Unauthorized');
+  });
+
+  it('should query auction state with complete lifecycle fields', async () => {
+    const state = await contractService.getAuctionState('a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827');
+    expect(state.auctionId).toBeDefined();
+    expect(state.isClosed).toBe(false);
+    expect(state.isCancelled).toBe(false);
+    expect(state.commitmentsCount).toBe(3);
+  });
 });
+

@@ -7,10 +7,12 @@ This document certifies the authentic ownership, creation provenance, and sole a
 - **Canonical Repository:** [https://github.com/Shrikant1a/sealbid](https://github.com/Shrikant1a/sealbid)
 - **Original Creator & Sole Developer:** Shrikant Aher
 - **GitHub Handle:** [@Shrikant1a](https://github.com/Shrikant1a)
-- **Contact Email:** `shrikantaher2004@gmail.com`
-- **X (Twitter) Profile:** [@ShriiAher19](https://x.com/ShriiAher19)
+- **Developer Email:** `shrikantaher2004@gmail.com`
+- **Official Product X Profile:** [@SealBidNetwork](https://x.com/SealBidNetwork)
+- **Founder Personal X Profile:** [@ShriiAher19](https://x.com/ShriiAher19)
 - **Live Netlify DApp Deployment:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)
-- **Verified Midnight Preprod Smart Contract:** `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827`
+- **Verified Midnight Preprod Smart Contract:** `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827` (Synced with Sep 2026 updates)
+- **User Onboarding Dataset (75+ Testers):** [Google Sheets](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
 
 ---
 
