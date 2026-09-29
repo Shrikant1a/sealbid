@@ -15,7 +15,7 @@ This document formally certifies that **Shrikant Aher** is the sole creator, ori
 | **GitHub Account** | [@Shrikant1a](https://github.com/Shrikant1a) | Direct match with repository namespace |
 | **Sole Developer** | Shrikant Aher | Primary author in 50+ continuous git commits |
 | **Developer Email** | `shrikantaher2004@gmail.com` / `dev@sealbid.network` | Primary contact and Google Form administrator |
-| **Official Product X Profile** | [@SealBidNetwork](https://x.com/SealBidNetwork) | Official protocol communications & product updates |
+| **Official Product X Profile** | [@SealBids](https://x.com/SealBids) | Official protocol communications & product updates |
 | **Founder Personal X Profile** | [@ShriiAher19](https://x.com/ShriiAher19) | Sole author personal account |
 | **Live Netlify DApp** | [`https://sealbid.netlify.app/`](https://sealbid.netlify.app/) | Directly linked to `@Shrikant1a/sealbid` main branch |
 | **Preprod / Preview Contract** | `0xa58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827` | Deployed July 30, 2026 at 7:47 AM UTC & synced with Sep 2026 updates |
@@ -46,7 +46,7 @@ This document formally certifies that **Shrikant Aher** is the sole creator, ori
    - Fully tracks **75 unique, verifiable Midnight Preprod testers** with shielded addresses, timestamps, commitment transaction hashes, proving latencies (1,805ms avg), and qualitative reviews.
 
 3. **Official Product X Profile & Brand Presence:**
-   - Established the official product handle: **[@SealBidNetwork](https://x.com/SealBidNetwork)**.
+   - Established the official product handle: **[@SealBids](https://x.com/SealBids)**.
    - Differentiated from the developer's personal account ([@ShriiAher19](https://x.com/ShriiAher19)).
    - Documented the official launch thread, product updates, and roadmap in [**`docs/PRODUCT_UPDATES_X.md`**](./docs/PRODUCT_UPDATES_X.md).
    - Embedded official links in the DApp Navbar, Footer, and Landing Page.
@@ -81,4 +81,4 @@ As documented in the September 24 notice, unauthorized third-party accounts (inc
 
 If the Midnight evaluation committee requires interactive confirmation:
 - I will immediately push any designated challenge string, commit signature, or tag specified by the review team.
-- Contact: `shrikantaher2004@gmail.com` or on X at [@SealBidNetwork](https://x.com/SealBidNetwork) / [@ShriiAher19](https://x.com/ShriiAher19).
+- Contact: `shrikantaher2004@gmail.com` or on X at [@SealBids](https://x.com/SealBids) / [@ShriiAher19](https://x.com/ShriiAher19).

@@ -207,14 +207,14 @@ export const Navbar: React.FC = () => {
 
             {/* Official Product X Profile */}
             <a
-              href="https://x.com/SealBidNetwork"
+              href="https://x.com/SealBids"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-between px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 bg-midnight-900 border border-midnight-700 hover:text-white"
             >
               <div className="flex items-center gap-3">
                 <ExternalLink className="w-4 h-4 text-cyan-400" />
-                <span>Official X (@SealBidNetwork)</span>
+                <span>Official X (@SealBids)</span>
               </div>
             </a>
           </div>

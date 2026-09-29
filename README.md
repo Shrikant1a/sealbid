@@ -5,7 +5,7 @@ A decentralized sealed-bid auction platform built on the Midnight Network (Previ
 [![Live Demo](https://img.shields.io/badge/demo-sealbid.netlify.app-00C7B7)](https://sealbid.netlify.app/)
 [![CI](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml/badge.svg)](https://github.com/Shrikant1a/sealbid/actions/workflows/ci.yml)
 [![Network](https://img.shields.io/badge/network-Midnight%20Preview%20%2F%20Preprod-blue)](https://midnight.network)
-[![Official Product X](https://img.shields.io/badge/official%20X-@SealBidNetwork-black)](https://x.com/SealBidNetwork)
+[![Official Product X](https://img.shields.io/badge/official%20X-@SealBids-black)](https://x.com/SealBids)
 [![Author](https://img.shields.io/badge/author-Shrikant%20Aher%20(@Shrikant1a)-blue)](https://github.com/Shrikant1a)
 [![Contract Sync](https://img.shields.io/badge/contract-synced%20(Sep%202026)-success)](./docs/CONTRACT_SYNC.md)
 [![Onboarding Dataset](https://img.shields.io/badge/testers-75%20verified%20(Google%20Sheets)-brightgreen)](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
@@ -47,7 +47,7 @@ We have onboarded **75 verified testers** on the Midnight Preprod network! Testi
 ## Links
 
 - **Live Application**: https://sealbid.netlify.app/
-- **Official Product X Profile**: https://x.com/SealBidNetwork
+- **Official Product X Profile**: https://x.com/SealBids
 - **Founder / Developer Profile**: https://x.com/ShriiAher19
 - **Official Google Sheet (User Onboarding)**: [Open Google Sheet](https://docs.google.com/spreadsheets/d/1X8gM9vK2PqO_wZ3L4R5T6Y7U8I9O0P1Q2R3S4T5U6V/edit?usp=sharing)
 - **Contract Synchronization Report**: [`docs/CONTRACT_SYNC.md`](./docs/CONTRACT_SYNC.md)
@@ -244,6 +244,6 @@ All pull requests and commits to `main` are automatically built and validated vi
 
 ## Official Product & Author
 
-- **Official Product Profile**: [@SealBidNetwork](https://x.com/SealBidNetwork)
+- **Official Product Profile**: [@SealBids](https://x.com/SealBids)
 - **Sole Creator & Architect**: **Shrikant Aher** — [@ShriiAher19](https://x.com/ShriiAher19)
 - GitHub: [@Shrikant1a](https://github.com/Shrikant1a)

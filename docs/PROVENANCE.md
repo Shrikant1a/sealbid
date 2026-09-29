@@ -8,7 +8,7 @@ This document certifies the authentic ownership, creation provenance, and sole a
 - **Original Creator & Sole Developer:** Shrikant Aher
 - **GitHub Handle:** [@Shrikant1a](https://github.com/Shrikant1a)
 - **Developer Email:** `shrikantaher2004@gmail.com`
-- **Official Product X Profile:** [@SealBidNetwork](https://x.com/SealBidNetwork)
+- **Official Product X Profile:** [@SealBids](https://x.com/SealBids)
 - **Founder Personal X Profile:** [@ShriiAher19](https://x.com/ShriiAher19)
 - **Live Netlify DApp Deployment:** [https://sealbid.netlify.app/](https://sealbid.netlify.app/)
 - **Verified Midnight Preprod Smart Contract:** `a58cea2bc0774c5199569acde83f7acd024e2bedf482205d7ffc13aa334b5827` (Synced with Sep 2026 updates)

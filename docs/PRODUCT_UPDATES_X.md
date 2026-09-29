@@ -8,9 +8,9 @@
 
 | Attribute | Verified Value | Details |
 | :--- | :--- | :--- |
-| **Official Product Handle** | **[@SealBidNetwork](https://x.com/SealBidNetwork)** | Dedicated protocol product account |
-| **Profile URL** | [`https://x.com/SealBidNetwork`](https://x.com/SealBidNetwork) | Official social communication hub |
-| **Display Name** | **SealBid Network \| Confidential DeFi on Midnight** | Clear Web3 brand identity |
+| **Official Product Handle** | **[@SealBids](https://x.com/SealBids)** | Dedicated protocol product account |
+| **Profile URL** | [`https://x.com/SealBids`](https://x.com/SealBids) | Official social communication hub |
+| **Display Name** | **SealBid \| Confidential DeFi on Midnight** | Clear Web3 brand identity |
 | **Bio** | Institutional confidential sealed-bid auction protocol powered by @MidnightNtwrk. Zero-knowledge privacy, verifiable cryptographic settlement & MEV protection. Built by @Shrikant1a. | Value proposition + creator attribution |
 | **Website Link** | [`https://sealbid.netlify.app/`](https://sealbid.netlify.app/) | Direct link to live production DApp |
 | **Founder / Architect Account** | [@ShriiAher19](https://x.com/ShriiAher19) (Shrikant Aher) | Personal account (sole creator) |
@@ -19,12 +19,12 @@
 
 ## 2. Official Product Updates & Launch Thread (Verifiable Timeline)
 
-The following sequence of product updates has been published on [@SealBidNetwork](https://x.com/SealBidNetwork) to document the protocol milestones for Level 5 Full Moon:
+The following sequence of product updates has been published on [@SealBids](https://x.com/SealBids) to document the protocol milestones for Level 5 Full Moon:
 
 ### 🧵 Pinned Thread: Official Protocol Launch & Level 5 Milestone
 
-#### Post 1: Introducing SealBid Network
-> 🌙 **Introducing SealBid (@SealBidNetwork)** — The premier confidential sealed-bid auction infrastructure natively engineered for the @MidnightNtwrk.
+#### Post 1: Introducing SealBid
+> 🌙 **Introducing SealBid (@SealBids)** — The premier confidential sealed-bid auction infrastructure natively engineered for the @MidnightNtwrk.
 >
 > On traditional blockchains, mempool sniping and public bid leakage sabotage price discovery. SealBid solves this with client-side Zero-Knowledge proofs.
 >
@@ -62,7 +62,7 @@ The following sequence of product updates has been published on [@SealBidNetwork
 
 ## 3. Product Branding & Media Assets
 
-The visual assets for [@SealBidNetwork](https://x.com/SealBidNetwork) follow the official SealBid design system:
+The visual assets for [@SealBids](https://x.com/SealBids) follow the official SealBid design system:
 - **Profile Avatar:** High-precision bespoke geometric seal emblem (`public/logo-icon.svg`).
 - **Header Banner:** Sleek Midnight Obsidian canvas featuring the cryptographic lock nexus, zero-knowledge mathematical formulas, and the live Netlify URL (`sealbid.netlify.app`).
 - **Brand Colors:**

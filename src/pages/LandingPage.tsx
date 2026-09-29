@@ -177,12 +177,12 @@ export const LandingPage: React.FC = () => {
             </a>
 
             <a
-              href="https://x.com/SealBidNetwork"
+              href="https://x.com/SealBids"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-midnight-900 hover:bg-midnight-800 border border-midnight-700 hover:border-cyan-500/50 text-cyan-300 font-semibold text-xs transition-all"
             >
-              <span>🐦 Follow @SealBidNetwork</span>
+              <span>🐦 Follow @SealBids</span>
               <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>

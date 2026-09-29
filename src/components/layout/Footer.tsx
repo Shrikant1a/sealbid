@@ -24,14 +24,14 @@ export const Footer: React.FC = () => {
             </p>
             <div className="flex flex-col gap-2 pt-1">
               <a
-                href="https://x.com/SealBidNetwork"
+                href="https://x.com/SealBids"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-midnight-900 border border-midnight-700 text-xs font-semibold text-slate-200 hover:text-white hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all"
                 title="Official SealBid Protocol Product Updates on X"
               >
                 <Twitter className="w-3.5 h-3.5 text-cyan-400" />
-                <span>@SealBidNetwork (Official)</span>
+                <span>@SealBids (Official)</span>
               </a>
               <span className="text-[11px] text-slate-400">
                 Architect:{' '}
